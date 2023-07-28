@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/for.css">
+    <script src="./js/for.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>FOR</h3>
+                <p>
+                    - Percorre um objeto iterável.
+                </p>
+                <p>
+                    - Exemplo de objetos iteráveis: Listas, Strings, e etc.
+                </p>
+                <p>
+                    - Vamos percorrer uma lista e imprimir seu elementos.
+                </p>
+                
+                <div class="codigo">
+                    <div class="linha-codigo">lista = [ <span class="string">'Eu'</span> , <span class="string">'sou'</span> , <span class="string">'Desenvolvedor'</span> , <span class="string">'Python'</span> ]</div>
+                    <div class="linha-codigo"><span class="laranja">for </span> i <span class="laranja">in</span> lista :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( i )</div>
+                    
+                </div>  
+                <p>
+                    - O loop For itera sob a lista imprimindo todos os itens:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> Eu</div>
+                    <div class="linha-codigo resposta"> sou</div>
+                    <div class="linha-codigo resposta"> Desenvolvedor</div>
+                    <div class="linha-codigo resposta"> Python</div>
+                                        
+                </div>
+                <p>
+                    - Legal, mas como faço para a frase ficar na mesma linha ? ? ?.
+                </p>
+                <div class="obs">
+                    A função  print ( ) possui um parâmetro default end = '\n'.
+                </div>
+                <p>
+                    - Ok, vamos mudar esse parâmetro por um simples espaço em branco. Veja como fica:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">lista = [ <span class="string">'Eu'</span> , <span class="string">'sou'</span> , <span class="string">'Desenvolvedor'</span> , <span class="string">'Python'</span> ]</div>
+                    <div class="linha-codigo"><span class="laranja">for </span> i <span class="laranja">in</span> lista :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( i , end = ' ')</div>
+                    
+                </div>  
+                <p>
+                    - O loop For itera sob a lista imprimindo todos os itens:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> Eu sou Desenvolvedor Python</div>
+                                                            
+                </div>
+                
+                <p>
+                    - <span class="negrito">Parabéns! Você é um desenvolvedor Python !</span> Mas ainda temos um bom caminho a seguir. Vamos lá.
+                </p>
+                
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>FOR</h3>
+                <p>
+                    - Acabamos de iterar sob uma lista. Mas lembre que a função <span class="negrito">.range( )</span> devolve um objeto iterável.
+                </p>
+                <p>
+                    - Vamos iterar dob ela então:
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">for </span> i <span class="laranja">in</span> <span class="funcao">range </span>( 3 ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">' oi ' </span>)</div>
+                    
+                </div>  
+                <p>
+                    - O loop For itera sob a lista imprimindo todos os itens:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> oi</div>
+                    <div class="linha-codigo resposta"> oi</div>
+                    <div class="linha-codigo resposta"> oi</div>
+                                                            
+                </div>
+                <p>
+                    - Mais um exemplo:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">for </span> i <span class="laranja">in</span> <span class="funcao">range </span>( 3 ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( i )</div>
+                    
+                </div>  
+                <p>
+                    - Itera sob o própio objeto range:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> 0</div>
+                    <div class="linha-codigo resposta"> 1</div>
+                    <div class="linha-codigo resposta"> 2</div>
+                                                            
+                </div>
+                
+                <div class="obs">
+                    A função .range( ) não necessita ser convertida para lista quando utilizada dentro do Loop For.
+                </div>              
+                
+            </div>
+            
+            <div id="conteudo3" class="esconder">
+                <h3>Listas e Strings</h3>
+                <p>
+                    - String pode ser interpretada como uma lista de caracteres <span class="negrito">IMUTÁVEIS</span>
+                </p>
+                <p>
+                    - Vamos iniciar utilizando uma lista
+                </p>
+                <p>
+                    - Podemos selecionar parte dessa lista através do fatiamento.
+                </p>
+                <p>
+                    - No fatiamento o primeiro parâmetro é incluso e o segundo não incluso.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">lista = <span class="string">[ 'Eu' , 'sou' , 'bonitão' ]</span></div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista[ 1 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista[ 0 : 2 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista[  : 2 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista[ 1 : 2 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista[ 1 :  ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista[  :  ] )</div>
+                    
+                </div>  
+                <p>
+                    - Observe o resultado e reflita.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> sou</div>
+                    <div class="linha-codigo resposta"> ['Eu', 'sou']</div>
+                    <div class="linha-codigo resposta"> ['Eu', 'sou']</div>
+                    <div class="linha-codigo resposta"> ['sou']</div>
+                    <div class="linha-codigo resposta"> ['sou', 'bonitão']</div>
+                    <div class="linha-codigo resposta"> ['Eu', 'sou', 'bonitão']</div>
+                </div>   
+                <p>
+                    - Bonitão, vamos mudar para string agora.
+                </p> 
+                <div class="codigo">
+                    <div class="linha-codigo">frase = <span class="string">'Eu sou bonitão' </span></div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( frase[ 1 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( frase[ 0 : 6 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( frase[  : 6 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( frase[ 7 : 13 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( frase[ 7 :  ] )</div>
+                    
+                </div>  
+                <p>
+                    - Resultado será semelhante ao comportamento de uma lista.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> u</div>
+                    <div class="linha-codigo resposta"> Eu sou</div>
+                    <div class="linha-codigo resposta"> Eu sou</div>
+                    <div class="linha-codigo resposta"> bonitã</div>
+                    <div class="linha-codigo resposta"> bonitão</div>
+                                                            
+                </div>
+                <p>
+                    - e para finalizar:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">frase = <span class="string">'Mudei, agora sou sou lindão' </span></div>
+                    <div class="linha-codigo"><span class="laranja">for </span> i <span class="laranja">in</span> <span class="funcao">frase :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( i , end = '' )</div>
+                    
+                </div>  
+                
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> Mudei, agora sou sou lindão</div>
+                                                                                
+                </div>
+                <div class="obs">
+                   Lindão ? ? ? kkkkkkkkkkk
+                </div>
+                
+               
+                    
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>
+                    Qual o resultado do programa?
+                </h3>
+                <p>x = 'Eduardo'</p>
+                <p>lista = [ ] </p>
+                <p>for i in x:</p>
+                <p>&nbsp&nbsp&nbsp&nbsp lista.append( i )</p>
+                <p>print ( lista [  : 3 ] )</p>
+                
+               
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>
+                    <li id="n2">Yes</li>
+                    <li id="n3">Opção 3</li>
+                    <li id="n4">Opção 4</li>
+                    <li id="n5">Opção 5</li>-->
+                </ul>
+            </div>
+
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

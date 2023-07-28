@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/listas.css">
+    <script src="./js/listas.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+                <div id= "botao5" class="botao"></div>
+                <div id= "botao6" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Listas</h3>
+                <p>
+                    - É um tipo de objeto em Python. Veremos o que é objeto em capítulos futuros.
+                </p>
+                <p>
+                    - Uma lista serve para gravar itens de forma <span class="negrito"> indexada </span>.</p>
+                <p>
+                    - Para <span class="negrito"> recuperar </span> um item, é necessário indicar o índice entre colchetes.
+                </p>
+                <p>
+                    - Para <span class="negrito"> substituir </span> um item, é necessário atribuir outro item na posição apontada pelo índice ( entre colchetes ).
+                </p>
+                <p>
+                    - Observe a lista com três strings.
+                </p>
+                                                  
+                <div class="codigo">
+                    <div class="linha-codigo">lista = [<span class="string">' Laeta '</span> , <span class="string">' Diavi '</span> , <span class="string">' Dimci '</span>]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista [ 0 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista [ 1 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista [ 2 ] )</div>
+                    <div class="linha-codigo">lista [ 0 ] = <span class="string">' Lavib '</span> </div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista [ 0 ] )</div>
+                    <div class="linha-codigo">lista_vazia = [  ]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista_vazia )</div>
+                                        
+                </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta">Laeta</div>
+                    <div class="linha-codigo resposta">Diavi</div>
+                    <div class="linha-codigo resposta">Dimci</div>
+                    <div class="linha-codigo resposta">[' Lavib ' , ' Diavi ' , ' Dimci ']</div>
+                    <div class="linha-codigo resposta">Lavib</div>
+                    <div class="linha-codigo resposta">[ ]</div>
+                    
+                                        
+                </div>
+                <div class="obs">
+                    IMPORTANTE: o primeiro elemento da lista tem índice ZERO.
+                </div>                
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Listas</h3>
+                <p>
+                    - Pode incluir diferentes tipos de dados. Exemplo: inteiros, floats, strings, booleanos, listas e etc.
+                </p>                                                                  
+                <div class="codigo">
+                    <div class="linha-codigo">x = 2</div>
+                    <div class="linha-codigo">y = [<span class="string"> ' Laeta ' </span> , 44 , <span class="laranja"> True</span> , [ 78.2 , <span class="string"> ' Laeta '</span> ] ,  x ]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y [ 0 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y [ 1 ] )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y [ 3 ] [ 1 ] )</div>
+                    
+                                        
+                </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta">Laeta</div>
+                    <div class="linha-codigo resposta">44</div>
+                    <div class="linha-codigo resposta">Laeta</div>
+                                       
+                                        
+                </div>
+                <div class="obs">
+                    Observe que na posição de índice 3 da lista y está outra lista [ 78 , ' Laeta ']. Logo, y [ 3 ] [ 1 ] devolve o elemento posicionado no índice 1 do elemento posicionado no índice 3 de y  .
+                     Complicado? Calma que não é. Com o tempo iremos nos acostumar com as listas multidimencionais.
+                </div>    
+                
+                <p>
+                    - Verificando a existência de algum item na lista atraves do operador <span class="laranja-1">in </span>.
+                </p>                                                                  
+                <div class="codigo">
+                    <div class="linha-codigo">x = 2</div>
+                    <div class="linha-codigo">y = [<span class="string"> ' Laeta ' </span> , 44 , <span class="laranja"> True</span> , [ 78.2 , <span class="string"> ' Laeta '</span> ] ,  x ]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( 44 <span class="laranja">in </span> y )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( 42 <span class="laranja">in </span> y )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( <span class="laranja">not </span> 44 <span class="laranja">in </span> y )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( <span class="laranja">not </span> 42 <span class="laranja">in </span> y )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( 2 <span class="laranja">in </span> y )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( 78.2 <span class="laranja">in </span> y )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( [ 78.2 , <span class="string"> ' Laeta '</span> ] <span class="laranja">in </span> y )</div>
+                    
+                    
+                                        
+                </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo resposta">True</div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Métodos</h3>
+                <p>
+                    - Você não sabe o que é um objeto ainda. Ok. Sem problemas. Mas já sabe que uma lista serve para armazenar itens.
+                </p>
+                <p>
+                    - Um objeto tem a capacidade de executar funções. Essa funções são chamadas de métodos.  
+                </p>
+                <p>
+                    - Assim, uma lista, por ser um objeto, também é capaz de executar funções através de seus métodos. Observe.  
+                </p>
+                                                                                 
+                <div class="codigo">
+                    <div class="linha-codigo">y = [ 1 , 2 , 3 , 4 , 5 , 6 ]</div>
+                    <div class="linha-codigo">y.append( 7 )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y )</div>
+                                       
+                                        
+                </div>
+                <p>
+                    - O médodo <span class="negrito">.append( )</span> insere um item no final da lista. 
+                </p>
+                
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[ 1 , 2 , 3 , 4 , 5 , 6 , 7 ]</div>
+                </div>
+                <p>
+                    - O médodo <span class="negrito">.insert( )</span> insere um item em qualquer posição da lista. É necessário
+                    indicar o índice desejado.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">y = [ 1 , 2 , 3 , 4 , 5 , 6 , 7]</div>
+                    <div class="linha-codigo">y.insert( 6 , 6.5 )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y )</div>
+                </div>              
+                
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[ 1 , 2 , 3 , 4 , 5 , 6 , 6.5 , 7 ]</div>    
+                </div>
+                <p>
+                    - E o médodo <span class="negrito">index</span> utilizado abaixo. Tente advinha o que ele faz.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">y = [ 1 , 2 , 3 , 4 , 5 , 6 , 7]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y.index( 3 ) )</div>
+                    
+                </div>   
+                <p>
+                    - Fácil né. Devolve o índice da primeira ocorrência que acha um item de valor 3.
+                </p>           
+                
+                <div class="codigo">
+                    <div class="linha-codigo resposta">2</div>    
+                </div>
+                <p>
+                    - Mais um 'codegozinho' antes de seguir em frente.
+                </p> 
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="funcao">len </span>( y )</div>
+                    
+                </div>   
+                       
+                
+                <div class="codigo">
+                    <div class="linha-codigo resposta">7</div>    
+                </div>
+                <div class="obs">
+                    A função len( ) não é um método do objeto lista. É uma das diversas funções 'built-in' já carregadas pelo Python
+                    para uso. Ela devolve a quantidade de itens da lista.
+                </div> 
+                <div class="obs">
+                    Já vimos anteriormente algumas funções 'built-in'. Não lembra ??? Você não pensou que converter para inteiro int ( ), float ( ) ou
+                     string str ( ) era mágica né.
+                </div>   
+                <div class="obs">
+                    Experimente agora no Idle como a função len ( ) se comporta com uma string. Exemplo: print ( len ('Curso'))
+                </div>         
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Métodos</h3>
+                <p>
+                    - O médodo <span class="negrito">.extend( )</span> concatena listas. Semelhante a somar listas.
+                     Exemplo: [ 1 , 2 , 3 ] + [ 4 , 5 , 6 ] <i class="fas fa-long-arrow-alt-right"></i> [ 1 , 2 , 3 , 4 , 5 , 6 ] .
+                </p>
+                
+                                                                                 
+                <div class="codigo">
+                    <div class="linha-codigo">y = [ 1 , 2 , 3 , 4 , 5 , 6 ]</div>
+                    <div class="linha-codigo">y = y + [ 7 , 8 ]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y )</div>
+                    <div class="linha-codigo">y = [ 1 , 2 , 3 , 4 , 5 , 6 ]</div>
+                    <div class="linha-codigo">y.extend( [ 7 , 8 ])</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y )</div>
+                    <div class="linha-codigo">x = [ 1 , 2 , 3 , 4 , 5 , 6 ]</div>
+                    <div class="linha-codigo">x.append( [ 7 , 8 ])</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( x )</div>
+                                       
+                                        
+                </div>
+                <p>
+                    - Perceba a diferença entre o método <span class="negrito">.extend( )</span>
+                     e o método <span class="negrito">.append( )</span>. 
+                </p>
+                                
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 ]</div>
+                    <div class="linha-codigo resposta">[ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 ]</div>
+                    <div class="linha-codigo resposta">[ 1 , 2 , 3 , 4 , 5 , 6 , [ 7 , 8  ] ]</div>
+                </div>
+                <p>
+                    - O método <span class="negrito">.pop( )</span> sem argumento, apaga e retorna o último valor. Com argumento, retorna 
+                    e apaga o item posicionado no índice apontado.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">y = [ 1 , 2 , 3 , 4 , 5 , 6 ]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y.pop( ) )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y.pop( 0 ) )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y )</div>
+                    
+                                       
+                                        
+                </div>
+                                
+                <div class="codigo">
+                    <div class="linha-codigo resposta">6</div>
+                    <div class="linha-codigo resposta">[ 1 , 2 , 3 , 4 , 5 ]</div>
+                    <div class="linha-codigo resposta">1</div>
+                    <div class="linha-codigo resposta">[  2 , 3 , 4 , 5  ]</div>
+                </div>
+
+                <p>
+                    - O método <span class="negrito">.remove( )</span> remove a primeira ocorrência do valor apontado no argumento.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">y = [ 1 , 2 , 3 , 4 , 5 , 6 ]</div>
+                    <div class="linha-codigo">y.remove( 5 )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y )</div>
+                                           
+                                        
+                </div>
+                                
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[ 1 , 2 , 3 , 4 , 6 ]</div>
+                    
+                </div>
+                <p>
+                    - Sei que é muita informação, mas antes de tomar uma água experimente esse trecho de código aqui:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">y = [ <span class="string">' Cansei ' </span> ]</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( y * 3 )</div>
+                                                              
+                                        
+                </div>
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[' Cansei ', ' Cansei ', ' Cansei ']</div>
+                    
+                </div>
+                <div class="obs">
+                    Tudo bem. Entendo que está cansado! Pode beber uma água e fazer um xixi! Você merece uma pausa.
+                    
+                </div> 
+                
+            </div>
+            
+            <div id="conteudo5" class="esconder">
+                <h3>Range</h3>
+                <p>
+                    - É um função ' built-in ' que devolve uma sequência de números.
+                </p>
+                <p>
+                    - Geralmente ela é utilizada em conjunto com a função ' built-in ' de conversão para lista <span class="negrito">list ( )</span>.
+                </p>
+                                                                  
+                <div class="codigo">
+                    <div class="linha-codigo">lista = <span class="funcao"> list </span> ( <span class="funcao"> range</span> ( 5 )  )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( lista )</div>
+                </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[ 0 , 1 , 2 , 3 , 4 ]</div>
+                </div>   
+                
+                <p>
+                    - Sem <span class="negrito">list ( )</span> a função <span class="negrito">range ( )</span> devolve apenas o objeto iterável.
+                     Ficará mais claro na próxima seção de LOOP FOR.
+                </p>
+                                                                  
+               <div class="codigo">
+                    <div class="linha-codigo"><span class="funcao">print </span>( <span class="funcao">range </span> (  5 ) )</div>
+               </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta">range(0, 5)</div>
+                                        
+                </div>
+                <p>
+                    - Com dois argumentos <i class="fas fa-long-arrow-alt-right"></i> <span class="negrito">range ( início incluso , fim não incluso )</span>
+                 
+                </p>
+                <p>
+                    - Observe
+                </p>
+                                                                  
+               <div class="codigo">
+                    <div class="linha-codigo"><span class="funcao">print </span>( <span class="funcao">list </span> (<span class="funcao">range </span> (  2 , 6 ) ) )</div>
+               </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[2, 3, 4, 5]</div>
+                                        
+                </div>
+                <p>
+                    - Podemos configurar o intervalo do range e a sequência dos passos.
+                </p>
+                <p>
+                    - Três argumentos <i class="fas fa-long-arrow-alt-right"></i> <span class="negrito">range ( início incluso , fim não incluso , passos )</span>
+                 
+                </p>
+                                                                                  
+               <div class="codigo">
+                    <div class="linha-codigo"><span class="funcao">print </span>( <span class="funcao">list </span> (<span class="funcao">range </span> (  0 , 10 , 2 ) ) )</div>
+               </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta">[0, 2, 4, 6, 8]</div>
+                                        
+                </div>
+                <div class="obs">
+                    IMPORTANTE: o primeiro elemento da lista tem índice ZERO.
+                </div> 
+                
+            </div>
+            <div id="conteudo6" class="esconder">
+                <h3>
+                    Qual a saída do código :
+                </h3>
+                <p>x = range( 8 ) == range(0, 8)</p>
+                <p>lista = [ 1 , 'Fui' ]</p>
+                <p>lista.append ( x )</p>
+                <p>lista [ 0 ] = 'Eu'</p>
+               <p>if lista [ 2 ] :</p>
+               <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsplista.pop( )</p>
+               <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspprint ( lista )</p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                </ul>                            
+                    
+            </div>
+            
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

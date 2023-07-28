@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interior da Casa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <style>
+    canvas {
+      width: 95%;
+      height: 95%;
+      touch-action: none;
+    }
+    html, body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+  <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+  <script src="https://cdn.babylonjs.com/recast.js"></script>
+  <script src="https://cdn.babylonjs.com/ammo.js"></script>
+  <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+  <script src="https://cdn.babylonjs.com/cannon.js"></script>
+  <script src="https://cdn.babylonjs.com/Oimo.js"></script>
+  <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+  <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+  <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+  <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+  <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+  <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas"></canvas>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var canvas = document.getElementById("renderCanvas");
+      var engine = new BABYLON.Engine(canvas, true);
+
+      // Criar a cena
+      var createScene = function () {
+        var scene = new BABYLON.Scene(engine);
+        scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+
+        // Criar câmera
+        var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 1.7, -4), scene); // Altura ajustada para 1.7 (olhos do observador)
+        camera.setTarget(new BABYLON.Vector3(0, -0.7, 5)); // Olhar para a direção positiva do eixo z
+        camera.attachControl(canvas, true);
+
+        // Criar luz
+        var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+        // Importe o modelo do professor usando ImportMeshAsync
+        const petPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img/", "sala_de_aula.glb", scene);
+
+        // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+        petPromise.then((result) => {
+          // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+          const meshes = result.meshes;
+
+          // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+          if (meshes.length > 0) {
+              // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+              meshes[0].position = new BABYLON.Vector3(-2,0, -1);
+
+              // Você também pode rotacionar o mesh, se necessário
+              meshes[0].rotation = new BABYLON.Vector3(0, -Math.PI /5, 0);
+              
+              // Você pode escalar o mesh se necessário
+              meshes[0].scaling = new BABYLON.Vector3(.001, .001, .001);
+          } else {
+              console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+          }
+        }).catch((error) => {
+          console.error("Ocorreu um erro ao carregar o modelo: ", error);
+        }); 
+
+        // Criar GUI
+        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+        // Pergunta
+        var questionText = new BABYLON.GUI.TextBlock();
+        questionText.text = "Qual é a capital da França?";
+        questionText.fontSize = 24;
+        questionText.top = 20;
+        advancedTexture.addControl(questionText);
+
+        // Opções de resposta
+        var answerOptions = ["Londres", "Paris", "Madri", "Berlim", "Roma"];
+        var selectedAnswer = -1;
+
+        var optionButtons = [];
+
+        for (var i = 0; i < answerOptions.length; i++) {
+          var stackPanel = new BABYLON.GUI.StackPanel();
+          stackPanel.isVertical = false;
+          stackPanel.width = "220px";
+          stackPanel.height = "40px";
+
+          var option = new BABYLON.GUI.RadioButton();
+          option.width = "20px"; // Aumente o tamanho dos radio buttons
+          option.height = "20px"; // Aumente o tamanho dos radio buttons
+          option.color = "white";
+          option.isChecked = false; // Definir como falso para garantir que nenhum esteja selecionado inicialmente
+          stackPanel.addControl(option);
+
+          var optionText = new BABYLON.GUI.TextBlock();
+          optionText.text = answerOptions[i];
+          optionText.fontSize = 16;
+          optionText.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+          stackPanel.addControl(optionText);
+
+          stackPanel.top = 100 + i * 50;
+          advancedTexture.addControl(stackPanel);
+
+          optionButtons.push(option);
+        }
+
+        function checkSelectedOption() {
+          for (var i = 0; i < optionButtons.length; i++) {
+            if (optionButtons[i].isChecked) {
+              selectedAnswer = i;
+              return;
+            }
+          }
+          selectedAnswer = -1;
+        }
+
+        // Botão de enviar resposta
+        var submitButton = BABYLON.GUI.Button.CreateSimpleButton("submitButton", "Enviar Resposta");
+        submitButton.width = "200px";
+        submitButton.height = "40px";
+        submitButton.color = "white";
+        submitButton.background = "blue";
+        submitButton.top = 350; // Ajustar a posição do botão
+        submitButton.onPointerUpObservable.add(function () {
+          checkSelectedOption();
+          // Verificar se a resposta está correta
+          if (selectedAnswer === 1) { // Índice 1 corresponde à resposta correta (Paris)
+            questionText.text = "Resposta correta!";
+          } else {
+            questionText.text = "Resposta incorreta. Tente novamente!";
+          }
+          // Desmarcar todos os radio buttons após a verificação
+          for (var i = 0; i < optionButtons.length; i++) {
+            optionButtons[i].isChecked = false;
+          }
+        });
+        advancedTexture.addControl(submitButton);
+
+        return scene;
+      };
+
+      var scene = createScene();
+
+      engine.runRenderLoop(function () {
+        scene.render();
+      });
+
+      window.addEventListener("resize", function () {
+        engine.resize();
+      });
+    });
+  </script>
+</body>
+</html>

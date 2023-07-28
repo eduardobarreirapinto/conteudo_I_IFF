@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css_escola/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+    <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+    <script src="https://cdn.babylonjs.com/recast.js"></script>
+    <script src="https://cdn.babylonjs.com/ammo.js"></script>
+    <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+    <script src="https://cdn.babylonjs.com/cannon.js"></script>
+    <script src="https://cdn.babylonjs.com/Oimo.js"></script>
+    <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+    <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+    <style>
+        canvas {
+          width: 100%;
+          height: 100%;
+          touch-action: none;
+        }        
+      </style>
+    <title>Educação Interativa</title>
+</head>
+<body>
+  <!-- navbar -->
+	<nav class="navbar">
+      <!-- LOGO -->
+      <div class="logo"><a href="./index_escola.html">Educação Interativa</a></div>
+      <!-- NAVIGATION MENU -->
+      <ul class="nav-links">
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+          <li><a href="./artigos.html">Artigos</a></li>
+          <li><a href="./sobre.html">Sobre</a></li>          
+        </div>
+      </ul>
+    </nav>
+  <!-- fim navbar -->
+    <div class = "logos">
+        <img id="inmetro_logo"  src="./img_escola/inmetro.png" alt="Logo Inmetro"></a>
+        <img id="iff_logo" src="./img_escola/iff.png" alt="Logo IFF"></a>
+    </div>
+
+    <div class="house">
+        <div class="main">
+            <div class="btn letreiro">
+              <span>Ambiente Virtual</span>
+            </div>
+            <div class="roof"></div>
+            <div class="wrapper">      
+                <a href="/corredor_escolar/corredor.html"><canvas id="renderCanvas"></canvas></a>
+                <div id="left-door" class="door">
+                  <div class="shape"></div>
+                  <div class="shape"></div>
+                  <div id="left-knob" class="knob"></div>
+                </div>
+                <div id="right-door" class="door">
+                  <div class="shape"></div>
+                  <div class="shape"></div>
+                  <div id="right-knob" class="knob"></div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div id="skills-section">
+        <div class="container">
+          <div class="skills-container">
+                <img src="img_escola/python-icon2.jpg" alt="curso python">
+                <h2 id="python"><a href="./sala_de_aula_com_livro/sala_de_aula_livro_python.html">Introdução à Programação</a></h2>
+                <p class="subtitle">Aprenda uma das linguagens de programação mais usadas da atualidade.</p>
+                
+          </div>
+         
+          <div class="skills-container">
+              <img src="img_escola/gpib.jpg" alt="curso Automação">
+              <h2 id="automacao"><a href="./sala_de_aula_com_livro/sala_de_aula_livro_automacao.html">Introdução à Automação</a></h2>
+              <p class="subtitle">Aprenda a automatizar seu sistema de medição.</p>
+            
+          </div>      
+        </div>        
+    </div>
+
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var canvas = document.getElementById("renderCanvas");
+      var engine = new BABYLON.Engine(canvas, true);
+
+      var createScene = function () {
+            var scene = new BABYLON.Scene(engine);
+            scene.enablePhysics(new BABYLON.Vector3(0, -9.81, 0), new BABYLON.CannonJSPlugin());
+            // Habilitar detecção de colisão na cena
+            scene.collisionsEnabled = true;
+            
+            var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+            light.intensity = 0.7;
+
+            // Crie uma imagem HDRI e atribua-a ao ambiente da cena
+            var hdrTexture = new BABYLON.CubeTexture("https://www.babylonjs-playground.com/textures/environment.dds", scene);
+            scene.environmentTexture = hdrTexture;
+
+            // Luz adicional para iluminar o teto
+            var ceilingLight = new BABYLON.HemisphericLight("ceilingLight", new BABYLON.Vector3(0, -1, 0), scene);
+            ceilingLight.intensity = 0.5;
+
+            var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
+            var groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
+            groundMaterial.diffuseTexture = new BABYLON.Texture("./img_escola/chao.jpg", scene);
+            // Ajustar as coordenadas de textura (UVs)
+            groundMaterial.diffuseTexture.uScale = 3.5; // Aumenta a escala horizontal da textura
+            groundMaterial.diffuseTexture.vScale = 3.5; // Aumenta a escala vertical da textura
+            ground.material = groundMaterial;
+            ground.checkCollisions = true;
+            ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+             //Load the tower assets
+            // Supondo que você já tenha uma instância da engine Babylon.js chamada 'engine' e uma cena chamada 'scene'.
+
+            // Importe o modelo do professor usando ImportMeshAsync
+            const professorPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "professor.glb", scene);
+
+            // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+            professorPromise.then((result) => {
+                // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+                const meshes = result.meshes;
+
+                // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+                if (meshes.length > 0) {
+                    // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+                    meshes[0].position = new BABYLON.Vector3(0, 0, 0);
+
+                    // Você também pode rotacionar o mesh, se necessário
+                    meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+
+                    // Você pode escalar o mesh se necessário
+                    meshes[0].scaling = new BABYLON.Vector3(1.3, 1.3, 1.3);
+                } else {
+                    console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+                }
+            }).catch((error) => {
+                console.error("Ocorreu um erro ao carregar o modelo: ", error);
+            });                       
+        // Importe o modelo do professor usando ImportMeshAsync
+        const alunaPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "aluna.glb", scene);
+
+         // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+         alunaPromise.then((result) => {
+                // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+                const meshes = result.meshes;
+
+                // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+                if (meshes.length > 0) {
+                    // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+                    meshes[0].position = new BABYLON.Vector3(1, 1.55, 0);
+
+                    // Você também pode rotacionar o mesh, se necessário
+                    // meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+
+                    // Você pode escalar o mesh se necessário
+                    meshes[0].scaling = new BABYLON.Vector3(1, 1, 1);
+                } else {
+                    console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+                }
+            }).catch((error) => {
+                console.error("Ocorreu um erro ao carregar o modelo: ", error);
+            });  
+        // Importe o modelo do professor usando ImportMeshAsync
+        const computador2Promise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "computador2.glb", scene);
+
+        // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+        computador2Promise.then((result) => {
+              // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+              const meshes = result.meshes;
+
+              // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+              if (meshes.length > 0) {
+                  // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+                  meshes[0].position = new BABYLON.Vector3(-4, 1, 1);
+
+                  // Você também pode rotacionar o mesh, se necessário
+                  meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+
+                  // Você pode escalar o mesh se necessário
+                  meshes[0].scaling = new BABYLON.Vector3(1, 1, 1);
+              } else {
+                  console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+              }
+          }).catch((error) => {
+              console.error("Ocorreu um erro ao carregar o modelo: ", error);
+          });
+          // Importe o modelo do professor usando ImportMeshAsync
+          const petPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "pet.glb", scene);
+
+          // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+          petPromise.then((result) => {
+            // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+            const meshes = result.meshes;
+
+            // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+            if (meshes.length > 0) {
+                // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+                meshes[0].position = new BABYLON.Vector3(-2,0, -.5);
+
+                // Você também pode rotacionar o mesh, se necessário
+                meshes[0].rotation = new BABYLON.Vector3(0, -Math.PI /4, 0);
+                
+                // Você pode escalar o mesh se necessário
+                meshes[0].scaling = new BABYLON.Vector3(.001, .001, .001);
+            } else {
+                console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+            }
+          }).catch((error) => {
+            console.error("Ocorreu um erro ao carregar o modelo: ", error);
+          }); 
+          // Importe o modelo do professor usando ImportMeshAsync
+          const computador1Promise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "computador1.glb", scene);
+
+          // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+          computador1Promise.then((result) => {
+            // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+            const meshes = result.meshes;
+
+            // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+            if (meshes.length > 0) {
+                // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+                meshes[0].position = new BABYLON.Vector3(8, 3.5, 1);
+
+                // Você também pode rotacionar o mesh, se necessário
+                meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+
+                // Você pode escalar o mesh se necessário
+                meshes[0].scaling = new BABYLON.Vector3(1, 1, 1);
+            } else {
+                console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+            }
+          }).catch((error) => {
+            console.error("Ocorreu um erro ao carregar o modelo: ", error);
+          });            
+            
+            // Crie um material para IFF
+            //var neonBlueMaterial = new BABYLON.StandardMaterial("neonBlueMaterial", scene);
+            //neonBlueMaterial.emissiveColor = new BABYLON.Color3(0, 0.7, 1); // Cor azul neon
+            // var pbr = new BABYLON.PBRMaterial("pbr", scene);
+            // pbr.metallic = 0.5; // Between 0 and 1
+            // pbr.roughness = 0; // Between 0 and 1
+            // pbr.subSurface.isRefractionEnabled = true;
+            // pbr.subSurface.indexOfRefraction = 1.7;
+            // pbr.subSurface.tintColor = new BABYLON.Color3.Green();
+
+            // Função para criar um cubo com a posição e escala desejadas
+        /*     var createCube = function (position, scale) {
+            var cube = BABYLON.CreateBox(`box`, {}, scene);
+            cube.position.copyFrom(position);
+            cube.scaling.copyFrom(scale);
+            cube.material = pbr;
+            return cube;
+            };
+
+            // Criar a letra 'I' com cubos
+            var iff = [];
+            iff.push(createCube(new BABYLON.Vector3(-1, 1.7, 0), new BABYLON.Vector3(0.1, .3, 0.1)));
+            iff.push(createCube(new BABYLON.Vector3(-1, 1.3, 0), new BABYLON.Vector3(0.1, -.3, 0.1)));
+            iff.push(createCube(new BABYLON.Vector3(-1, 1.8, 0), new BABYLON.Vector3(0.5, 0.1, 0.1)));
+            iff.push(createCube(new BABYLON.Vector3(-1, 1.2, 0), new BABYLON.Vector3(0.5, 0.1, 0.1)));
+
+            // Criar a letra 'F' com cubos
+            iff.push(createCube(new BABYLON.Vector3(-.5, 1.5, 0), new BABYLON.Vector3(0.1, .7, 0.1)));
+            iff.push(createCube(new BABYLON.Vector3(-0.3, 1.8, 0), new BABYLON.Vector3(.5, 0.1, 0.1)));
+            iff.push(createCube(new BABYLON.Vector3(-0.3, 1.5, 0), new BABYLON.Vector3(.5, 0.1, 0.1)));
+
+            // Criar a letra 'F' com cubos
+            iff.push(createCube(new BABYLON.Vector3(.2, 1.5, 0), new BABYLON.Vector3(0.1, .7, 0.1)));
+            iff.push(createCube(new BABYLON.Vector3(.4, 1.8, 0), new BABYLON.Vector3(.5, 0.1, 0.1)));
+            iff.push(createCube(new BABYLON.Vector3(.4, 1.5, 0), new BABYLON.Vector3(.5, 0.1, 0.1)));       */     
+            
+            var paredeMaterial = new BABYLON.StandardMaterial("paredeMaterial", scene);
+            paredeMaterial.diffuseTexture = new BABYLON.Texture("./img_escola/parede.jpg", scene);
+
+            paredeMaterial.diffuseTexture.uScale = 1; // Aumenta a escala horizontal da textura
+            paredeMaterial.diffuseTexture.vScale = 1; // Aumenta a escala vertical da textura
+
+            var leftWall = BABYLON.MeshBuilder.CreateBox("leftWall", { width: 0.1, height: 3.5, depth: 10 }, scene);
+            leftWall.material = paredeMaterial;
+            leftWall.position.x = -5;
+            leftWall.position.y = 1;
+            leftWall.checkCollisions = true;
+            leftWall.physicsImpostor = new BABYLON.PhysicsImpostor(leftWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var rightWall = BABYLON.MeshBuilder.CreateBox("rightWall", { width: 0.1, height: 3.5, depth: 10 }, scene);
+            rightWall.material = paredeMaterial;
+            rightWall.position.x = 5;
+            rightWall.position.y = 1;
+            rightWall.checkCollisions = true;
+            rightWall.physicsImpostor = new BABYLON.PhysicsImpostor(rightWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var backWall = BABYLON.MeshBuilder.CreateBox("backWall", { width: 10, height: 3.5, depth: 0.1 }, scene);
+            backWall.material = paredeMaterial;
+            backWall.position.z = 5;
+            backWall.position.y = 1;
+            backWall.checkCollisions = true;
+            backWall.physicsImpostor = new BABYLON.PhysicsImpostor(backWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var frontWall = BABYLON.MeshBuilder.CreateBox("frontWall", { width: 10, height: 3.5, depth: 0.1 }, scene);
+            frontWall.material = paredeMaterial;
+            frontWall.position.z = -5;
+            frontWall.position.y = 1;
+            frontWall.checkCollisions = true;
+            frontWall.physicsImpostor = new BABYLON.PhysicsImpostor(frontWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            /* var doorMaterial = new BABYLON.StandardMaterial("doorMaterial", scene);
+            doorMaterial.diffuseTexture = new BABYLON.Texture("img/porta.jpg", scene);
+            doorMaterial.diffuseTexture.vScale = 1;
+            doorMaterial.diffuseTexture.uScale = -1;
+
+            var leftDoor = BABYLON.MeshBuilder.CreateBox("leftDoor", { width: 0.3, height: 2, depth: 1.4 }, scene);
+            leftDoor.position.x = -4.95;
+            leftDoor.position.y = 1;
+            leftDoor.checkCollisions = true;
+            leftDoor.physicsImpostor = new BABYLON.PhysicsImpostor(leftDoor, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+            leftDoor.material = doorMaterial;
+
+            // Adicione um observador de evento de clique à porta
+            leftDoor.actionManager = new BABYLON.ActionManager(scene);
+
+            // Crie um gatilho para o evento de clique do mouse
+            leftDoor.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction(
+            BABYLON.ActionManager.OnPickTrigger, // Gatilho para o evento de clique do mouse
+            function (evt) {
+            // Ação a ser executada quando o clique ocorrer na porta
+            console.log("Clique na porta detectado!");
+            // Aqui você pode redirecionar para outra página, exibir informações, etc.
+            // Por exemplo:
+            window.location.href = "outra_pagina.html";
+            })); */
+
+           /*  var rightDoor = BABYLON.MeshBuilder.CreateBox("rightDoor", { width: 0.3, height: 2, depth: 1.4 }, scene);
+            rightDoor.position.x = 4.95;
+            rightDoor.position.y = 1;
+            rightDoor.checkCollisions = true;
+            rightDoor.physicsImpostor = new BABYLON.PhysicsImpostor(rightDoor, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+            rightDoor.material = doorMaterial;
+
+            rightDoor.actionManager = new BABYLON.ActionManager(scene);
+
+            // Crie um gatilho para o evento de clique do mouse
+            rightDoor.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction(
+            BABYLON.ActionManager.OnPickTrigger, // Gatilho para o evento de clique do mouse
+            function (evt) {
+            // Ação a ser executada quando o clique ocorrer na porta
+            console.log("Clique na porta detectado!");
+            // Aqui você pode redirecionar para outra página, exibir informações, etc.
+            // Por exemplo:
+            window.location.href = "outra_pagina.html";
+            })); */
+
+            var windowMaterial = new BABYLON.StandardMaterial("windowMaterial", scene);
+            windowMaterial.diffuseTexture = new BABYLON.Texture("./img_escola/janela.jpg", scene);
+
+            var windowWidth = 2; // Largura da janela
+            var windowHeight = 2; // Altura da janela
+
+            var windowMesh = BABYLON.MeshBuilder.CreatePlane("windowMesh", { width: windowWidth, height: windowHeight }, scene);
+            windowMesh.position.z = 4.9; // Posição na frente da parede frontal
+            windowMesh.position.y = 1.5; // Altura em que a janela será colocada na parede
+            windowMesh.material = windowMaterial;
+
+            var windowMaterial1 = new BABYLON.StandardMaterial("windowMaterial1", scene);
+            windowMaterial1.diffuseTexture = new BABYLON.Texture("./img_escola/janela1.jpg", scene);
+
+            var windowWidth1 = 2; // Largura da janela
+            var windowHeight1 = 2; // Altura da janela
+
+            var windowMesh1 = BABYLON.MeshBuilder.CreatePlane("windowMesh1", { width: windowWidth1, height: windowHeight1 }, scene);
+            windowMesh1.position.z = 4.9; // Posição na frente da parede frontal
+            windowMesh1.position.y = 1.5; // Altura em que a janela será colocada na parede
+            windowMesh1.position.x = -2.5;
+            windowMesh1.material = windowMaterial1;
+
+            var windowMaterial2 = new BABYLON.StandardMaterial("windowMaterial2", scene);
+            windowMaterial2.diffuseTexture = new BABYLON.Texture("./img_escola/janela2.jpg", scene);
+
+            var windowWidth2 = 2; // Largura da janela
+            var windowHeight2 = 2; // Altura da janela
+
+            var windowMesh2 = BABYLON.MeshBuilder.CreatePlane("windowMesh2", { width: windowWidth2, height: windowHeight2 }, scene);
+            windowMesh2.position.z = 4.9; // Posição na frente da parede frontal
+            windowMesh2.position.y = 1.5; // Altura em que a janela será colocada na parede
+            windowMesh2.position.x = 2.5;
+            windowMesh2.material = windowMaterial2;
+
+            var ceilingMaterial = new BABYLON.StandardMaterial("ceilingMaterial", scene);
+            ceilingMaterial.diffuseTexture = new BABYLON.Texture("./img_escola/teto.jpg", scene);
+            ceilingMaterial.diffuseTexture.uScale = 20; // Aumenta a escala horizontal da textura
+            ceilingMaterial.diffuseTexture.vScale = 20; // Aumenta a escala vertical da textura
+
+            var ceiling = BABYLON.MeshBuilder.CreateBox("ceiling", { width: 10, height: 0.1, depth: 10 }, scene);
+            ceiling.position.y = 2.7; // Posicione acima das paredes
+            ceiling.checkCollisions = true;
+            ceiling.physicsImpostor = new BABYLON.PhysicsImpostor(ceiling, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+            ceiling.material = ceilingMaterial;
+
+          
+            var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 1.4, -2.2), scene);
+            //camera.attachControl(canvas, true);
+            camera.checkCollisions = true;
+            camera.applyGravity = false;
+            camera.fov = 1.5; // Reduza o campo de visão para manter a câmera pequena
+                        
+           /*  // Configuração inicial
+            var cameraSpeed = 0.03; // Defina a velocidade do movimento da câmera
+            var cameraMoveDirection = new BABYLON.Vector3(0, 0, 0);
+            var cameraMoveEnabled = true; // Habilitar/desabilitar movimentação da câmera
+            var cameraRotationSensitivity = 0.001; // Sensibilidade da rotação horizontal da câmera
+            var isDragging = false; // Variável para indicar se o mouse está arrastando
+            var collidableObjects = []; // Array para armazenar objetos colidíveis (paredes, portas, etc.)
+
+            // Adicione os objetos colidíveis ao array collidableObjects
+            collidableObjects.push(ceiling,leftWall,backWall,rightDoor,leftDoor,windowMesh,windowMesh1,windowMesh2); // Adicione todos os objetos colidíveis à lista
+            
+             // Create an invisible sphere to represent the camera's collision shape
+            var cameraBox = BABYLON.MeshBuilder.CreateSphere("cameraBox", { diameter: 1 }, scene);
+            cameraBox.position = camera.position; // Set the cameraBox position to match the camera
+            cameraBox.isVisible = false; // Hide the cameraBox from rendering
+            cameraBox.physicsImpostor = new BABYLON.PhysicsImpostor(cameraBox, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            // Function to check collisions and apply smooth movement
+            function checkCollisions() {
+                if (!cameraMoveEnabled) return;
+
+                var newPos = camera.position.add(cameraMoveDirection.multiplyByFloats(cameraSpeed, cameraSpeed, cameraSpeed));
+                var ray = new BABYLON.Ray(camera.position, cameraMoveDirection, cameraSpeed);
+                var hit = scene.pickWithRay(ray, function (mesh) {
+                    return collidableObjects.indexOf(mesh) !== -1;
+                });
+
+                if (hit.hit) {
+                    // Collision detected, don't allow movement
+                    cameraMoveDirection.set(0, 0, 0);
+                }
+
+                // Restrict camera movement within the boundaries of the ground
+                var groundHalfWidth = ground.scaling.x * 3.5;
+                var groundHalfHeight = ground.scaling.z * 3.5;
+
+                // Clamp the camera position within the ground boundaries
+                newPos.x = Math.min(Math.max(newPos.x, -groundHalfWidth), groundHalfWidth);
+                newPos.z = Math.min(Math.max(newPos.z, -groundHalfHeight), groundHalfHeight);
+
+                camera.position.copyFrom(newPos);
+                }
+
+              // Evento de teclado para controlar a movimentação da câmera
+              scene.onKeyboardObservable.add(function (kbInfo) {
+                  var keyCode = kbInfo.event.key;
+
+                  // Calcula a direção do movimento da câmera com base na rotação
+                  var cameraDirection = camera.getDirection(BABYLON.Axis.Z);
+                  var cameraMoveDirection = new BABYLON.Vector3(cameraDirection.x, 0, cameraDirection.z);
+
+                  if (keyCode === "ArrowUp" || keyCode === "w") {
+                    camera.position.addInPlace(cameraMoveDirection.multiplyByFloats(cameraSpeed, cameraSpeed, cameraSpeed));
+                  } else if (keyCode === "ArrowDown" || keyCode === "s") {
+                    camera.position.addInPlace(cameraMoveDirection.multiplyByFloats(-cameraSpeed, -cameraSpeed, -cameraSpeed));
+                  } else if (keyCode === "ArrowLeft" || keyCode === "a") {
+                    var cameraSideDirection = camera.getDirection(BABYLON.Axis.X);
+                    camera.position.addInPlace(cameraSideDirection.multiplyByFloats(-cameraSpeed, -cameraSpeed, -cameraSpeed));
+                  } else if (keyCode === "ArrowRight" || keyCode === "d") {
+                    var cameraSideDirection = camera.getDirection(BABYLON.Axis.X);
+                    camera.position.addInPlace(cameraSideDirection.multiplyByFloats(cameraSpeed, cameraSpeed, cameraSpeed));
+                  }
+                  cameraMoveEnabled = cameraMoveDirection.lengthSquared() > 0;
+            });
+
+            
+
+              // Evento para parar o movimento da câmera quando a tecla é liberada
+              window.addEventListener("keyup", function (event) {
+                      var keyCode = event.key;
+
+                    if ((keyCode === "ArrowUp" || keyCode === "w") && cameraMoveDirection.z === 1) {
+                        cameraMoveDirection.z = 0;
+                    } else if ((keyCode === "ArrowDown" || keyCode === "s") && cameraMoveDirection.z === -1) {
+                        cameraMoveDirection.z = 0;
+                    } else if ((keyCode === "ArrowLeft" || keyCode === "a") && cameraMoveDirection.x === -1) {
+                        cameraMoveDirection.x = 0;
+                    } else if ((keyCode === "ArrowRight" || keyCode === "d") && cameraMoveDirection.x === 1) {
+                        cameraMoveDirection.x = 0;
+                    }
+
+                    // Habilitar o movimento da câmera somente se a velocidade for maior que zero
+                    cameraMoveEnabled = cameraMoveDirection.lengthSquared() > 0;
+            });          
+          
+              // Controle de rotação horizontal da câmera com o mouse
+              // Evento de clique do mouse (quando o usuário pressiona ou solta o botão do mouse)
+              var onPointerDown = function (evt) {
+                if (evt.button === 0) {
+                  isDragging = true; // Começa o arraste do mouse quando o botão esquerdo é pressionado
+                }
+              };
+
+              var onPointerUp = function (evt) {
+                if (evt.button === 0) {
+                  isDragging = false; // Para o arraste do mouse quando o botão esquerdo é solto
+                }
+              };
+
+              // Evento de movimento do mouse (quando o usuário arrasta o mouse)
+              var onPointerMove = function (evt) {
+                if (isDragging) {
+                  // Calcula a mudança horizontal do mouse
+                  var deltaX = evt.movementX || evt.mozMovementX || evt.webkitMovementX || 0;
+
+                  // Atualiza a rotação horizontal da câmera
+                  camera.rotation.y -= deltaX * cameraRotationSensitivity;
+                }
+              };
+
+              // Adiciona os eventos de clique e movimento do mouse à janela (window)
+              window.addEventListener("pointerdown", onPointerDown);
+              window.addEventListener("pointerup", onPointerUp);
+              window.addEventListener("pointermove", onPointerMove); 
+
+              // Registro da função de verificação de colisões no loop de renderização da cena
+              scene.onBeforeRenderObservable.add(checkCollisions); */
+
+            //Create GUI
+            //var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+            
+            // Criar um painel para conter o texto            
+                  
+
+
+            
+            
+            
+
+            return scene;
+          };
+
+      var scene = createScene();
+      engine.runRenderLoop(function () {
+        scene.render();
+      });
+
+      window.addEventListener("resize", function () {
+        engine.resize();
+      });
+    });
+  </script>   
+</body>
+</html>

@@ -1,0 +1,665 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    list-style: none;  
+}
+
+body
+{
+    background:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    overflow:auto;
+}
+/* NAVBAR STYLING STARTS */
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: teal;
+  color: #fff;
+ }
+ .navbar a {
+  color: #fff;
+ }
+ 
+ .nav-links a {
+  color: #fff;
+ }
+ /* LOGO */
+ .logo {
+  font-size: 32px;
+ }
+ /* NAVBAR MENU */
+ .menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+ }
+ .menu li:hover {
+  background-color: #4c9e9e;
+  border-radius: 5px;
+  transition: 0.3s ease;
+ }
+ .menu li {
+  padding: 5px 14px;
+ }
+ /* DROPDOWN MENU */
+ .services {
+  position: relative; 
+ }
+ .dropdown {
+  background-color: rgb(1, 139, 139);
+  padding: 1em 0;
+  position: absolute; /*WITH RESPECT TO PARENT*/
+  display: none;
+  border-radius: 8px;
+  top: 35px;
+ }
+ .dropdown li + li {
+  margin-top: 10px;
+ }
+ .dropdown li {
+  padding: 0.5em 1em;
+  width: 8em;
+  text-align: center;
+ }
+ .dropdown li:hover {
+  background-color: #4c9e9e;
+ }
+ .services:hover .dropdown {
+  display: block;
+ }
+ /* fim navbar */
+.logos
+{
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content:space-evenly;
+  width: 60%;
+  margin-top: 2%;
+}
+
+#inmetro_logo
+{
+  /* border: 1px solid; */
+  width: 300px;
+  height: 100px;
+  object-fit:contain;
+}
+#iff_logo
+{
+  /* border: 1px solid; */
+  width: 300px;
+  height: 100px;
+  object-fit:contain;
+  
+}
+.house
+{
+    margin-top: 3%;
+    position: relative;
+    width: 950px;
+    height: 350px;
+    background-image: url(../img_escola/paisagem.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background: #ccc;
+    border-bottom: 3px solid #175117;*/
+}
+.main
+{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 200px;
+    background: beige;
+    border-bottom: 5px solid #175117;
+}
+.btn
+{
+  line-height: 20px;
+  height: 20px;
+  text-align: center;
+  width: 150px;
+}
+.letreiro
+{
+  position: relative;
+  top: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10%;
+  font-family: sans-serif ;
+  color: rgb(5, 110, 158);
+  transition: all 0.5s;   
+}
+
+.letreiro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(1, 26, 24, 0.1);
+  transition: all 0.3s;
+}
+.letreiro:hover::before {
+  opacity: 0 ;
+  transform: scale(0.5,0.5);
+}
+.letreiro::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(22, 124, 119, 0.5);
+  transform: scale(1.2,1.2);
+}
+.letreiro:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
+}
+
+.main::before
+{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: rgba(0,0,0,.1);
+}
+.roof
+{
+    position: absolute;
+    top: -100px;
+    height: 100px;
+    width: 100%;
+    /*background: yellow;*/
+}
+.roof::before
+{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: #257582;
+    transform: skewX(330deg);
+}
+.roof::after
+{
+    content: '';
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: #257582;
+    transform: skewX(30deg);
+}
+.wrapper {
+    height: 80%;
+    width: 70%;
+    border: 5px solid  #021f46;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0 ;
+    /* 3D */
+    perspective: 1000px;
+  }
+  
+  #corredor_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .door {
+    /* background-color: #61412d; */
+    background-color:rgba(36,178,183,.7);
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    /* inner layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  #left-door {
+    top: 0;
+    left: 0;
+    border-right: 1px solid rgb(24, 76, 124);
+    /* transition */
+    transform-origin: left;
+    transition: transform 0.5s;
+  }
+  
+  #right-door {
+    top: 0;
+    right: 0;
+    border-left: 1px solid rgb(24, 76, 124);
+    /* transition */
+    transform-origin: right;
+    transition: transform 0.5s;
+  }
+  
+  .shape {
+    border: 4px solid black;
+    width: 100px;
+    height: 130px;
+  }
+  
+  .knob {
+    width: 10px;
+    height: 50px;
+    background-color: #021f46;
+    position: absolute;
+  }
+  
+  #left-knob {
+    top: 50%;
+    right: 10px;
+  }
+  
+  #right-knob {
+    top: 50%;
+    left: 10px;
+  }
+  
+  /* Door swing effect */
+  .wrapper:hover #left-door {
+    transform: rotateY(-140deg);
+  }
+  
+  .wrapper:hover #right-door {
+    transform: rotateY(140deg);
+  }
+
+  /* cursos */
+
+#skills-section {
+  margin-top: 2%;
+  background-color: #FFF;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  /* border: 1px solid;   */
+}
+
+#skills-section .container {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  /* max-width: 1200px; */
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.skills-container {
+  flex: 1 1 300px;
+  height: 400px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border: 4px solid rgb(19, 194, 221);
+  border-radius: 15px;
+  text-align: center;
+  }
+
+  
+#algoritmo a {
+  color: rgb(16, 97, 184);
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+#automacao a {
+  color: rgb(16, 97, 184);
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+  }
+
+#python a {
+  color: rgb(16, 97, 184);
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+  }
+
+#algoritmo a:hover, #automacao a:hover , #python a:hover {
+  color: aqua;
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+  
+
+.skills-container img {
+    padding: 25px 25px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(19, 194, 221.5);
+    border-radius: 15px 15px 0px 0px;
+    width: 100%;
+    height: 200px;
+    object-fit:contain;
+  
+}
+
+.skills-container .subtitle {
+  
+  font-weight: bold;
+  color: rgb(43, 43, 44);
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 25px 25px;
+}
+
+.skills-container p {
+  line-height: 25px
+}
+
+/* #skills-section #todos_cursos {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+#todos_cursos h1 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;       
+}
+#todos_cursos a {
+    color: #111163;
+    transition: 0.2s ease-in-out;
+}
+#todos_cursos a:hover {
+    color:rgb(55, 165, 101);
+    text-shadow: 2px 2px #2b0c47;
+    
+} */
+
+
+/* Media Queries */
+/* Estilos básicos */
+/* ... (código CSS existente) ... */
+
+/* Media Query para telas menores */
+@media screen and (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar .logo {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu li {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .logos {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  #inmetro_logo,
+  #iff_logo {
+    width: 120px;
+    height: 40px;
+  }
+
+  .house {
+    height: 180px;
+  }
+
+  .main {
+    height: 80px;
+  }
+
+  .btn {
+    line-height: 16px;
+    height: 16px;
+    width: 120px;
+  }
+
+  .letreiro {
+    font-size: 14px;
+    top: 5%;
+  }
+
+  .roof::before,
+  .roof::after {
+    width: 50%;
+  }
+
+  .wrapper {
+    height: 60%;
+  }
+
+  #corredor_img {
+    height: 100%;
+  }
+
+  .door {
+    background-color: rgba(36, 178, 183, 0.7);
+    height: 50%;
+  }
+
+  .shape {
+    width: 50px;
+    height: 65px;
+  }
+
+  .knob {
+    width: 5px;
+    height: 25px;
+  }
+
+  #left-knob {
+    right: 5px;
+  }
+
+  #right-knob {
+    left: 5px;
+  }
+
+  #skills-section .container {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .skills-container {
+    flex-basis: calc(50% - 20px);
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .skills-container img {
+    height: 80px;
+    object-fit: cover;
+  }
+
+  .skills-container h2 {
+    font-size: 16px;
+  }
+
+  .skills-container .subtitle {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  /* Blog e Sobre na vertical */
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar .logo {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu li {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .logos {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  #inmetro_logo,
+  #iff_logo {
+    width: 150px;
+    height: 50px;
+  }
+
+  .house {
+    height: 300px;
+  }
+
+  .main {
+    height: 200px;
+  }
+
+  .btn {
+    line-height: 20px;
+    height: 20px;
+    width: 150px;
+  }
+
+  .letreiro {
+    font-size: 13px;
+    top: 7%;
+  }
+
+  .roof::before,
+  .roof::after {
+    width: 60%;
+  }
+
+  .wrapper {
+    height: 80%;
+  }
+
+  #corredor_img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .door {
+    background-color: rgba(36, 178, 183, 0.7);
+    height: 100%;
+  }
+
+  .shape {
+    width: 100px;
+    height: 130px;
+  }
+
+  .knob {
+    width: 10px;
+    height: 50px;
+  }
+
+  #left-knob {
+    right: 10px;
+  }
+
+  #right-knob {
+    left: 10px;
+  }
+
+  #skills-section .container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skills-container {
+    flex-basis: 100%;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .skills-container img {
+    width: 150px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .skills-container h2 {
+    font-size: 18px;
+  }
+
+  .skills-container .subtitle {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  /* Blog e Sobre na vertical */
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+  }
+}

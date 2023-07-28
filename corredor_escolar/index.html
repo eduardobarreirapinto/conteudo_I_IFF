@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interior da Casa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <style>
+    canvas {
+      width: 95%;
+      height: 95%;
+      touch-action: none;
+    }
+    html, body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+  <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+  <script src="https://cdn.babylonjs.com/recast.js"></script>
+  <script src="https://cdn.babylonjs.com/ammo.js"></script>
+  <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+  <script src="https://cdn.babylonjs.com/cannon.js"></script>
+  <script src="https://cdn.babylonjs.com/Oimo.js"></script>
+  <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+  <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+  <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+  <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+  <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+  <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas"></canvas>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var canvas = document.getElementById("renderCanvas");
+      var engine = new BABYLON.Engine(canvas, true);
+
+      var createScene = function () {
+            var scene = new BABYLON.Scene(engine);
+            scene.enablePhysics(new BABYLON.Vector3(0, -9.81, 0), new BABYLON.CannonJSPlugin());
+            // Habilitar detecção de colisão na cena
+            scene.collisionsEnabled = true;
+            
+            var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+            light.intensity = 0.7;
+
+            // Luz adicional para iluminar o teto
+            var ceilingLight = new BABYLON.HemisphericLight("ceilingLight", new BABYLON.Vector3(0, -1, 0), scene);
+            ceilingLight.intensity = 0.5;
+
+            var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
+            var groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
+            groundMaterial.diffuseTexture = new BABYLON.Texture("img/chao.jpg", scene);
+            // Ajustar as coordenadas de textura (UVs)
+            groundMaterial.diffuseTexture.uScale = 3.5; // Aumenta a escala horizontal da textura
+            groundMaterial.diffuseTexture.vScale = 3.5; // Aumenta a escala vertical da textura
+            ground.material = groundMaterial;
+            ground.checkCollisions = true;
+            ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var paredeMaterial = new BABYLON.StandardMaterial("paredeMaterial", scene);
+            paredeMaterial.diffuseTexture = new BABYLON.Texture("img/parede.jpg", scene);
+
+            paredeMaterial.diffuseTexture.uScale = 1; // Aumenta a escala horizontal da textura
+            paredeMaterial.diffuseTexture.vScale = 1; // Aumenta a escala vertical da textura
+
+            var leftWall = BABYLON.MeshBuilder.CreateBox("leftWall", { width: 0.1, height: 3.5, depth: 10 }, scene);
+            leftWall.material = paredeMaterial;
+            leftWall.position.x = -5;
+            leftWall.position.y = 1;
+            leftWall.checkCollisions = true;
+            leftWall.physicsImpostor = new BABYLON.PhysicsImpostor(leftWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var rightWall = BABYLON.MeshBuilder.CreateBox("rightWall", { width: 0.1, height: 3.5, depth: 10 }, scene);
+            rightWall.material = paredeMaterial;
+            rightWall.position.x = 5;
+            rightWall.position.y = 1;
+            rightWall.checkCollisions = true;
+            rightWall.physicsImpostor = new BABYLON.PhysicsImpostor(rightWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var backWall = BABYLON.MeshBuilder.CreateBox("backWall", { width: 10, height: 3.5, depth: 0.1 }, scene);
+            backWall.material = paredeMaterial;
+            backWall.position.z = 5;
+            backWall.position.y = 1;
+            backWall.checkCollisions = true;
+            backWall.physicsImpostor = new BABYLON.PhysicsImpostor(backWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var frontWall = BABYLON.MeshBuilder.CreateBox("frontWall", { width: 10, height: 3.5, depth: 0.1 }, scene);
+            frontWall.material = paredeMaterial;
+            frontWall.position.z = -5;
+            frontWall.position.y = 1;
+            frontWall.checkCollisions = true;
+            frontWall.physicsImpostor = new BABYLON.PhysicsImpostor(frontWall, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+
+            var doorMaterial = new BABYLON.StandardMaterial("doorMaterial", scene);
+            doorMaterial.diffuseTexture = new BABYLON.Texture("img/porta.jpg", scene);
+            doorMaterial.diffuseTexture.vScale = 1;
+            doorMaterial.diffuseTexture.uScale = -1;
+
+            var leftDoor = BABYLON.MeshBuilder.CreateBox("leftDoor", { width: 0.3, height: 2, depth: 1.4 }, scene);
+            leftDoor.position.x = -4.95;
+            leftDoor.position.y = 1;
+            leftDoor.checkCollisions = true;
+            leftDoor.physicsImpostor = new BABYLON.PhysicsImpostor(leftDoor, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+            leftDoor.material = doorMaterial;
+
+            // Adicione um observador de evento de clique à porta
+            leftDoor.actionManager = new BABYLON.ActionManager(scene);
+
+            // Crie um gatilho para o evento de clique do mouse
+            leftDoor.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction(
+            BABYLON.ActionManager.OnPickTrigger, // Gatilho para o evento de clique do mouse
+            function (evt) {
+            // Ação a ser executada quando o clique ocorrer na porta
+            console.log("Clique na porta detectado!");
+            // Aqui você pode redirecionar para outra página, exibir informações, etc.
+            // Por exemplo:
+            window.location.href = "outra_pagina.html";
+            }));
+
+            var rightDoor = BABYLON.MeshBuilder.CreateBox("rightDoor", { width: 0.3, height: 2, depth: 1.4 }, scene);
+            rightDoor.position.x = 4.95;
+            rightDoor.position.y = 1;
+            rightDoor.checkCollisions = true;
+            rightDoor.physicsImpostor = new BABYLON.PhysicsImpostor(rightDoor, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+            rightDoor.material = doorMaterial;
+
+            rightDoor.actionManager = new BABYLON.ActionManager(scene);
+
+            // Crie um gatilho para o evento de clique do mouse
+            rightDoor.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction(
+            BABYLON.ActionManager.OnPickTrigger, // Gatilho para o evento de clique do mouse
+            function (evt) {
+            // Ação a ser executada quando o clique ocorrer na porta
+            console.log("Clique na porta detectado!");
+            // Aqui você pode redirecionar para outra página, exibir informações, etc.
+            // Por exemplo:
+            window.location.href = "outra_pagina.html";
+            }));
+
+            var windowMaterial = new BABYLON.StandardMaterial("windowMaterial", scene);
+            windowMaterial.diffuseTexture = new BABYLON.Texture("img/janela.jpg", scene);
+
+            var windowWidth = 2; // Largura da janela
+            var windowHeight = 2; // Altura da janela
+
+            var windowMesh = BABYLON.MeshBuilder.CreatePlane("windowMesh", { width: windowWidth, height: windowHeight }, scene);
+            windowMesh.position.z = 4.9; // Posição na frente da parede frontal
+            windowMesh.position.y = 1.5; // Altura em que a janela será colocada na parede
+            windowMesh.material = windowMaterial;
+
+            var windowMaterial1 = new BABYLON.StandardMaterial("windowMaterial1", scene);
+            windowMaterial1.diffuseTexture = new BABYLON.Texture("img/janela1.jpg", scene);
+
+            var windowWidth1 = 2; // Largura da janela
+            var windowHeight1 = 2; // Altura da janela
+
+            var windowMesh1 = BABYLON.MeshBuilder.CreatePlane("windowMesh1", { width: windowWidth1, height: windowHeight1 }, scene);
+            windowMesh1.position.z = 4.9; // Posição na frente da parede frontal
+            windowMesh1.position.y = 1.5; // Altura em que a janela será colocada na parede
+            windowMesh1.position.x = -2.5;
+            windowMesh1.material = windowMaterial1;
+
+            var windowMaterial2 = new BABYLON.StandardMaterial("windowMaterial2", scene);
+            windowMaterial2.diffuseTexture = new BABYLON.Texture("img/janela2.jpg", scene);
+
+            var windowWidth2 = 2; // Largura da janela
+            var windowHeight2 = 2; // Altura da janela
+
+            var windowMesh2 = BABYLON.MeshBuilder.CreatePlane("windowMesh2", { width: windowWidth2, height: windowHeight2 }, scene);
+            windowMesh2.position.z = 4.9; // Posição na frente da parede frontal
+            windowMesh2.position.y = 1.5; // Altura em que a janela será colocada na parede
+            windowMesh2.position.x = 2.5;
+            windowMesh2.material = windowMaterial2;
+
+            var ceilingMaterial = new BABYLON.StandardMaterial("ceilingMaterial", scene);
+            ceilingMaterial.diffuseTexture = new BABYLON.Texture("img/teto.jpg", scene);
+            ceilingMaterial.diffuseTexture.uScale = 20; // Aumenta a escala horizontal da textura
+            ceilingMaterial.diffuseTexture.vScale = 20; // Aumenta a escala vertical da textura
+
+            var ceiling = BABYLON.MeshBuilder.CreateBox("ceiling", { width: 10, height: 0.1, depth: 10 }, scene);
+            ceiling.position.y = 2.7; // Posicione acima das paredes
+            ceiling.checkCollisions = true;
+            ceiling.physicsImpostor = new BABYLON.PhysicsImpostor(ceiling, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
+            ceiling.material = ceilingMaterial;
+
+          
+            var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 1.4, -3.5), scene);
+            //camera.attachControl(canvas, true);
+            camera.checkCollisions = true;
+            camera.applyGravity = false;
+            camera.fov = 1.5; // Reduza o campo de visão para manter a câmera pequena
+            
+          // Configuração inicial
+            var cameraSpeed = 0.03; // Defina a velocidade do movimento da câmera
+            var cameraMoveDirection = new BABYLON.Vector3(0, 0, 0);
+            var cameraMoveEnabled = true; // Habilitar/desabilitar movimentação da câmera
+            var cameraRotationSensitivity = 0.001; // Sensibilidade da rotação horizontal da câmera
+            var isDragging = false; // Variável para indicar se o mouse está arrastando
+            var collidableObjects = []; // Array para armazenar objetos colidíveis (paredes, portas, etc.)
+
+            // Adicione os objetos colidíveis ao array collidableObjects
+            collidableObjects.push(ceiling,leftWall,backWall,rightDoor,leftDoor,windowMesh,windowMesh1,windowMesh2); // Adicione todos os objetos colidíveis à lista
+            
+            // Função para verificar colisões e aplicar movimento suave
+            function checkCollisions() {
+              
+                  if (!cameraMoveEnabled) return;
+
+                  var newPos = camera.position.add(cameraMoveDirection.multiplyByFloats(cameraSpeed, cameraSpeed, cameraSpeed));
+                  var ray = new BABYLON.Ray(camera.position, cameraMoveDirection, cameraSpeed);
+                  var hit = scene.pickWithRay(ray, function (mesh) {
+                      return collidableObjects.indexOf(mesh) !== -1;
+                  });
+
+                  if (hit.hit) {
+                       // Colisão detectada, não permita o movimento
+                       console.log("ENTRO AQUI")
+                      cameraMoveDirection.set(0, 0, 0);
+                      cameraDirection.set(0, 0, 0)
+                  }
+
+                  camera.position.copyFrom(newPos);
+          }
+
+              // Evento de teclado para controlar a movimentação da câmera
+              scene.onKeyboardObservable.add(function (kbInfo) {
+                  var keyCode = kbInfo.event.key;
+
+                  // Calcula a direção do movimento da câmera com base na rotação
+                  var cameraDirection = camera.getDirection(BABYLON.Axis.Z);
+                  var cameraMoveDirection = new BABYLON.Vector3(cameraDirection.x, 0, cameraDirection.z);
+
+                  if (keyCode === "ArrowUp" || keyCode === "w") {
+                    camera.position.addInPlace(cameraMoveDirection.multiplyByFloats(cameraSpeed, cameraSpeed, cameraSpeed));
+                  } else if (keyCode === "ArrowDown" || keyCode === "s") {
+                    camera.position.addInPlace(cameraMoveDirection.multiplyByFloats(-cameraSpeed, -cameraSpeed, -cameraSpeed));
+                  } else if (keyCode === "ArrowLeft" || keyCode === "a") {
+                    var cameraSideDirection = camera.getDirection(BABYLON.Axis.X);
+                    camera.position.addInPlace(cameraSideDirection.multiplyByFloats(-cameraSpeed, -cameraSpeed, -cameraSpeed));
+                  } else if (keyCode === "ArrowRight" || keyCode === "d") {
+                    var cameraSideDirection = camera.getDirection(BABYLON.Axis.X);
+                    camera.position.addInPlace(cameraSideDirection.multiplyByFloats(cameraSpeed, cameraSpeed, cameraSpeed));
+                  }
+                  cameraMoveEnabled = cameraMoveDirection.lengthSquared() > 0;
+            });
+
+            
+
+              // Evento para parar o movimento da câmera quando a tecla é liberada
+              window.addEventListener("keyup", function (event) {
+                      var keyCode = event.key;
+
+                    if ((keyCode === "ArrowUp" || keyCode === "w") && cameraMoveDirection.z === 1) {
+                        cameraMoveDirection.z = 0;
+                    } else if ((keyCode === "ArrowDown" || keyCode === "s") && cameraMoveDirection.z === -1) {
+                        cameraMoveDirection.z = 0;
+                    } else if ((keyCode === "ArrowLeft" || keyCode === "a") && cameraMoveDirection.x === -1) {
+                        cameraMoveDirection.x = 0;
+                    } else if ((keyCode === "ArrowRight" || keyCode === "d") && cameraMoveDirection.x === 1) {
+                        cameraMoveDirection.x = 0;
+                    }
+
+                    // Habilitar o movimento da câmera somente se a velocidade for maior que zero
+                    cameraMoveEnabled = cameraMoveDirection.lengthSquared() > 0;
+            });          
+          
+              // Controle de rotação horizontal da câmera com o mouse
+              // Evento de clique do mouse (quando o usuário pressiona ou solta o botão do mouse)
+              var onPointerDown = function (evt) {
+                if (evt.button === 0) {
+                  isDragging = true; // Começa o arraste do mouse quando o botão esquerdo é pressionado
+                }
+              };
+
+              var onPointerUp = function (evt) {
+                if (evt.button === 0) {
+                  isDragging = false; // Para o arraste do mouse quando o botão esquerdo é solto
+                }
+              };
+
+              // Evento de movimento do mouse (quando o usuário arrasta o mouse)
+              var onPointerMove = function (evt) {
+                if (isDragging) {
+                  // Calcula a mudança horizontal do mouse
+                  var deltaX = evt.movementX || evt.mozMovementX || evt.webkitMovementX || 0;
+
+                  // Atualiza a rotação horizontal da câmera
+                  camera.rotation.y -= deltaX * cameraRotationSensitivity;
+                }
+              };
+
+              // Adiciona os eventos de clique e movimento do mouse à janela (window)
+              window.addEventListener("pointerdown", onPointerDown);
+              window.addEventListener("pointerup", onPointerUp);
+              window.addEventListener("pointermove", onPointerMove); 
+
+              // Registro da função de verificação de colisões no loop de renderização da cena
+              scene.onBeforeRenderObservable.add(checkCollisions);
+            
+
+            return scene;
+          };
+
+      var scene = createScene();
+      engine.runRenderLoop(function () {
+        scene.render();
+      });
+
+      window.addEventListener("resize", function () {
+        engine.resize();
+      });
+    });
+  </script>
+</body>
+</html>

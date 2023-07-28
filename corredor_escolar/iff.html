@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Texto 3D com Babylon.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+    html, body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas"></canvas>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var canvas = document.getElementById("renderCanvas");
+      var engine = new BABYLON.Engine(canvas, true);
+
+      var createScene = function () {
+        var scene = new BABYLON.Scene(engine);
+        scene.clearColor = new BABYLON.Color3(0, 0, 0);
+
+        // Crie um material com a cor azul neon
+        var neonBlueMaterial = new BABYLON.StandardMaterial("neonBlueMaterial", scene);
+        neonBlueMaterial.emissiveColor = new BABYLON.Color3(0, 0.7, 1); // Cor azul neon
+
+        // Função para criar um cubo com a posição e escala desejadas
+        var createCube = function (position, scale) {
+          var cube = BABYLON.MeshBuilder.CreateBox("cube", { size: 1 }, scene);
+          cube.position.copyFrom(position);
+          cube.scaling.copyFrom(scale);
+          cube.material = neonBlueMaterial;
+          return cube;
+        };
+
+        // Criar a letra 'I' com cubos
+        var iCubes = [];
+        iCubes.push(createCube(new BABYLON.Vector3(0, .7, 0), new BABYLON.Vector3(0.4, .6, 0.4)));
+        iCubes.push(createCube(new BABYLON.Vector3(0, -.2, 0), new BABYLON.Vector3(0.4, -.6, 0.4)));
+        iCubes.push(createCube(new BABYLON.Vector3(0, 0.9, 0), new BABYLON.Vector3(1.5, 0.3, 0.4)));
+        iCubes.push(createCube(new BABYLON.Vector3(0, -.5, 0), new BABYLON.Vector3(1.5, 0.3, 0.4)));
+
+        // Criar a letra 'F' com cubos
+        var fCubes = [];
+        fCubes.push(createCube(new BABYLON.Vector3(1.3, 0.2, 0), new BABYLON.Vector3(0.4, 1.65, 0.4)));
+        fCubes.push(createCube(new BABYLON.Vector3(1.7, 0.9, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
+        fCubes.push(createCube(new BABYLON.Vector3(1.7, 0.3, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
+
+        // Criar a letra 'F' com cubos
+        var fCubes = [];
+        fCubes.push(createCube(new BABYLON.Vector3(2.9, 0.2, 0), new BABYLON.Vector3(0.4, 1.65, 0.4)));
+        fCubes.push(createCube(new BABYLON.Vector3(3.3, 0.9, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
+        fCubes.push(createCube(new BABYLON.Vector3(3.3, 0.3, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));       
+
+        // Configuração da câmera UniversalCamera
+        var camera = new BABYLON.UniversalCamera("camera", new BABYLON.Vector3(0, 0, -5), scene);
+        camera.setTarget(BABYLON.Vector3.Zero());
+        camera.attachControl(canvas, true);
+        scene.activeCamera = camera;
+
+        // Adicione uma luz ambiente para iluminar os cubos
+        var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+        light.intensity = 1;
+
+        return scene;
+      };
+
+      var scene = createScene();
+
+      engine.runRenderLoop(function () {
+        scene.render();
+      });
+
+      window.addEventListener("resize", function () {
+        engine.resize();
+      });
+    });
+  </script>
+</body>
+</html>

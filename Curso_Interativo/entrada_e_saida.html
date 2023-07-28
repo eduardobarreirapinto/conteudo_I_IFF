@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/entrada_e_saida.css">
+    <script src="./js/entrada_e_saida.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Saída</h3>
+                <p>
+                    - Os programas recebem dados , processam e produzem uma saída.
+                </p>
+                <p>
+                    - A função de impressão <span  class="negrito">print ( )</span> produz uma saída. 
+                </p>
+                <p>
+                    - Exibe uma representação textual de algo na tela.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( 7 + 6 )</div>
+                    <div class="linha-codigo resposta">13</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span>(<span class="string">' Olá\nInmetro! '</span>)</div>
+                    <div class="linha-codigo resposta"> Olá</div>
+                    <div class="linha-codigo resposta"> Inmetro!</div>
+                    
+                </div>
+                
+                <div class="obs">
+                    Reparem que com a função print as aspas somem!
+                </div>
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Entrada</h3>
+                <p>
+                    - A função <span  class="negrito">input ( )</span> pega uma entrada do usuário. 
+                </p>
+                <p>
+                   - E a função retorna o que ele escreveu <span  class="negrito">como uma String</span> (automaticamente 'escapada');
+                </p>
+                
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span>(<span class="string">'Qual é o seu nome?'</span>)</div>
+                    <div class="linha-codigo resposta">Qual é o seu nome? <span class="resposta-1">Meu nome é\nEduardo</span> </div> 
+                    <div class="linha-codigo resposta">'Meu nome é\\nEduardo'</div>
+                    
+                    
+                </div> 
+                <div class="obs">
+                    O texto dentro do parênteses de uma função é chamado de  argumento.
+                     Mais informações no capítulo sobre funções.
+                </div>              
+                
+            </div>
+            
+            <div id="conteudo3" class="esconder">
+                <h3>Continuação</h3>
+                <p>
+                    - <span class="negrito">PERGUNTA</span>: Como fazer ' 4 ' + ' 2 ' ser igual a ' 6 '?
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span><span class="string">'4' </span>+<span class="string"> '2' </span></div>
+                    <div class="linha-codigo resposta"> '42' </div> 
+                    
+                </div> 
+                <p>
+                    - <span class="negrito">RESPOSTA</span>: Utilizando as funções de conversão.
+                </p>
+                
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">str </span>( <span class="funcao">int </span>(<span class="string"> '4' </span>) +<span class="funcao"> int </span>(<span class="string"> '2' </span>) )</div>
+                    <div class="linha-codigo resposta">'6'</div>
+                    
+                    
+                </div>  
+                <p>
+                    <i class="fas fa-exclamation-triangle"></i><span class="negrito">Converter para String ( texto ) <i class="fas fa-long-arrow-alt-right"></i>  str ( )</span>
+
+                 </p>
+                 <p>
+                    <i class="fas fa-exclamation-triangle"></i><span class="negrito">Converter para Float ( decimal ) <i class="fas fa-long-arrow-alt-right"></i>  float ( )
+                </span>
+
+                </p>
+                <p>
+                    <i class="fas fa-exclamation-triangle"></i><span class="negrito">Converter para Integer ( inteiros ) <i class="fas fa-long-arrow-alt-right"></i>  int ( )
+                </span>
+               </p>
+               
+                    
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>
+                    Qual o resultado da expressão:
+                </h3>
+                <p>
+                    >>> float ( input ( 'Valor 1: ' )) + float ( input ( 'Valor 2: ' ))
+                </p>
+                <p>Valor 1: 3</p>
+                <p>Valor 2: 4</p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>
+                    <li id="n2">Yes</li>
+                    <li id="n3">Opção 3</li>
+                    <li id="n4">Opção 4</li>
+                    <li id="n5">Opção 5</li>-->
+                </ul>
+            </div>
+
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>
