@@ -114,7 +114,7 @@ function goPrevious() {
     if(currentState > 0) {
         switch(currentState) {
             case 1:                
-                window.location.href = "../index_escola.html";
+                window.location.href = "../index.html";
                 break;
             case 2:
                 closeBook(true);
