@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livro Digital - Automação</title>
+    <link rel="stylesheet" href="./css/sala_de_aula_livro_automacao.css">
+    <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
+    <script defer src="./js/sala_de_aula_livro_python.js"></script>
+</head>
+<body>
+    <input type="text" class="searchbar"></input>
+    <button id="prev-btn">
+        <i class="fas fa-arrow-circle-left"></i>
+    </button>
+    <!-- The Book -->
+    <div id="book" class="book">
+        <div id="cont_pag" >0</div>
+        <!-- Paper 1 -->
+        <div id="p1" class="paper">
+            <div class="front">
+                <div id="f1" class="front-content">
+                    <h2 class="book-title">Introdução à Automação</h2>
+                    <img class="cover-img" src="./img/gpib.jpg" alt="Introdução à Programação com Python">
+                </div>
+            </div>
+            <div class="back">
+                <div id="b1" class="back-content">
+                    <h2>"Automatize seus sistemas e tenha mais tempo para tomar café" </h2>
+                    <div class="content">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Paper 2 -->
+        <div id="p2" class="paper">
+            <div class="front">
+                <div id="f2" class="front-content">
+                    <div class="flex">
+                        <h2>Conceitos Básicos</h2>
+                        <!--<div class="itens"><a href="#"><h3>Sendo preparado...</h3></a></div>-->
+                                       
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b2" class="back-content">
+                    <h2>A automação permite que tarefas e processos sejam executados de forma mais rápida e precisa, reduzindo erros humanos e melhorando a eficiência geral.</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Paper 3 -->
+        <div id="p3" class="paper">
+            <div class="front">
+                <div id="f3" class="front-content">
+                    <div class="flex">
+                        <h2>Conceitos de Eletrônica</h2>
+                        <!--<div class="itens"><a href="#"><h3>Sendo preparado...</h3></a></div>-->
+                                  
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2>Continue firme!</2>
+                    <h2>Nunca pare de estudar!</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="next-btn">
+        <i class="fas fa-arrow-circle-right"></i>
+    </button>
+
+
+</body>
+</html>

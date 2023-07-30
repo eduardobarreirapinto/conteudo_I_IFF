@@ -124,8 +124,8 @@
             var groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
             groundMaterial.diffuseTexture = new BABYLON.Texture("./img_escola/chao.jpg", scene);
             // Ajustar as coordenadas de textura (UVs)
-            groundMaterial.diffuseTexture.uScale = 3.5; // Aumenta a escala horizontal da textura
-            groundMaterial.diffuseTexture.vScale = 3.5; // Aumenta a escala vertical da textura
+            groundMaterial.diffuseTexture.uScale = 6.5; // Aumenta a escala horizontal da textura
+            groundMaterial.diffuseTexture.vScale = 6.5; // Aumenta a escala vertical da textura
             ground.material = groundMaterial;
             ground.checkCollisions = true;
             ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
@@ -205,7 +205,7 @@
           }).catch((error) => {
               console.error("Ocorreu um erro ao carregar o modelo: ", error);
           });
-          // Importe o modelo do professor usando ImportMeshAsync
+          /* // Importe o modelo do professor usando ImportMeshAsync
           const petPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "pet.glb", scene);
 
           // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
@@ -228,7 +228,7 @@
             }
           }).catch((error) => {
             console.error("Ocorreu um erro ao carregar o modelo: ", error);
-          }); 
+          });  */
           // Importe o modelo do professor usando ImportMeshAsync
           const computador1Promise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "computador1.glb", scene);
 
@@ -291,7 +291,7 @@
             iff.push(createCube(new BABYLON.Vector3(.4, 1.5, 0), new BABYLON.Vector3(.5, 0.1, 0.1)));       */     
             
             var paredeMaterial = new BABYLON.StandardMaterial("paredeMaterial", scene);
-            paredeMaterial.diffuseTexture = new BABYLON.Texture("./img_escola/parede.jpg", scene);
+            paredeMaterial.diffuseTexture = new BABYLON.Texture("./img_escola/textura_parede.jpg", scene);
 
             paredeMaterial.diffuseTexture.uScale = 1; // Aumenta a escala horizontal da textura
             paredeMaterial.diffuseTexture.vScale = 1; // Aumenta a escala vertical da textura
@@ -423,7 +423,7 @@
             //camera.attachControl(canvas, true);
             camera.checkCollisions = true;
             camera.applyGravity = false;
-            camera.fov = 1.5; // Reduza o campo de visão para manter a câmera pequena
+            camera.fov = 1.25; // Reduza o campo de visão para manter a câmera pequena
                         
            /*  // Configuração inicial
             var cameraSpeed = 0.03; // Defina a velocidade do movimento da câmera
