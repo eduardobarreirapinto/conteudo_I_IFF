@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     canvas {
-      width: 100%;
-      height: 100%;
+      width: 95%;
+      height: 95%;
     }
     html, body {
       margin: 0;
@@ -24,39 +24,75 @@
 
       var createScene = function () {
         var scene = new BABYLON.Scene(engine);
-        scene.clearColor = new BABYLON.Color3(0, 0, 0);
+        scene.clearColor = new BABYLON.Color3(1, 1, 1);
 
         // Crie um material com a cor azul neon
-        var neonBlueMaterial = new BABYLON.StandardMaterial("neonBlueMaterial", scene);
-        neonBlueMaterial.emissiveColor = new BABYLON.Color3(0, 0.7, 1); // Cor azul neon
+        //var neonBlueMaterial = new BABYLON.StandardMaterial("neonBlueMaterial", scene);
+        //neonBlueMaterial.emissiveColor = new BABYLON.Color3(0, 0.7, 1); // Cor azul neon
+
+        const noiseTexture = new BABYLON.NoiseProceduralTexture('noiseTex', 256, scene);
+        noiseTexture.octaves = 4;
+        noiseTexture.persistence = 1.1;
+        noiseTexture.animationSpeedFactor = 1.5;
+        noiseTexture.getAlphaFromRGB = true;
+        //planeMat.emissiveTexture = noiseTexture;
+        
+        const iffMaterial_I = new BABYLON.StandardMaterial();
+        //iffMaterial_I.emissiveTexture = noiseTexture;
+        //planeMat.emissiveTexture = new BABYLON.Texture('/cat.jpg');  
+        
+        // Defina a cor emissiva do material como azul neon
+        //iffMaterial.emissiveColor = new BABYLON.Color3(0.0, 0.5, 1.0); // Azul neon (R=0, G=0.5, B=1)
+        iffMaterial_I.emissiveColor = new BABYLON.Color3(0.0, 0, 1); // Verde musgo (R=0.39, G=0.5, B=0.15)
+
+        const iffMaterial_FF = new BABYLON.StandardMaterial();
+        //iffMaterial_FF.emissiveTexture = noiseTexture;
+        //planeMat.emissiveTexture = new BABYLON.Texture('/cat.jpg');  
+        
+        // Defina a cor emissiva do material como azul neon
+        //iffMaterial.emissiveColor = new BABYLON.Color3(0.0, 0.5, 1.0); // Azul neon (R=0, G=0.5, B=1)
+        iffMaterial_FF.emissiveColor = new BABYLON.Color3(0, 1, 0); // Verde musgo (R=0.39, G=0.5, B=0.15)
+
+        
 
         // Função para criar um cubo com a posição e escala desejadas
-        var createCube = function (position, scale) {
+        var create_I = function (position, scale) {
           var cube = BABYLON.MeshBuilder.CreateBox("cube", { size: 1 }, scene);
           cube.position.copyFrom(position);
           cube.scaling.copyFrom(scale);
-          cube.material = neonBlueMaterial;
+          cube.material = iffMaterial_I;
+          //cube.showBoundingBox = true;
           return cube;
         };
 
+        // Função para criar um cubo com a posição e escala desejadas
+        var create_FF = function (position, scale) {
+          var cube = BABYLON.MeshBuilder.CreateBox("cube", { size: 1 }, scene);
+          cube.position.copyFrom(position);
+          cube.scaling.copyFrom(scale);
+          cube.material = iffMaterial_FF;
+          //cube.showBoundingBox = true;
+          return cube;
+        };
+        var x = 1.5;
         // Criar a letra 'I' com cubos
         var iCubes = [];
-        iCubes.push(createCube(new BABYLON.Vector3(0, .7, 0), new BABYLON.Vector3(0.4, .6, 0.4)));
-        iCubes.push(createCube(new BABYLON.Vector3(0, -.2, 0), new BABYLON.Vector3(0.4, -.6, 0.4)));
-        iCubes.push(createCube(new BABYLON.Vector3(0, 0.9, 0), new BABYLON.Vector3(1.5, 0.3, 0.4)));
-        iCubes.push(createCube(new BABYLON.Vector3(0, -.5, 0), new BABYLON.Vector3(1.5, 0.3, 0.4)));
+        iCubes.push(create_I(new BABYLON.Vector3(0 - x, .7, 0), new BABYLON.Vector3(0.4, .6, 0.4)));
+        iCubes.push(create_I(new BABYLON.Vector3(0 - x, -.2, 0), new BABYLON.Vector3(0.4, -.6, 0.4)));
+        iCubes.push(create_I(new BABYLON.Vector3(0 - x, 0.9, 0), new BABYLON.Vector3(1.5, 0.3, 0.4)));
+        iCubes.push(create_I(new BABYLON.Vector3(0 - x, -.5, 0), new BABYLON.Vector3(1.5, 0.3, 0.4)));
 
         // Criar a letra 'F' com cubos
         var fCubes = [];
-        fCubes.push(createCube(new BABYLON.Vector3(1.3, 0.2, 0), new BABYLON.Vector3(0.4, 1.65, 0.4)));
-        fCubes.push(createCube(new BABYLON.Vector3(1.7, 0.9, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
-        fCubes.push(createCube(new BABYLON.Vector3(1.7, 0.3, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
+        fCubes.push(create_FF(new BABYLON.Vector3(1.3 - x, 0.2, 0), new BABYLON.Vector3(0.4, 1.65, 0.4)));
+        fCubes.push(create_FF(new BABYLON.Vector3(1.7 - x, 0.9, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
+        fCubes.push(create_FF(new BABYLON.Vector3(1.7 - x, 0.3, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
 
         // Criar a letra 'F' com cubos
         var fCubes = [];
-        fCubes.push(createCube(new BABYLON.Vector3(2.9, 0.2, 0), new BABYLON.Vector3(0.4, 1.65, 0.4)));
-        fCubes.push(createCube(new BABYLON.Vector3(3.3, 0.9, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
-        fCubes.push(createCube(new BABYLON.Vector3(3.3, 0.3, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));       
+        fCubes.push(create_FF(new BABYLON.Vector3(2.9 - x, 0.2, 0), new BABYLON.Vector3(0.4, 1.65, 0.4)));
+        fCubes.push(create_FF(new BABYLON.Vector3(3.3 - x, 0.9, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));
+        fCubes.push(create_FF(new BABYLON.Vector3(3.3 - x, 0.3, 0), new BABYLON.Vector3(1.2, 0.3, 0.4)));       
 
         // Configuração da câmera UniversalCamera
         var camera = new BABYLON.UniversalCamera("camera", new BABYLON.Vector3(0, 0, -5), scene);
