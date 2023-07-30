@@ -19,6 +19,15 @@ body {
     /*background-position: center center;  ou center center, center bottom, etc. */
 }
 
+#iff_logo
+{
+  /* border: 1px solid; */
+  width: 300px;
+  height: 100px;
+  object-fit:contain;
+  
+}
+
 /* Button */
 button {
     border: none;
@@ -33,7 +42,7 @@ button:focus {
 }
 
 button:hover i {
-    color: rgb(102, 102, 102);
+    color: rgb(139, 240, 71);
 }
 
 i {
