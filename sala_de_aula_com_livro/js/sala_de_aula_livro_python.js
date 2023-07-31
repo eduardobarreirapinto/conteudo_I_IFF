@@ -6,6 +6,7 @@ const book = document.querySelector('#book');
 const paper1 = document.querySelector('#p1');
 const paper2 = document.querySelector('#p2');
 const paper3 = document.querySelector('#p3');
+const paper4 = document.querySelector('#p4');
 
 const cont_pag = document.querySelector('#cont_pag');
 const select_pag = document.querySelector('.searchbar');
@@ -89,11 +90,18 @@ function goNext() {
                 paper3.style.zIndex = 3;
                 break;
             case 3:
+                paper3.classList.add("flipped");
+                paper1.style.zIndex = 1;
+                paper2.style.zIndex = 2;
+                paper3.style.zIndex = 3;
+                break;
+            case 4:
                 closeBook(false);
                 paper3.classList.add("flipped");
                 paper1.style.zIndex = 1;
                 paper2.style.zIndex = 2;
                 paper3.style.zIndex = 3;
+                paper4.style.zIndex = 4;
                 break;
             default: 
                 throw new Error("unkown state");    
@@ -130,11 +138,18 @@ function goPrevious() {
                 paper3.style.zIndex = 0;    
                 break;
             case 4: 
-                openBook()
                 paper3.classList.remove("flipped");
                 paper1.style.zIndex = 1;
                 paper2.style.zIndex = 2;
                 paper3.style.zIndex = 3;
+                break;
+            case 5: 
+                openBook()
+                paper4.classList.remove("flipped");
+                paper1.style.zIndex = 1;
+                paper2.style.zIndex = 2;
+                paper3.style.zIndex = 3;
+                paper4.style.zIndex = 4;
                 break;
         }
 
