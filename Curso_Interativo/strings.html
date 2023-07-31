@@ -64,8 +64,18 @@
                 <p>
                     - Por exemplo, <span class="sublinhado">as aspas duplas não podem ser incluídas diretamente em uma cadeia de aspas duplas</span>.
                     <span class="negrito">Isso faria com que terminasse prematuramente</span>.
-
                 </p>
+
+                <p>
+                    - Nem <span class="sublinhado">as aspas simples podem ser incluídas diretamente em uma cadeia de aspas simples</span>.
+                    
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span>  <span class="string">'He'</span>s not the doctor'</span></div>
+                    <div class="linha-codigo resposta"><span class="seta">SyntaxError: invalid syntax</span></div>
+                
+                </div>
                 <p>
                     - Caracteres como esses devem ser evitados colocando uma barra invertida diante deles.
                 </p>
@@ -144,7 +154,7 @@
                     Qual a saída do código :
                 </h3>
                 <p>
-                    >>> print ( 'Vasco campeão em ' + 2021 )
+                    >>> print ( 'Vasco campeão em ' + 2023 )
                 </p>
                 <ul id="ul_lista">
                     <!--<li id="n1">No</li>-->

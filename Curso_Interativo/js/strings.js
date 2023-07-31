@@ -27,7 +27,7 @@ botao5.addEventListener('click',fica_5,false);
 var gabarito;
 var lista = [];
 var ul_lista = document.getElementById('ul_lista');
-var respostas = ['\'Vasco campeão em \' + 2021', '\'Vasco campeão em 2021\'','"Vasco campeão em 2021"','Vasco campeão em + 2021','Nenhuma das respostas anteriores'];
+var respostas = ['\'Vasco campeão em \' + 2023', '\'Vasco campeão em 2023\'','"Vasco campeão em 2023"','Vasco campeão em + 2023','Nenhuma das respostas anteriores'];
 
 window.onload = initPage;
 
