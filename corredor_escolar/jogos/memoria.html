@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treine seu cérebro!</title>
+  <style>
+    /* Estilo CSS para o jogo da memória */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: beige;
+      font-family: Arial, sans-serif;
+    }
+
+    .memory-game {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 10px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      position: relative;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .card .front,
+    .card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    .card .front {
+      background-color: #2196f3;
+      z-index: 2;
+    }
+
+    .card .back {
+      background-color: #2196f3;
+      transform: rotateY(180deg);
+      z-index: 1;
+    }
+
+    .flipped {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="memory-game">
+    <!-- Os cards serão gerados dinamicamente pelo JavaScript -->
+  </div>
+
+  <script>
+    const numCols = 4;
+    const numRows = 5;
+    const totalCards = numCols * numRows;
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function splitImage(imageUrl, cols, rows) {
+      const imgParts = [];
+      const img = new Image();
+      img.src = imageUrl;
+
+      img.onload = () => {
+        const imgWidth = img.width;
+        const imgHeight = img.height;
+
+        const tileWidth = imgWidth / cols;
+        const tileHeight = imgHeight / rows;
+
+        const canvasContainer = document.createElement('div');
+        canvasContainer.id = 'canvasContainer';
+        canvasContainer.style.display = 'none'; // Esconder o container de canvas
+
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = tileWidth;
+            canvas.height = tileHeight;
+
+            ctx.drawImage(
+              img,
+              col * tileWidth,
+              row * tileHeight,
+              tileWidth,
+              tileHeight,
+              0,
+              0,
+              tileWidth,
+              tileHeight
+            );
+
+            const imgPart = new Image();
+            imgPart.src = canvas.toDataURL(); // Converte o conteúdo do canvas em uma URL base64
+            imgParts.push(imgPart);
+
+            canvasContainer.appendChild(canvas);
+          }
+        }
+
+        document.body.appendChild(canvasContainer);
+        createCards(imgParts);
+      };
+    }
+
+    
+
+    function createCards(imgParts) {
+      var imagens = ["logo_babylon.jpg","logo_css.jpg","logo_git.png","logo_html.png","logo_java.png","logo_js.png","logo_python.jpg","logo_unity.png","logo_unreal.png","logo_vscode.png"]
+      imagens = [...imagens, ...imagens];
+      imagens =  shuffleArray(imagens); 
+      const memoryGame = document.querySelector('.memory-game');
+
+      for (let i = 0; i < totalCards; i++) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.onclick = () => flipCard(card);
+
+        const front = document.createElement('div');
+        front.classList.add('front');
+
+        const imgPart = imgParts[i];
+        front.appendChild(imgPart);
+
+        const back = document.createElement('div');
+        back.classList.add('back');
+        const imgBack = new Image();
+        imgBack.src = "./img/" + imagens[i]; // Substitua pelo caminho da imagem de fundo dos cards
+        back.appendChild(imgBack);
+
+        card.appendChild(front);
+        card.appendChild(back);
+
+        memoryGame.appendChild(card);
+      }
+    }
+
+    let flippedCards = [];
+    let gameStarted = false;
+
+    function startGame() {
+      if (!gameStarted) {
+        gameStarted = true;
+        flipAllCardsFront();
+        setTimeout(flipAllCardsBack, 5000);
+      }
+    }
+
+    function flipCard(card) {
+      if (gameStarted && flippedCards.length < 2 && !card.classList.contains('flipped')) {
+        card.classList.add('flipped');
+        flippedCards.push(card);
+
+        if (flippedCards.length === 2) {
+          checkForMatch();
+        }
+      }
+    }
+
+    function checkForMatch() {
+      const card1 = flippedCards[0].querySelector('.back').querySelector('img').src;
+      const card2 = flippedCards[1].querySelector('.back').querySelector('img').src;
+
+      if (card1 === card2) {
+        setTimeout(() => {
+          flippedCards.forEach(card => card.style.visibility = 'hidden');
+          flippedCards = [];
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          flippedCards.forEach(card => card.classList.remove('flipped'));
+          flippedCards = [];
+        }, 1000);
+      }
+    }
+
+    function flipAllCardsFront() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => card.classList.add('flipped'));
+    }
+
+    function flipAllCardsBack() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => card.classList.remove('flipped'));
+    }
+
+    window.onload = function () {
+      flipAllCardsBack();
+      setTimeout(startGame, 1000);
+      splitImage('./img/I.png', numCols, numRows);
+    };
+  </script>
+</body>
+</html>
