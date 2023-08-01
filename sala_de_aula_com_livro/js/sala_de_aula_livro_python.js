@@ -74,8 +74,11 @@ function openBook() {
 function closeBook(isFirstPage) {
     if(isFirstPage) {
         book.style.transform = "translateX(0%)";
+        prevBtn.style.transform = "translateX(0px)";
+            
     } else {
-        book.style.transform = "translateX(100%)";
+        book.style.transform = "translateX(100%)";        
+        nextBtn.style.transform = "translateX(0px)";
     }
     prevBtn.style.transform = "translateX(0px)";
     nextBtn.style.transform = "translateX(0px)";
