@@ -1,5 +1,6 @@
 // References to DOM elements
 const prevBtn = document.querySelector('#prev-btn');
+prevBtn.children[0].style.display = 'none';
 const nextBtn = document.querySelector('#next-btn');
 const logos_I = document.querySelector('#logos_I');
 const logos_FF = document.querySelector('#logos_FF');
@@ -75,10 +76,12 @@ function closeBook(isFirstPage) {
     if(isFirstPage) {
         book.style.transform = "translateX(0%)";
         prevBtn.style.transform = "translateX(0px)";
-            
+        prevBtn.children[0].style.display = 'none';
+                    
     } else {
         book.style.transform = "translateX(100%)";        
         nextBtn.style.transform = "translateX(0px)";
+        nextBtn.children[0].style.display = 'none';
     }
     prevBtn.style.transform = "translateX(0px)";
     nextBtn.style.transform = "translateX(0px)";
@@ -88,6 +91,7 @@ function closeBook(isFirstPage) {
 }
 
 function goNext() {
+    prevBtn.children[0].style.display = 'block';
     if(currentState < maxState) { 
         switch(currentState) {
             case 1:
@@ -211,7 +215,7 @@ function goNext() {
 }
 
 function goPrevious() {
-   
+    nextBtn.children[0].style.display = 'block';
     if(currentState > 0) {
         switch(currentState) {
             case 1: 

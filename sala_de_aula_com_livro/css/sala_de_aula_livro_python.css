@@ -5,8 +5,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-body {
+body{    
     height: 100vh;
     display: flex;
     align-items:center;
@@ -16,7 +15,23 @@ body {
     /*background-image: url('../img/fundo.jpg');
     background-repeat: no-repeat;
     background-size: cover;*/
-    /*background-position: center center;  ou center center, center bottom, etc. */
+    /*background-position: center center;  ou center center, center bottom, etc. */  
+}
+
+.anterior a{
+    position: absolute;
+    top:10%;
+    left:5%;
+    display: flex;
+    align-items: center;
+    color:  rgb(180, 180, 194);
+   
+}
+
+.anterior i {
+    
+    padding-right: 15px;
+    color:  rgb(180, 180, 194);
 }
 
 #iff_logo
@@ -311,6 +326,10 @@ color: #FFF;
 }
 .itens h3{
     font-size: 1em;
+}
+.back h2 a{
+    font-size: 1em;
+    color:#098d05;
 }
 
 .itens:hover{
