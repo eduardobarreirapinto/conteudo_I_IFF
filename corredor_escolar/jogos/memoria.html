@@ -75,6 +75,7 @@
   </div>
 
   <script>
+    var counter = 0;
     const numCols = 4;
     const numRows = 5;
     const totalCards = numCols * numRows;
@@ -175,7 +176,7 @@
       if (!gameStarted) {
         gameStarted = true;
         flipAllCardsFront();
-        setTimeout(flipAllCardsBack, 5000);
+        setTimeout(flipAllCardsBack, 7000);
       }
     }
 
@@ -193,8 +194,14 @@
     function checkForMatch() {
       const card1 = flippedCards[0].querySelector('.back').querySelector('img').src;
       const card2 = flippedCards[1].querySelector('.back').querySelector('img').src;
-
+      console.log(counter);
       if (card1 === card2) {
+        console.log(counter);
+        if (counter === 9 ){
+          console.log(counter);
+          reiniciar();
+        }
+        counter = counter + 1;
         setTimeout(() => {
           flippedCards.forEach(card => card.style.visibility = 'hidden');
           flippedCards = [];
@@ -218,10 +225,15 @@
     }
 
     window.onload = function () {
+      
       flipAllCardsBack();
-      setTimeout(startGame, 1000);
+      setTimeout(startGame, 3000);
       splitImage('./img/I.png', numCols, numRows);
     };
+    function reiniciar() {
+      window.location.reload();
+    }
+
   </script>
 </body>
 </html>
