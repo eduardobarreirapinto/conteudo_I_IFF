@@ -9,7 +9,7 @@
 body {
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     font-family: sans-serif;
     background-color: beige;
@@ -22,10 +22,14 @@ body {
 #iff_logo
 {
   /* border: 1px solid; */
-  width: 300px;
+  width: 200px;
   height: 100px;
   object-fit:contain;
-  
+   
+}
+#logos_I, #logos_FF{
+    transition: transform 0.5s;
+    
 }
 
 /* Button */
