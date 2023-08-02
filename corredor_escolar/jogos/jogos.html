@@ -41,6 +41,7 @@ i {
 }
 
 .container {
+  margin-top: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,36 +50,64 @@ i {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 2em;
   margin-bottom: 20px;
+  background: linear-gradient(to right, #0074D9, #2ECC40);
+  -webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent; 
 }
 
 .games {
+  margin-top: 30px;
   display: flex;
-  gap: 20px;
+  gap: 50px;
 }
 
-.game {
+.game1,  .game2 {
   cursor: pointer;
   text-align: center;
 }
 
-.game img {
+.game1 img {
   width: 200px;
   height: 200px;
   border-radius: 10%;
-  border: 5px solid #2ecc71;
+  border: 5px solid #056a77;
 }
 
-.game p {
+.game2 img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+  border: 5px solid #108f45;
+}
+
+.game1 p {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 1.4em;
+  font-weight: bolder;
+  color: #056a77;  
 }
 
-#selectedGame {
-  margin-top: 40px;
-  font-size: 24px;
-  text-align: center;
+.game2 p {
+  margin-top: 10px;
+  font-size: 1.4em;
+  font-weight: bolder;
+  color:#108f45;
+}
+.logos
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#iff_logo
+{
+  /* border: 1px solid;  */
+  width: 340px;
+  height: 290px; 
+  
 }
 
   </style>
@@ -94,16 +123,19 @@ h1 {
   <div class="container">
     <h1>Exercite seu cérebro!</h1>
     <div class="games">
-      <div class="game">
+      <div class="game1">
         <a href="./memoria.html"><img src="./img/memoria.png" alt="Jogo memoria"></a>
         <p>Memória</p>
       </div>
-      <div class="game" >
-        <a href="./memoria.html"><img src="./img/memoria.png" alt="Jogo raciocínio"></a>
+      <div class="game2" >
+        <a href="./raciocinio.html"><img src="./img/raciocinio.png" alt="Jogo raciocínio"></a>
         <p>Raciocínio</p>
       </div>
     </div>
-    <div id="selectedGame"></div>
+    
+    <div class = "logos">
+      <img id="iff_logo" src="./img/iff.png" alt="Logo IFF"></a>
+    </div>
   </div>
   
 </body>

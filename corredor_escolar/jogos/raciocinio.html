@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+    <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
+    <title>Jogo dos 8</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body{
+    height: 100vh;
+    background-color: beige;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Poppins', sans-serif;
+}
+
+.anterior a{
+    position: absolute;
+    top:10%;
+    left:5%;
+    display: flex;
+    align-items: center;
+    color: rgb(13, 150, 24);
+   
+   }
+
+    .anterior i {
+        
+        padding-right: 15px;
+        color: rgb(13, 150, 24);
+    }
+    a{
+        text-decoration: none;
+    }
+    i {
+      font-size: 4em;
+    }
+
+.panel{
+    width: 305px;
+    height: 305px;
+    border-radius: 10px;
+}
+
+.modal{
+    position: absolute;
+    transition: all .5s;
+}
+
+#startScrenn{
+    background-image: url('./img/start.png');
+    background-size:contain; /* Redimensiona a imagem para cobrir o contêiner */
+    background-position:initial; /* Centraliza a imagem horizontalmente e verticalmente */
+    cursor:pointer;
+    opacity: 1;
+    z-index: 1;
+}
+#overScreen{
+    background-image: url('./img/over.png');
+    background-size:contain; /* Redimensiona a imagem para cobrir o contêiner */
+    background-position:center; /* Centraliza a imagem horizontalmente e verticalmente */
+    cursor:pointer;
+    opacity: 0;
+    z-index: -1;
+}
+
+#container{
+    position: relative;
+    margin: 10% auto;
+    background-color: rgb(13, 150, 24);
+    border: outset;
+    box-shadow: 2px 2px 5px rgba(1, 1, 1, 0.5);
+}
+
+.tile{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    background-color: #fff;
+    transition: left .5s , top .5s;
+}
+
+.tile:hover{
+    border: inset;
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="anterior">
+        <a href="./jogos.html">
+            <i class="fas fa-arrow-left"></i>
+            <h3>Voltar</h3>
+        </a>
+    </div>
+    <div id="container" class="panel">
+        <div id="n1" class="tile" data-value="1">1</div>
+        <div id="n2" class="tile" data-value="2">2</div>
+        <div id="n3" class="tile" data-value="3">3</div>
+        <div id="n4" class="tile" data-value="4">4</div>
+        <div id="n5" class="tile" data-value="5">5</div>
+        <div id="n6" class="tile" data-value="6">6</div>
+        <div id="n7" class="tile" data-value="7">7</div>
+        <div id="n8" class="tile" data-value="8">8</div>
+        
+        <div id="startScrenn" class="panel modal"></div>
+        <div id="overScreen" class="panel modal"></div>   
+    </div>
+    
+    
+    <script>
+        (function(){
+    var tiles = [];
+    var answer = [];
+    var startscreen = document.querySelector('#startScrenn');
+    startscreen.addEventListener("click",startGame,false);
+    var overscreen = document.querySelector('#overScreen');
+
+    function init(){
+        for(var i = 1 ; i < 9 ; i++){
+            var tile = document.querySelector("#n" + i);
+            tile.style.background = '#F5F5DC'; // Definir fundo beige
+            tile.style.color = '#1C1C1C'; // Definir cor branca para o número
+            tile.style.fontSize = '32px'; // Definir tamanho médio para o número
+            tile.style.fontWeight = 'bold'; // Tornar o número negrito
+            tile.style.display = 'flex'; // Para usar flexbox para centralizar o conteúdo
+            tile.style.justifyContent = 'center'; // Centralizar horizontalmente
+            tile.style.alignItems = 'center'; // Centralizar verticalmente
+            tile.innerText = i; // Adicionar o número no tile
+            tile.style.userSelect = 'none'; // Impedir que o número seja selecionado
+            
+            tile.addEventListener("click", moveTile, false);
+        tiles.push(tile);
+        }
+        tiles.push(null);
+        answer = tiles;
+        render();
+
+    }
+    function render(){
+
+        for(var i in tiles){
+            var tile = tiles[i];
+            if(tile){
+                tile.style.left = (i%3) * 100 + 5 + "px"
+                if( i < 3 ){
+                    tile.style.top = 5 + "px"
+                }else
+                if (i < 6 ){
+                    tile.style.top = 100 + 5 + "px"
+
+                }else{
+                    tile.style.top = 200 + 5 + "px"
+                }
+            }
+        }
+    }
+function moveTile(){
+    var index = tiles.indexOf(this);
+    if ( index % 3 !== 0 ){
+        if( ! tiles[index - 1]){
+            tiles[index - 1] = this;
+            tiles[index] = null;
+        }
+    }
+    if ( index % 3 !== 2 ){
+        if( ! tiles[index + 1]){
+            tiles[index + 1] = this;
+            tiles[index] = null;
+        }
+    }
+    if ( index > 2 ){
+        if( ! tiles[index - 3]){
+            tiles[index - 3] = this;
+            tiles[index] = null;
+        }
+    }
+    if ( index < 6 ){
+        if( ! tiles[index + 3]){
+            tiles[index + 3] = this;
+            tiles[index] = null;
+        }
+    }
+    render();
+    if ( checkWin() ){
+        console.log(checkWin());
+        gameOver();
+    }
+}
+    function gameOver(){
+        overscreen.style.opacity = '1';
+        overscreen.style.zIndex = '1';
+        setInterval(function(){
+            overscreen.addEventListener("click",startGame,false);
+        },500)
+
+    }
+    function checkWin(){
+        for( var i in tiles ){
+            if(tiles[i]!== answer[i]){
+                console.log(false);
+                return false;
+            }
+
+        }
+        console.log(true);
+        return true;
+    }
+    function randomSort(oldArray){
+        var newArray;
+        
+        do
+        {
+            newArray = [];
+            while(newArray.length < oldArray.length){
+                var i = Math.floor(Math.random() * oldArray.length);
+                if(newArray.indexOf(oldArray[i]) < 0){
+                newArray.push(oldArray[i]);
+                }
+            }
+        }while (!validGame(newArray));
+
+        return newArray;
+        
+    }
+
+    function validGame(array){
+        var inversions = 0;
+        var len = array.length
+        for (var i = 0; i < len - 1 ; i++ ){
+            for ( var j = i + 1 ; j < len ; j++){
+                if ( array[i] && array[j] && array[i].dataset.value < array[j].dataset.value){
+                    inversions++;
+                }
+            }
+        }
+        return inversions % 2 ===0;
+
+    }
+    
+    function startGame(){
+        tiles = randomSort(tiles);
+        this.style.opacity = '0';
+        this.style.zIndex = '-1';
+        this.removeEventListener("click",startGame,false);
+        render();
+    }
+    init();
+
+}())
+    </script>
+</body>
+</html>
