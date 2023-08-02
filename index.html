@@ -131,11 +131,35 @@
             ground.checkCollisions = true;
             ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene);
 
+            // Importe o modelo do aluno usando ImportMeshAsync
+            const alunoPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "aluno_digitando.glb", scene);
+
+            // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+            alunoPromise.then((result) => {
+                // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+                const meshes = result.meshes;
+
+                // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+                if (meshes.length > 0) {
+                    // Neste exemplo, iremos posicionar o aluno no ponto (0, 0, 0) da cena
+                    meshes[0].position = new BABYLON.Vector3(3.8, .03, 3.4);
+
+                    // Você também pode rotacionar o mesh, se necessário
+                    meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+
+                    // Você pode escalar o mesh se necessário
+                    meshes[0].scaling = new BABYLON.Vector3(.7, .7, .7);
+                } else {
+                    console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+                }
+            }).catch((error) => {
+                console.error("Ocorreu um erro ao carregar o modelo: ", error);
+            });         
              //Load the tower assets
             // Supondo que você já tenha uma instância da engine Babylon.js chamada 'engine' e uma cena chamada 'scene'.
 
             // Importe o modelo do professor usando ImportMeshAsync
-            const professorPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "professor.glb", scene);
+            /* const professorPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "professor.glb", scene);
 
             // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
             professorPromise.then((result) => {
@@ -157,9 +181,9 @@
                 }
             }).catch((error) => {
                 console.error("Ocorreu um erro ao carregar o modelo: ", error);
-            });                       
+            });  */                      
         // Importe o modelo do professor usando ImportMeshAsync
-        const alunaPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "aluna.glb", scene);
+        /* const alunaPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "aluna.glb", scene);
 
          // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
          alunaPromise.then((result) => {
@@ -181,31 +205,31 @@
                 }
             }).catch((error) => {
                 console.error("Ocorreu um erro ao carregar o modelo: ", error);
-            });  
-        // Importe o modelo do professor usando ImportMeshAsync
-        const computador2Promise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "computador2.glb", scene);
+            });   */
+        // // Importe o modelo do professor usando ImportMeshAsync
+        // const computador2Promise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "computador2.glb", scene);
 
-        // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
-        computador2Promise.then((result) => {
-              // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
-              const meshes = result.meshes;
+        // // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+        // computador2Promise.then((result) => {
+        //       // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+        //       const meshes = result.meshes;
 
-              // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
-              if (meshes.length > 0) {
-                  // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
-                  meshes[0].position = new BABYLON.Vector3(-4, 1, 1);
+        //       // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+        //       if (meshes.length > 0) {
+        //           // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+        //           meshes[0].position = new BABYLON.Vector3(-4, .8, 3);
 
-                  // Você também pode rotacionar o mesh, se necessário
-                  meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+        //           // Você também pode rotacionar o mesh, se necessário
+        //           meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
 
-                  // Você pode escalar o mesh se necessário
-                  meshes[0].scaling = new BABYLON.Vector3(1, 1, 1);
-              } else {
-                  console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
-              }
-          }).catch((error) => {
-              console.error("Ocorreu um erro ao carregar o modelo: ", error);
-          });
+        //           // Você pode escalar o mesh se necessário
+        //           meshes[0].scaling = new BABYLON.Vector3(1, 1, 1);
+        //       } else {
+        //           console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+        //       }
+        //   }).catch((error) => {
+        //       console.error("Ocorreu um erro ao carregar o modelo: ", error);
+        //   });
           /* // Importe o modelo do professor usando ImportMeshAsync
           const petPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "pet.glb", scene);
 
@@ -241,7 +265,7 @@
             // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
             if (meshes.length > 0) {
                 // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
-                meshes[0].position = new BABYLON.Vector3(8, 3.5, 1);
+                meshes[0].position = new BABYLON.Vector3(8.05, 3.4, 1);
 
                 // Você também pode rotacionar o mesh, se necessário
                 meshes[0].rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
@@ -253,7 +277,32 @@
             }
           }).catch((error) => {
             console.error("Ocorreu um erro ao carregar o modelo: ", error);
-          });            
+          });  
+          
+          // Importe o modelo  usando ImportMeshAsync
+          const computadorGamerPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img_escola/", "gaming_pc.glb", scene);
+
+          // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+          computadorGamerPromise.then((result) => {
+            // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+            const meshes = result.meshes;
+
+            // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+            if (meshes.length > 0) {
+                // Neste exemplo, iremos posicionar  no ponto (0, 0, 0) da cena
+                meshes[0].position = new BABYLON.Vector3(-3, -0.2, 3);
+
+                // Você também pode rotacionar o mesh, se necessário
+                meshes[0].rotation = new BABYLON.Vector3(0, 0, 0);
+
+                // Você pode escalar o mesh se necessário
+                meshes[0].scaling = new BABYLON.Vector3(.3, .55, .3);
+            } else {
+                console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+            }
+          }).catch((error) => {
+            console.error("Ocorreu um erro ao carregar o modelo: ", error);
+          }); 
             
             // Crie um material para IFF
             //var neonBlueMaterial = new BABYLON.StandardMaterial("neonBlueMaterial", scene);
@@ -420,11 +469,11 @@
             ceiling.material = ceilingMaterial;
 
           
-            var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 1.4, -2.2), scene);
+            var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, .4, -2.2), scene);
             //camera.attachControl(canvas, true);
             camera.checkCollisions = true;
             camera.applyGravity = false;
-            camera.fov = 1.25; // Reduza o campo de visão para manter a câmera pequena
+            camera.fov = .8; // Reduza o campo de visão para manter a câmera pequena
                         
            /*  // Configuração inicial
             var cameraSpeed = 0.03; // Defina a velocidade do movimento da câmera
