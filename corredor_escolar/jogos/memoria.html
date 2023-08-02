@@ -28,14 +28,14 @@
     left:5%;
     display: flex;
     align-items: center;
-    color:  rgb(180, 180, 194);
+    color:  #095b9e;
    
    }
 
     .anterior i {
         
         padding-right: 15px;
-        color:   rgb(180, 180, 194);
+        color:   #095b9e;
     }
     a{
         text-decoration: none;
@@ -99,7 +99,7 @@
 </head>
 <body>
   <div class="anterior">
-    <a href="../corredor.html">
+    <a href="./jogos.html">
         <i class="fas fa-arrow-left"></i>
         <h3>Voltar</h3>
     </a>
@@ -239,12 +239,12 @@
         setTimeout(() => {
           flippedCards.forEach(card => card.style.visibility = 'hidden');
           flippedCards = [];
-        }, 1000);
+        }, 500);
       } else {
         setTimeout(() => {
           flippedCards.forEach(card => card.classList.remove('flipped'));
           flippedCards = [];
-        }, 1000);
+        }, 500);
       }
     }
 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
+  <title>Exercite seu Cérebro</title>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: beige;
+  color: rgb(13, 110, 86);
+}
+
+.anterior a{
+    position: absolute;
+    top:10%;
+    left:5%;
+    display: flex;
+    align-items: center;
+    color:  rgb(13, 110, 86);
+   
+}
+
+.anterior i {
+    
+    padding-right: 15px;
+    color:  rgb(13, 110, 86);
+}
+
+i {
+    color: rgb(13, 110, 86);
+    font-size: 4em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.games {
+  display: flex;
+  gap: 20px;
+}
+
+.game {
+  cursor: pointer;
+  text-align: center;
+}
+
+.game img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+  border: 5px solid #2ecc71;
+}
+
+.game p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#selectedGame {
+  margin-top: 40px;
+  font-size: 24px;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="anterior">
+    <a href="../corredor.html">
+        <i class="fas fa-arrow-left"></i>
+        <h3>Voltar</h3>
+    </a>
+  </div>
+  <div class="container">
+    <h1>Exercite seu cérebro!</h1>
+    <div class="games">
+      <div class="game">
+        <a href="./memoria.html"><img src="./img/memoria.png" alt="Jogo memoria"></a>
+        <p>Memória</p>
+      </div>
+      <div class="game" >
+        <a href="./memoria.html"><img src="./img/memoria.png" alt="Jogo raciocínio"></a>
+        <p>Raciocínio</p>
+      </div>
+    </div>
+    <div id="selectedGame"></div>
+  </div>
+  
+</body>
+</html>
