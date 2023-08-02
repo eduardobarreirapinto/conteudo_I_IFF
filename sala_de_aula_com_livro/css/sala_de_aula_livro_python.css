@@ -34,6 +34,11 @@ body{
     color:  rgb(180, 180, 194);
 }
 
+i {
+    color: rgb(180, 180, 194);
+    font-size: 4em;
+}
+
 #iff_logo
 {
   /* border: 1px solid; */
@@ -64,10 +69,7 @@ button:hover i {
     color: rgb(63, 204, 223);
 }
 
-i {
-    color: gray;
-    font-size: 4em;
-}
+
 
 /* Book */
 .book {
@@ -330,6 +332,11 @@ color: #FFF;
 .back h2 a{
     font-size: 1em;
     color:#098d05;
+    transition: 0.2s ease-in-out;
+}
+.back h2 a:hover{
+    font-size: 1.2em;
+    color:#b0ec24;
 }
 
 .itens:hover{

@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
   <title>Treine seu cérebro!</title>
   <style>
     /* Estilo CSS para o jogo da memória */
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
     body {
       display: flex;
       justify-content: center;
@@ -14,6 +21,27 @@
       margin: 0;
       background-color: beige;
       font-family: Arial, sans-serif;
+    }
+    .anterior a{
+    position: absolute;
+    top:10%;
+    left:5%;
+    display: flex;
+    align-items: center;
+    color:  rgb(180, 180, 194);
+   
+   }
+
+    .anterior i {
+        
+        padding-right: 15px;
+        color:   rgb(180, 180, 194);
+    }
+    a{
+        text-decoration: none;
+    }
+    i {
+      font-size: 4em;
     }
 
     .memory-game {
@@ -70,6 +98,12 @@
   </style>
 </head>
 <body>
+  <div class="anterior">
+    <a href="../corredor.html">
+        <i class="fas fa-arrow-left"></i>
+        <h3>Voltar</h3>
+    </a>
+</div>
   <div class="memory-game">
     <!-- Os cards serão gerados dinamicamente pelo JavaScript -->
   </div>
