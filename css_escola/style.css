@@ -411,255 +411,99 @@ body
 /* Estilos básicos */
 /* ... (código CSS existente) ... */
 
-/* Media Query para telas menores */
-@media screen and (max-width: 480px) {
+/* Estilos comuns */
+/* ... */
+
+/* Estilos comuns */
+/* ... */
+
+/* Layout para dispositivos móveis */
+@media only screen and (max-width: 767px) {
+  .house {
+    display: none;
+  }
+
+  body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Ajustes para a navbar em dispositivos móveis */
   .navbar {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
   }
 
-  .navbar .logo {
-    font-size: 16px;
+  .logo {
+    font-size: 24px;
     margin-bottom: 10px;
   }
 
-  .nav-links {
+  .menu {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
   }
 
   .menu li {
-    padding: 10px 0;
-    width: 100%;
-    text-align: center;
+    margin: 5px 0;
   }
 
+  /* Outros ajustes para a seção de habilidades, logos e outros elementos conforme necessário */
   .logos {
+    width: 90%;
+    margin-top: 5%;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
   }
 
   #inmetro_logo,
   #iff_logo {
-    width: 120px;
-    height: 40px;
-  }
-
-  .house {
-    height: 180px;
-  }
-
-  .main {
-    height: 80px;
-  }
-
-  .btn {
-    line-height: 16px;
-    height: 16px;
-    width: 120px;
-  }
-
-  .letreiro {
-    font-size: 14px;
-    top: 5%;
-  }
-
-  .roof::before,
-  .roof::after {
-    width: 50%;
-  }
-
-  .wrapper {
-    height: 60%;
-  }
-
-  #corredor_img {
-    height: 100%;
-  }
-
-  .door {
-    background-color: rgba(36, 178, 183, 0.7);
-    height: 50%;
-  }
-
-  .shape {
-    width: 50px;
-    height: 65px;
-  }
-
-  .knob {
-    width: 5px;
-    height: 25px;
-  }
-
-  #left-knob {
-    right: 5px;
-  }
-
-  #right-knob {
-    left: 5px;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
   }
 
   #skills-section .container {
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    max-width: 100%;
   }
 
   .skills-container {
-    flex-basis: calc(50% - 20px);
-    height: auto;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .skills-container img {
-    height: 80px;
-    object-fit: cover;
-  }
-
-  .skills-container h2 {
-    font-size: 16px;
-  }
-
-  .skills-container .subtitle {
-    font-size: 12px;
-    margin-top: 5px;
-  }
-
-  /* Blog e Sobre na vertical */
-  .menu {
-    flex-direction: column;
-    align-items: center;
-    font-size: 15px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .navbar .logo {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .menu li {
-    padding: 10px 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .logos {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-  }
-
-  #inmetro_logo,
-  #iff_logo {
-    width: 150px;
-    height: 50px;
-  }
-
-  .house {
-    height: 300px;
-  }
-
-  .main {
+    flex: 1 1 80%;
     height: 200px;
-  }
-
-  .btn {
-    line-height: 20px;
-    height: 20px;
-    width: 150px;
-  }
-
-  .letreiro {
-    font-size: 13px;
-    top: 7%;
-  }
-
-  .roof::before,
-  .roof::after {
-    width: 60%;
-  }
-
-  .wrapper {
-    height: 80%;
-  }
-
-  #corredor_img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .door {
-    background-color: rgba(36, 178, 183, 0.7);
-    height: 100%;
-  }
-
-  .shape {
-    width: 100px;
-    height: 130px;
-  }
-
-  .knob {
-    width: 10px;
-    height: 50px;
-  }
-
-  #left-knob {
-    right: 10px;
-  }
-
-  #right-knob {
-    left: 10px;
-  }
-
-  #skills-section .container {
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .skills-container {
-    flex-basis: 100%;
-    height: auto;
+    margin: 15px;
+    border: 4px solid rgb(19, 194, 221);
+    border-radius: 15px;
     text-align: center;
-    margin-bottom: 20px;
+    width: 90%;
   }
 
   .skills-container img {
-    width: 150px;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .skills-container h2 {
-    font-size: 18px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(19, 194, 221.5);
+    border-radius: 15px 15px 0px 0px;
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
   }
 
   .skills-container .subtitle {
-    font-size: 14px;
+    font-weight: bold;
+    color: rgb(43, 43, 44);
     margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
   }
 
-  /* Blog e Sobre na vertical */
-  .menu {
-    flex-direction: column;
-    align-items: center;
-    font-size: 15px;
+  .skills-container p {
+    line-height: 20px;
   }
 }

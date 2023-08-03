@@ -65,11 +65,13 @@ select_pag.placeholder = '1/' + maxState;
 
 
 function openBook() {
-    book.style.transform = "translateX(50%)";
-    prevBtn.style.transform = "translateX(-180px)";
-    nextBtn.style.transform = "translateX(180px)";
-    logos_I.style.transform = "translateX(-180px)";
-    logos_FF.style.transform = "translateX(180px)";
+    if (window.innerWidth > 767) {
+        book.style.transform = "translateX(50%)";
+        prevBtn.style.transform = "translateX(-180px)";
+        nextBtn.style.transform = "translateX(180px)";
+        logos_I.style.transform = "translateX(-180px)";
+        logos_FF.style.transform = "translateX(180px)";
+    }
 }
 
 function closeBook(isFirstPage) {
@@ -91,7 +93,11 @@ function closeBook(isFirstPage) {
 }
 
 function goNext() {
-    prevBtn.children[0].style.display = 'block';
+    // Verifica se a largura da janela é maior que 767px (modo desktop)
+    if (window.innerWidth > 767) {
+        prevBtn.children[0].style.display = 'block';
+    }
+    
     if(currentState < maxState) { 
         switch(currentState) {
             case 1:
@@ -215,7 +221,9 @@ function goNext() {
 }
 
 function goPrevious() {
-    nextBtn.children[0].style.display = 'block';
+    if (window.innerWidth > 767) {
+        nextBtn.children[0].style.display = 'block';
+    }
     if(currentState > 0) {
         switch(currentState) {
             case 1: 

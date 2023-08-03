@@ -350,3 +350,117 @@ color: #FFF;
 
 
 
+/* Estilos para telas menores ou iguais a 767px (modo mobile) */
+@media only screen and (max-width: 767px) {
+    body {
+        /* Ajuste para centralizar o conteúdo na vertical e horizontal */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+    }
+    .anterior a{
+        position: absolute;
+        top:5%;
+        left:5%;
+        display: flex;
+        align-items: center;
+        color:  rgb(180, 180, 194);
+       
+    }
+    
+    .anterior i {
+        
+        padding-right: 15px;
+        color:  rgb(180, 180, 194);
+    }
+    
+    i {
+        color: rgb(180, 180, 194);
+        font-size: 4em;
+    }
+    
+
+    /* Adiciona margem superior para afastar a div anterior das páginas */
+    .paper {
+        margin-top: 30px;
+    }
+
+    .content-section {
+        /* Ajuste para centralizar o conteúdo na vertical e horizontal */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .book {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .paper {
+        margin-bottom: 10px;
+    }
+
+    .front {
+        transform-origin: top;
+        /* Transição para suavizar a mudança entre as páginas */
+        transition: transform 0.5s ease-in-out;
+    }
+
+    /* Ajuste para exibir as divs back escondidas no início em telas menores ou iguais a 767px (modo mobile) */
+    .flipped .front {
+        transform: rotateY(180deg) translateY(-100%);
+    }
+
+    /* Posicionamento da div "back" na parte de trás em telas maiores que 767px */
+    .flipped .back {
+        transform: translateY(-100%);
+        z-index: 1;
+    }
+
+    /* Estilos adicionais para ajustar o layout no modo mobile */
+    .book-title {
+        font-size: 1.8em;
+    }
+
+    .cover-img {
+        width: 150px;
+        height: 200px;
+    }
+
+    /* Esconder a div "back" no modo mobile */
+    .back {
+        display: none;
+    }
+
+    /* Esconder os botões de navegação e logos no modo mobile */
+    #logos_I, #logos_FF {
+        display: none;
+    }
+    /* Button */
+    button {
+        background-color: transparent;
+        margin-top: 3%;
+        position: absolute;
+        transition: transform 0.5s;
+    }
+
+    #prev-btn {
+        border: 1px solid black;
+        z-index: 10;
+        top:50%;
+    }
+    #next-btn {
+        border: 1px solid black;
+        z-index: 10;
+        bottom:5%;
+    }
+
+    button:hover i {
+        color: rgb(63, 204, 223);
+    }  
+            
+}
