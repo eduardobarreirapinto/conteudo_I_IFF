@@ -285,3 +285,66 @@ box-shadow: none;
     background-color: rgb(248, 9, 9);
 }
 
+/* Estilos para telas menores ou iguais a 767px (modo mobile) */
+@media only screen and (max-width: 767px) {
+    /* Aumentar tamanho da fonte para dispositivos móveis */
+    body {
+        height: 100vh;
+        font-size: 16px;
+    }
+
+    /* Centralizar e reduzir o tamanho da imagem */
+    img {
+        width: 90%;
+        height: auto;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Ajustar o tamanho do conteúdo container */
+    .conteudo-container {
+        width: 90%;
+    }
+
+    /* Ajustar o tamanho dos botões na barra de cabeçalho */
+    .botoes {
+       display: none;
+    }
+
+    .conteudo-container{
+        height: 100vh;
+        margin:auto;
+        overflow: hidden;
+        position: relative;
+         
+        
+    }    
+
+    /* Ajustar o tamanho dos textos no conteúdo */
+    .conteudo-container h3, .conteudo-container .obs {
+        font-size: 18px;
+    }
+    .footer-container{
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        
+    }
+    .item-footer-voltar{
+    width: 30%;
+    
+    }
+    .item-footer-continuar {
+        width: 30%;
+       
+    }    
+    
+}
+
+
+

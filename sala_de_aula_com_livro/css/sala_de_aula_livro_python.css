@@ -383,21 +383,26 @@ color: #FFF;
 
     .anterior {
         position: absolute;
-        top:5%;
-        left:5%;  
+        top:2%;
+        left:2%;  
         height: 2em;   
                
     }  
-    .anterior h3{   
-        display: none;
-    } 
-    
     i {
         color: rgb(180, 180, 194);
         font-size: 4em;
         margin: .3em;
         
     }
+    .anterior i{   
+        font-size: 2em;
+        color:rgb(204, 105, 125);
+    } 
+    .anterior h3{   
+        display: none;
+    } 
+    
+    
     .front {
         overflow: hidden;
     }
