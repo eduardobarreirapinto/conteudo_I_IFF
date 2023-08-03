@@ -81,9 +81,11 @@ function closeBook(isFirstPage) {
         prevBtn.children[0].style.display = 'none';
                     
     } else {
-        book.style.transform = "translateX(100%)";        
-        nextBtn.style.transform = "translateX(0px)";
-        nextBtn.children[0].style.display = 'none';
+        if (window.innerWidth > 767) { 
+            book.style.transform = "translateX(100%)";        
+            nextBtn.style.transform = "translateX(0px)";
+            nextBtn.children[0].style.display = 'none';
+        }
     }
     prevBtn.style.transform = "translateX(0px)";
     nextBtn.style.transform = "translateX(0px)";
@@ -94,9 +96,9 @@ function closeBook(isFirstPage) {
 
 function goNext() {
     // Verifica se a largura da janela é maior que 767px (modo desktop)
-    if (window.innerWidth > 767) {
-        prevBtn.children[0].style.display = 'block';
-    }
+    
+    prevBtn.children[0].style.display = 'block';
+    
     
     if(currentState < maxState) { 
         switch(currentState) {
@@ -193,18 +195,33 @@ function goNext() {
                 paper8.style.zIndex = 1;
                 break;
             case 8:
-                console.log(8);
-                console.log(currentState);
-                closeBook(false);
-                paper8.classList.add("flipped");
-                paper1.style.zIndex = 0;
-                paper2.style.zIndex = 0;
-                paper3.style.zIndex = 0;
-                paper4.style.zIndex = 0;
-                paper5.style.zIndex = 0;
-                paper6.style.zIndex = 0;
-                paper7.style.zIndex = 0;
-                paper8.style.zIndex = 1;
+                if (window.innerWidth > 767) {                    
+                    console.log(8);
+                    console.log(currentState);
+                    closeBook(false);
+                    paper8.classList.add("flipped");
+                    paper1.style.zIndex = 0;
+                    paper2.style.zIndex = 0;
+                    paper3.style.zIndex = 0;
+                    paper4.style.zIndex = 0;
+                    paper5.style.zIndex = 0;
+                    paper6.style.zIndex = 0;
+                    paper7.style.zIndex = 0;
+                    paper8.style.zIndex = 1;
+                    
+                }else{                    
+                    nextBtn.children[0].style.display = 'none';
+                    closeBook(false);
+                    paper8.classList.add("flipped");
+                    paper1.style.zIndex = 0;
+                    paper2.style.zIndex = 0;
+                    paper3.style.zIndex = 0;
+                    paper4.style.zIndex = 0;
+                    paper5.style.zIndex = 0;
+                    paper6.style.zIndex = 0;
+                    paper7.style.zIndex = 0;
+                    paper8.style.zIndex = 1;
+                }
                 break;
             default: 
                 throw new Error("unkown state");    
@@ -221,9 +238,9 @@ function goNext() {
 }
 
 function goPrevious() {
-    if (window.innerWidth > 767) {
+    
         nextBtn.children[0].style.display = 'block';
-    }
+   
     if(currentState > 0) {
         switch(currentState) {
             case 1: 

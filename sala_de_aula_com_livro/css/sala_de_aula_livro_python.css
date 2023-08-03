@@ -236,7 +236,7 @@ button:hover i {
     margin-bottom: 20px;
 }
 
-.searchbar {
+/* .searchbar {
     text-align: center;
     border : 1px solid;
     position: absolute;
@@ -251,15 +251,15 @@ button:hover i {
     cursor: pointer;
     border-radius: 20px;
   
-}
+} */
 
-.searchbar:focus {
+/* .searchbar:focus {
   width: 5%;
   border-radius: 20px;
   text-align: center;
-  /*text-indent: 10px;*/
+  text-indent: 10px;
   cursor: auto;
-}
+} */
 
 /* conceitos básicos */
 .flex{
@@ -350,117 +350,80 @@ color: #FFF;
 
 
 
-/* Estilos para telas menores ou iguais a 767px (modo mobile) */
 @media only screen and (max-width: 767px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+    }
     body {
         /* Ajuste para centralizar o conteúdo na vertical e horizontal */
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content:center;
         flex-direction: column;
         height: 100vh;
     }
-    .anterior a{
+    
+    /* Centralizar e espaçar verticalmente os elementos */
+    .anterior,
+    #prev-btn,
+    #book .front,
+    #next-btn {
+        margin: 0;
+        padding: 0;
+    }
+    .back {
+        display: none;
+    }  
+    .front {
+        /*display: none;*/
+    }  
+
+    .anterior {
         position: absolute;
         top:5%;
-        left:5%;
-        display: flex;
-        align-items: center;
-        color:  rgb(180, 180, 194);
-       
-    }
-    
-    .anterior i {
-        
-        padding-right: 15px;
-        color:  rgb(180, 180, 194);
-    }
+        left:5%;  
+        height: 2em;   
+               
+    }  
+    .anterior h3{   
+        display: none;
+    } 
     
     i {
         color: rgb(180, 180, 194);
         font-size: 4em;
+        margin: .3em;
+        
     }
-    
-
-    /* Adiciona margem superior para afastar a div anterior das páginas */
-    .paper {
-        margin-top: 30px;
-    }
-
-    .content-section {
-        /* Ajuste para centralizar o conteúdo na vertical e horizontal */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    .book {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .paper {
-        margin-bottom: 10px;
-    }
-
     .front {
-        transform-origin: top;
-        /* Transição para suavizar a mudança entre as páginas */
-        transition: transform 0.5s ease-in-out;
+        overflow: hidden;
+    }
+    .front-content h2 {
+        font-size: 2em; /* Defina o tamanho desejado em 'em', 'px' ou outras unidades */
     }
 
-    /* Ajuste para exibir as divs back escondidas no início em telas menores ou iguais a 767px (modo mobile) */
-    .flipped .front {
-        transform: rotateY(180deg) translateY(-100%);
-    }
-
-    /* Posicionamento da div "back" na parte de trás em telas maiores que 767px */
-    .flipped .back {
-        transform: translateY(-100%);
-        z-index: 1;
-    }
-
-    /* Estilos adicionais para ajustar o layout no modo mobile */
+    /* Ajuste o tamanho da fonte do título do livro */
     .book-title {
-        font-size: 1.8em;
+        font-size: 2em;
     }
-
+    /* Redimensione a imagem da capa do livro */
     .cover-img {
+        max-width: 100% !important; /* Utilize !important para garantir que essa regra prevaleça */
+        height: auto;
         width: 150px;
-        height: 200px;
     }
+      
 
-    /* Esconder a div "back" no modo mobile */
-    .back {
-        display: none;
+    #iff_logo
+    {
+       display: none;
+    
     }
-
-    /* Esconder os botões de navegação e logos no modo mobile */
-    #logos_I, #logos_FF {
-        display: none;
-    }
-    /* Button */
-    button {
-        background-color: transparent;
-        margin-top: 3%;
-        position: absolute;
+    button {        
         transition: transform 0.5s;
     }
-
-    #prev-btn {
-        border: 1px solid black;
-        z-index: 10;
-        top:50%;
-    }
-    #next-btn {
-        border: 1px solid black;
-        z-index: 10;
-        bottom:5%;
-    }
-
-    button:hover i {
-        color: rgb(63, 204, 223);
-    }  
-            
+   
 }
