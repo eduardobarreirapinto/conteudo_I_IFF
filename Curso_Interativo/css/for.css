@@ -328,7 +328,7 @@ box-shadow: none;
     .conteudo-container{
         height: 100vh;
         margin:auto;
-        overflow: hidden;
+        overflow: auto;
         position: relative;
          
         

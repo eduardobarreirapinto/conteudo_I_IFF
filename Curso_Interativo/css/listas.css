@@ -294,7 +294,7 @@ box-shadow: none;
 @media only screen and (max-width: 767px) {
     /* Aumentar tamanho da fonte para dispositivos móveis */
     body {
-        height: 100vh;
+        height: 100%;
         font-size: 16px;
     }
 
@@ -320,7 +320,7 @@ box-shadow: none;
     .conteudo-container{
         height: 100vh;
         margin:auto;
-        overflow: hidden;
+        overflow: auto;
         position: relative;
          
         
