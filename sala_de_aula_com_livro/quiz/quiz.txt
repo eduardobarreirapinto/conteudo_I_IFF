@@ -1,1 +1,22 @@
-Leia dois números inteiros e exiba a soma entre eles.
+{
+  "P1": "Escreva um código em Python que declare uma variável chamada 'idade' e atribua a ela o valor 25. Em seguida, imprima o valor dessa variável.",
+  "R1": "idade = 25\nprint(idade)\n",
+  "P2": "Crie um programa Python que solicite ao usuário que digite seu nome e, em seguida, imprima uma mensagem de boas-vindas com o nome digitado.",
+  "R2": "nome = input('Digite seu nome: ')\nprint('Bem-vindo, ' + nome + '!')\n",
+  "P3": "Faça um programa Python que calcule o quadrado de um número digitado pelo usuário e imprima o resultado.",
+  "R3": "numero = float(input('Digite um número: '))\nquadrado = numero ** 2\nprint('O quadrado de', numero, 'é', quadrado)\n",
+  "P4": "Escreva um código Python que solicite ao usuário que digite dois números e, em seguida, realize a multiplicação desses números. Imprima o resultado.",
+  "R4": "numero1 = float(input('Digite o primeiro número: '))\nnumero2 = float(input('Digite o segundo número: '))\nresultado = numero1 * numero2\nprint('O resultado da multiplicação é:', resultado)\n",
+  "P5": "Crie um programa Python que peça ao usuário para digitar uma frase e, em seguida, conte quantos caracteres (incluindo espaços) a frase possui. Imprima o resultado.",
+  "R5": "frase = input('Digite uma frase: ')\ntamanho = len(frase)\nprint('A frase possui', tamanho, 'caracteres.')\n",
+  "P6": "Faça um código Python que calcule o resultado da seguinte expressão: (10 + 5) * 3 / 2. Imprima o resultado.",
+  "R6": "resultado = (10 + 5) * 3 / 2\nprint('O resultado da expressão é:', resultado)\n",
+  "P7": "Escreva um programa Python que leia um número inteiro digitado pelo usuário e verifique se ele é par ou ímpar. Imprima uma mensagem indicando o resultado.",
+  "R7": "numero = int(input('Digite um número inteiro: '))\nif numero % 2 == 0:\n\t print('O número é par.')\nelse:\n\tprint('O número é ímpar.')\n",
+  "P8": "Crie um código Python que solicite ao usuário que digite uma palavra e, em seguida, imprima a palavra em maiúsculas.",
+  "R8": "palavra = input('Digite uma palavra: ')\nprint('Palavra em maiúsculas:', palavra.upper())\n",
+  "P9": "Faça um programa Python que peça ao usuário que digite dois números e, em seguida, realize a divisão do primeiro número pelo segundo número. Imprima o resultado.",
+  "R9": "numero1 = float( input( 'Digite o primeiro número: ' ))\nnumero2 = float( input( 'Digite o segundo número: ' ))\nresultado = numero1 / numero2\nprint( 'O resultado da divisão é:' , resultado)\n",
+  "P10": "Escreva um código Python que solicite ao usuário que digite uma sequência de números separados por vírgula. Em seguida, converta essa sequência em uma lista de números e imprima a lista.",
+  "R10": "sequencia = input( 'Digite uma sequência de números separados por vírgula: ' )\nlista_numeros = sequencia.split(',')\nnumeros = [float(numero) for numero in lista_numeros]\nprint('Lista de números:', numeros)\n"
+}
