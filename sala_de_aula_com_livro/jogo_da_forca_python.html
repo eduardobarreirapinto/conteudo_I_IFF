@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sala de Aula</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <style>
+    canvas {
+      width: 98%;
+      height: 98%;
+      touch-action: none;
+    }
+    
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    #container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+    }
+    
+    canvas {
+      width: 100%;
+      height: 98%;
+      touch-action: none;
+    }    
+    #gui {
+      position: absolute;
+      left: 10px; /* Adjust the distance from the left edge */
+      top: 50%; /* Vertically centered */
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 40%; /* Limit the height to 50% of the viewport height */
+      overflow-x: auto; /* Add scrollbar if content exceeds max-height */
+    }
+    #question-text {
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      width: 90%;
+      margin-bottom: 30px;
+      color: rgb(5, 76, 94);      
+    }
+    #answer-textarea {
+      width: 500px;
+      height: 250px;
+      margin-bottom: 30px;
+      padding: 5px;
+      resize: none;      
+      border-radius: 15px;
+      font-size: 18px;
+      border: 1px solid rgb(79, 230, 184);
+    }
+    .letter-container {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6em;
+    }
+    #letter-container button {
+      height: 2.4em;
+      width: 2.4em;
+      border-radius: 0.3em;
+      background-color: #ffffff;
+      cursor: pointer;
+    }
+    .hide {
+      display: none;
+    }
+  </style>    
+   
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+  <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+  <script src="https://cdn.babylonjs.com/recast.js"></script>
+  <script src="https://cdn.babylonjs.com/ammo.js"></script>
+  <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+  <script src="https://cdn.babylonjs.com/cannon.js"></script>
+  <script src="https://cdn.babylonjs.com/Oimo.js"></script>
+  <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+  <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+  <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+  <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+  <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+  <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script> 
+  
+</head>
+<body>
+  
+    <canvas id="renderCanvas"></canvas>  
+    <div id="gui">
+      <div id="question-text"></div>
+      <textarea class="answer-textarea" id="answer-textarea"></textarea> 
+      <div id="letter-container" class="letter-container hide"></div>    
+    </div>     
+      
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+
+       let conteudoDoArquivo;
+       let parsedData;
+       let index = 1;
+       let chosenWord = "";
+       
+       async function lerArquivo() {
+        try {
+          const response = await fetch('./quiz/forca.txt');
+          const conteudo = await response.text();
+          return conteudo;
+        } catch (error) {
+          console.error('Erro ao ler o arquivo:', error);
+          return null;
+        }
+      }
+
+      conteudoDoArquivo = await lerArquivo();
+      parsedData = JSON.parse(conteudoDoArquivo);    
+      
+      // Update the GUI elements with the question
+      function updateGUI(parsedData,index) {
+        questionText = document.getElementById("question-text");
+        questionText.textContent = parsedData["P" + index];
+
+        answerTextArea = document.getElementById("answer-textarea");
+        answerTextArea.value += "\n"; 
+        answerTextArea.value  += parsedData["R" + index];       
+      } 
+
+      updateGUI(parsedData,index);
+
+      const letterContainer = document.getElementById("letter-container");      
+      
+      letterContainer.classList.remove("hide");
+
+      //For creating letter buttons
+      for (let i = 65; i < 91; i++) {
+        let button = document.createElement("button");
+        button.classList.add("letters");
+        //Number to ASCII[A-Z]
+        button.innerText = String.fromCharCode(i);
+        //character button click
+        button.addEventListener("click", () => {
+          let charArray = chosenWord.split("");
+          let dashes = document.getElementsByClassName("dashes");
+          //if array contains clciked value replace the matched dash with letter else dram on canvas
+          if (charArray.includes(button.innerText)) {
+            charArray.forEach((char, index) => {
+              //if character in array is same as clicked button
+              if (char === button.innerText) {
+                //replace dash with letter
+                dashes[index].innerText = char;
+                //increment counter
+                winCount += 1;
+                //if winCount equals word lenfth
+                if (winCount == charArray.length) {
+                  resultText.innerHTML = `<h2 class='win-msg'>You Win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+                  //block all buttons
+                  blocker();
+                }
+              }
+            });
+          } else {
+            console.log("teste");
+            //lose count
+            //count += 1;
+            //for drawing man
+            //drawMan(count);
+            //Count==6 because head,body,left arm, right arm,left leg,right leg
+            //if (count == 6) {
+              //resultText.innerHTML = `<h2 class='lose-msg'>You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+              //blocker();            
+          }
+          //disable clicked button
+          button.disabled = true;
+        });
+        letterContainer.append(button);
+      }
+
+
+
+    });
+         
+
+      var canvas = document.getElementById("renderCanvas");
+      var engine = new BABYLON.Engine(canvas, true);
+
+      // Criar a cena
+      var createScene = function () {
+        var scene = new BABYLON.Scene(engine);
+        scene.clearColor = new BABYLON.Color3(250 / 255, 250 / 255, 210 / 255); 
+        scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+
+        // Criar câmera
+        var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, -1.7), scene); // Altura ajustada para 1.7 (olhos do observador)
+        camera.setTarget(new BABYLON.Vector3(0, -0.7, 5)); // Olhar para a direção positiva do eixo z
+        camera.attachControl(canvas, true);
+
+        // Criar luz
+        var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+ 
+        
+        /*  // Importe o modelo do professor usando ImportMeshAsync
+         const professorPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img/", "professor.fbx", scene);
+
+        // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+        professorPromise.then((result) => {
+          // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+          const meshes = result.meshes;
+
+          // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+          if (meshes.length > 0) {
+              // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+              meshes[0].position = new BABYLON.Vector3(0,0, 0);
+
+              // Você também pode rotacionar o mesh, se necessário
+              meshes[0].rotation = new BABYLON.Vector3(0, Math.PI /2, 0);
+              
+              // Você pode escalar o mesh se necessário
+              meshes[0].scaling = new BABYLON.Vector3(.05, .05, .05);
+          } else {
+              console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+          }
+        }).catch((error) => {
+          console.error("Ocorreu um erro ao carregar o modelo: ", error);
+        });  */
+
+        // Importe o modelo do professor usando ImportMeshAsync
+        const petPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img/", "sala_de_aula.glb", scene);
+
+        // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+        petPromise.then((result) => {
+          // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
+          const meshes = result.meshes;
+
+          // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
+          if (meshes.length > 0) {
+              // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
+              meshes[0].position = new BABYLON.Vector3(0.35,0, 0);
+
+              // Você também pode rotacionar o mesh, se necessário
+              meshes[0].rotation = new BABYLON.Vector3(0, Math.PI /2, 0);
+              
+              // Você pode escalar o mesh se necessário
+              meshes[0].scaling = new BABYLON.Vector3(.05, .05, .05);
+          } else {
+              console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+          }
+        }).catch((error) => {
+          console.error("Ocorreu um erro ao carregar o modelo: ", error);
+        });     
+
+         return scene;
+      };
+
+      var scene = createScene();
+
+      engine.runRenderLoop(function () {
+        scene.render();
+      });
+
+      window.addEventListener("resize", function () {
+        engine.resize();
+      });
+    
+  </script>
+</body>
+</html>

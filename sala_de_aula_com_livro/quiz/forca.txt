@@ -1,0 +1,10 @@
+{
+  "P1": "Escreva um programa Python que leia um número inteiro digitado pelo usuário e verifique se ele é par ou ímpar. Imprima uma mensagem indicando o resultado.",
+  "R1": "numero = int(input('Digite um número inteiro: '))\nif numero % 2 == 0:\n\t print('O número é par.')\nelse:\n\tprint('O número é ímpar.')\n",
+  "P2": "Crie um código Python que solicite ao usuário que digite uma palavra e, em seguida, imprima a palavra em maiúsculas.",
+  "R2": "palavra = input('Digite uma palavra: ')\nprint('Palavra em maiúsculas:', palavra.upper())\n",
+  "P3": "Faça um programa Python que peça ao usuário que digite dois números e, em seguida, realize a divisão do primeiro número pelo segundo número. Imprima o resultado.",
+  "R3": "numero1 = float( input( 'Digite o primeiro número: ' ))\nnumero2 = float( input( 'Digite o segundo número: ' ))\nresultado = numero1 / numero2\nprint( 'O resultado da divisão é:' , resultado)\n",
+  "P4": "Escreva um código Python que solicite ao usuário que digite uma sequência de números separados por vírgula. Em seguida, converta essa sequência em uma lista de números e imprima a lista.",
+  "R4": "sequencia = input( 'Digite uma sequência de números separados por vírgula: ' )\nlista_numeros = sequencia.split(',')\nnumeros = [float(numero) for numero in lista_numeros]\nprint('Lista de números:', numeros)\n"
+}
