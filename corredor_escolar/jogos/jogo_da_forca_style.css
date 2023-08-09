@@ -1,0 +1,201 @@
+
+canvas {
+    width: 98%;
+    height: 98%;
+    touch-action: none;
+  }
+  
+  body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .anterior a{
+  position: absolute;
+  top:10%;
+  left:5%;
+  display: flex;
+  align-items: center;
+  color:  rgb(180, 180, 194);
+  text-decoration: none;
+  }   
+  
+  .anterior i {
+      
+      padding-right: 15px;
+      color:  rgb(180, 180, 194);
+  }
+  i {
+      color: rgb(180, 180, 194);
+      font-size: 4em;
+  }
+  #rendercanvas {
+    width: 100%;
+    height: 98%;
+    touch-action: none;
+  }    
+   
+  
+  #gui {
+    position: absolute;
+    right: 5%; /* Adjust the distance from the left edge */
+    top: 47%; /* Vertically centered */
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 3em;
+    border-radius: 5px;
+    border: 2px solid rgb(100, 228, 189);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 40%; /* Limit the height to 50% of the viewport height */
+    overflow-x: auto; /* Add scrollbar if content exceeds max-height */
+    font-size: 16px;
+    height: 60vh; 
+    width: 30vw;
+    max-width: 34em;  
+  }
+  #container-gui{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }    
+  #canvas {
+    position: absolute;
+    right: 51%; 
+    top: 35%; 
+    width: 200px;
+    height: 100px;     
+  }  
+
+  #options-container {
+    justify-content: center;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #3898a5;
+    text-align: center;
+  }
+  #options-container div {
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    margin: 1.2em 0 2.4em 0;
+  }
+  #options-container button {
+    padding: 0.6em 1.2em;
+    border: 3px solid rgb(100, 228, 189);
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 0.3em;
+    text-transform: capitalize;
+    
+  }
+
+  #options-container button:hover {
+    background-color: #3898a5;
+    font-weight:bolder;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  #options-container button:disabled {
+    border: 3px solid #808080;
+    color: #808080;
+    background-color: #efefef;
+  }
+  #options-container button.active {
+    background-color: #8c52ff;
+    border: 3px solid #000000;
+    color: #fff;
+  } 
+  #answer-textarea {
+    width: 250px;
+    height: 200px;
+    margin-bottom: 30px;
+    padding: 5px;
+    resize: none;     
+    border-radius: 15px;
+    font-size: 16px;
+    border: 1px solid rgb(79, 230, 184);
+  }
+  .letter-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6em;
+  }
+  #letter-container button {
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 0.3em;
+    color:#ffffff;
+    font-weight: bolder;
+    background-color: rgb(79, 230, 184);
+    cursor: pointer;
+  }
+  .new-game-popup {
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 0.6em;
+  }
+  
+  #user-input-section {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8em;
+    margin: 0.6em 0 1.2em 0;
+  }
+  
+  .hide {
+    display: none;
+  }
+  #result-text h2 {
+    font-size: 1.8em;
+    text-align: center;
+  }
+  #result-text p {
+    font-size: 1.25em;
+    margin: 1em 0 2em 0;
+  }
+  #result-text span {
+    font-weight: 600;
+  }
+  #new-game-button {
+    font-size: 1.25em;
+    padding: 0.5em 1em;
+    background-color: #8c52ff;
+    border: 3px solid rgb(79, 230, 184);;
+    color: #fff;
+    border-radius: 0.2em;
+    cursor: pointer;
+  }
+
+  #new-game-button:hover {
+    font-size: 1.25em;
+    padding: 0.5em 1em;
+    background-color:rgb(79, 230, 184);
+    border: 3px solid #8c52ff;
+    color: #fff;
+    border-radius: 0.2em;
+    cursor: pointer;
+  }
+  .win-msg {
+    color: #39d78d;
+  }
+  .lose-msg {
+    color: #fe5152;
+  }
+  
