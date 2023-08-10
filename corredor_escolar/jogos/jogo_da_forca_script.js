@@ -3,12 +3,9 @@ let parsedData;
 
 document.addEventListener("DOMContentLoaded", async function () {
 
-    let conteudoDoArquivo;
-    let parsedData;   
-    
     async function lerArquivo() {
      try {
-       const response = await fetch('./quiz/forca.txt');
+       const response = await fetch('./forca.txt');
        const conteudo = await response.text();
        return conteudo;
      } catch (error) {
@@ -90,11 +87,13 @@ const generateWord = (optionValue) => {
 
   let optionArray = options[optionValue];
   //choose random word
-  chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
-  chosenWord = chosenWord.toUpperCase();
+  chosenWord1 = optionArray[Math.floor(Math.random() * optionArray.length)];
+  chosenWord = chosenWord1.toUpperCase();
 
   //replace every letter with span containing dash
   let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>&nbsp');
+  console.log(chosenWord1);
+  optionsContainer.innerHTML = `<h3>${parsedData[chosenWord1]}</h3>`;
 
   //Display each element as span
   userInputSection.innerHTML = displayItem;

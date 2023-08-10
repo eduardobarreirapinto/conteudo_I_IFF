@@ -1,0 +1,17 @@
+{
+ "lambda": "Uma palavra-chave reservada em várias linguagens de programação que é usada para definir funções anônimas ou funções de seta.",
+  "global": "Uma palavra-chave usada para declarar variáveis ​​no escopo global em JavaScript.",
+  "finally": "Um bloco usado em conjunto com try e catch para executar código que deve ser executado independentemente de ocorrer ou não uma exceção.",
+  "for": "Uma palavra-chave usada para criar um loop que itera sobre uma sequência de valores.",
+  "as": "Usado em algumas linguagens de programação para fazer casting de tipos ou para renomear um tipo importado.",
+  "input": "Uma função usada para receber entrada do usuário em alguns contextos de programação.",
+  "GPIB": "Interface de barramento geral para instrumentação programável (General Purpose Interface Bus), um padrão de comunicação utilizado para conectar instrumentos eletrônicos.",
+  "Arduino": "Uma plataforma eletrônica de código aberto baseada em hardware e software, utilizada para prototipagem de projetos eletrônicos.",
+  "Multimetro": "Uma ferramenta de medição eletrônica usada para medir várias grandezas elétricas, como tensão, corrente e resistência.",
+  "LED": "Light Emitting Diode (Diodo Emissor de Luz), um componente semicondutor que emite luz quando uma corrente elétrica passa por ele.",
+  "Transistor": "Um componente semicondutor que pode ser usado como amplificador, comutador ou em outras aplicações eletrônicas.",
+  "Sensor": "Um dispositivo que converte uma grandeza física em um sinal elétrico mensurável, utilizado para coletar dados do ambiente."
+}
+
+ 
+  

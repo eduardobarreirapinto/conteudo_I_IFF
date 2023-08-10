@@ -47,6 +47,7 @@ i {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  
 }
 
 h1 {
@@ -61,10 +62,11 @@ h1 {
 .games {
   margin-top: 30px;
   display: flex;
+  flex-direction: row;
   gap: 50px;
 }
 
-.game1,  .game2 {
+.game1,  .game2, .game3 {
   cursor: pointer;
   text-align: center;
 }
@@ -82,6 +84,12 @@ h1 {
   border-radius: 10%;
   border: 5px solid #108f45;
 }
+.game3 img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+  border: 5px solid #c007e6;;
+}
 
 .game1 p {
   margin-top: 10px;
@@ -96,6 +104,13 @@ h1 {
   font-weight: bolder;
   color:#108f45;
 }
+
+.game3 p {
+  margin-top: 10px;
+  font-size: 1.4em;
+  font-weight: bolder;
+  color:#c007e6;
+}
 .logos
 {
   margin: 0;
@@ -104,10 +119,8 @@ h1 {
 }
 #iff_logo
 {
-  /* border: 1px solid;  */
   width: 340px;
-  height: 290px; 
-  
+  height: 290px;
 }
 
   </style>
@@ -131,12 +144,16 @@ h1 {
         <a href="./raciocinio.html"><img src="./img/raciocinio.png" alt="Jogo raciocínio"></a>
         <p>Raciocínio</p>
       </div>
+        <div class="game3" >
+          <a href="./jogo_da_forca.html"><img src="./img/forca.jpg" alt="Jogo da forca"></a>
+         <p>Conhecimento</p>
+      </div>
     </div>
-    
     <div class = "logos">
       <img id="iff_logo" src="./img/iff.png" alt="Logo IFF"></a>
     </div>
   </div>
+  
   
 </body>
 </html>
