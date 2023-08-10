@@ -1,5 +1,8 @@
 let conteudoDoArquivo;
-let parsedData;   
+let parsedData;
+let conteudoDoArquivo1;
+let parsedData1;   
+
 
 document.addEventListener("DOMContentLoaded", async function () {
 
@@ -13,10 +16,22 @@ document.addEventListener("DOMContentLoaded", async function () {
        return null;
      }
    }
+   async function lerArquivo1() {
+    try {
+      const response = await fetch('./forca_codigo.txt');
+      const conteudo = await response.text();
+      return conteudo;
+    } catch (error) {
+      console.error('Erro ao ler o arquivo:', error);
+      return null;
+    }
+  }
    
 
    conteudoDoArquivo = await lerArquivo();
-   parsedData = JSON.parse(conteudoDoArquivo);   
+   parsedData = JSON.parse(conteudoDoArquivo);
+   conteudoDoArquivo1 = await lerArquivo1();
+   parsedData1 = JSON.parse(conteudoDoArquivo1);     
 
 });
 
@@ -32,7 +47,7 @@ const resultText = document.getElementById("result-text");
 
 //Options values for buttons
 let options = {
-  Python: ["lambda","global","finally","for","as","input"],
+  Python: ["lambda","global","finally","for","as","input","if","elif","while","try","except","pass"],
   Automação: ["GPIB", "Arduino", "Multimetro", "LED", "Transistor", "Sensor"],
   
 };
@@ -55,6 +70,7 @@ const displayOptions = () => {
 
 //Block all the Buttons
 const blocker = () => {
+  
   let optionsButtons = document.querySelectorAll(".options");
   let letterButtons = document.querySelectorAll(".letters");
   //disable all options
@@ -69,7 +85,7 @@ const blocker = () => {
   newGameContainer.classList.remove("hide");
 };
 
-
+ let istextArea = false;
 //Word Generator
 const generateWord = (optionValue) => {
   let optionsButtons = document.querySelectorAll(".options");
@@ -80,6 +96,12 @@ const generateWord = (optionValue) => {
     }
     button.disabled = true;
   });
+
+  if (optionValue === 'Python'){
+    istextArea = true;
+  }else{
+    istextArea = false;
+  }
 
   //initially hide letters, clear previous word
   letterContainer.classList.remove("hide");
@@ -101,9 +123,17 @@ const generateWord = (optionValue) => {
 
 //Initial Function (Called when page loads/user presses new game)
 const initializer = () => {
+  try {
+    profAnimResp.start(true, 1.0, profAnimResp.from, profAnimResp.to, false);
+  } catch (error) {
+    // Um erro ocorreu
+    console.error("Não carregou a animação do professor ainda:", error);
+  }
+  
+  
   winCount = 0;
   count = 0;
-
+  
   //Initially erase all content and hide letteres and new game button
   userInputSection.innerHTML = "";
   optionsContainer.innerHTML = "";
@@ -131,8 +161,14 @@ const initializer = () => {
             //increment counter
             winCount += 1;
             //if winCount equals word lenfth
-            if (winCount == charArray.length) {
-              resultText.innerHTML = `<h2 class='win-msg'>Parabéns!!</h2><p>A palavra é:&nbsp<span>${chosenWord}</span></p><textarea class="answer-textarea" id="answer-textarea"></textarea>`;
+            if (winCount == charArray.length) {              
+              profAnimAcertou.start(false, 1.0, profAnimAcertou.from, profAnimAcertou.to, false);
+              resultText.innerHTML = `<h2 class='win-msg'>Parabéns!!</h2><p>A palavra é:&nbsp<span>${chosenWord}</span></p>`;
+              if(istextArea){
+                resultText.innerHTML += `<textarea class="answer-textarea" id="answer-textarea"></textarea>`;
+                answerTextArea = document.getElementById("answer-textarea");
+                answerTextArea.value = parsedData1[chosenWord1]; // Clear any previous user input
+              }
               //block all buttons
               blocker();
             }
@@ -145,6 +181,7 @@ const initializer = () => {
         drawMan(count);
         //Count==6 because head,body,left arm, right arm,left leg,right leg
         if (count == 6) {
+          profAnimErrou.start(false, 1.0, profAnimErrou.from, profAnimErrou.to, false);
           resultText.innerHTML = `<h2 class='lose-msg'>Volte a estudar!!</h2><p>A palavra era:&nbsp<span>${chosenWord}</span></p>`;
           blocker();
         }
@@ -248,71 +285,90 @@ const drawMan = (count) => {
 
 var canvas = document.getElementById("renderCanvas");
 var engine = new BABYLON.Engine(canvas, true);
+let animationResp = "Armature.001|mixamo.com|Layer0";
+let animationAcertou = "Armature.002|mixamo.com|Layer0";
+let animationErrou  = "Armature.003|mixamo.com|Layer0";
+let professorPromise = '';
+let profAnimResp = '';
+let profAnimAcertou = '';
+let profAnimErrou = '';
 
 // Criar a cena
 var createScene = function () {
-  var scene = new BABYLON.Scene(engine);
-  scene.clearColor = new BABYLON.Color3(250 / 255, 250 / 255, 210 / 255); 
-  scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+    var scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color3(250 / 255, 250 / 255, 210 / 255); 
+    scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
 
-  // Criar câmera
-  var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, -1.7), scene); // Altura ajustada para 1.7 (olhos do observador)
-  camera.setTarget(new BABYLON.Vector3(0, -0.7, 5)); // Olhar para a direção positiva do eixo z
-  camera.attachControl(canvas, true);
+    // Criar câmera
+    var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, -1.3), scene); // Altura ajustada para 1.7 (olhos do observador)
+    camera.setTarget(new BABYLON.Vector3(0, -0.7, 5)); // Olhar para a direção positiva do eixo z
+    camera.attachControl(canvas, true);
 
-  // Criar luz
-  var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+    // Criar luz
+    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
 
   
-  /*  // Importe o modelo do professor usando ImportMeshAsync
-    const professorPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img/", "professor.fbx", scene);
+    // Importe o modelo do professor usando ImportMeshAsync
+    professorPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img/", "professor.glb", scene);
 
-  // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
-  professorPromise.then((result) => {
+    // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+    professorPromise.then((result) => {
     // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
-    const meshes = result.meshes;
+    const meshes = result.meshes; 
+    
+    // Acessar os grupos de animações associados ao modelo
+    const animationGroups = result.animationGroups;
+
+    // Iterar sobre os grupos de animações para exibir os nomes das animações
+    for (const animationGroup of animationGroups) {
+        console.log("Nome da animação:", animationGroup.name);
+    }
+    profAnimAcertou= scene.getAnimationGroupByName(animationAcertou);
+    profAnimErrou= scene.getAnimationGroupByName(animationErrou);
+    profAnimResp= scene.getAnimationGroupByName(animationResp);   
+        
 
     // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
     if (meshes.length > 0) {
         // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
-        meshes[0].position = new BABYLON.Vector3(0,0, 0);
+        meshes[0].position = new BABYLON.Vector3(-.35,-.35, -.5);
 
         // Você também pode rotacionar o mesh, se necessário
-        meshes[0].rotation = new BABYLON.Vector3(0, Math.PI /2, 0);
+        meshes[0].rotation = new BABYLON.Vector3(0, 2.7 , 0);
         
         // Você pode escalar o mesh se necessário
-        meshes[0].scaling = new BABYLON.Vector3(.05, .05, .05);
+        meshes[0].scaling = new BABYLON.Vector3(.2, .2, .2);
     } else {
         console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
     }
   }).catch((error) => {
     console.error("Ocorreu um erro ao carregar o modelo: ", error);
-  });  */
+  });  
 
-  // Importe o modelo do professor usando ImportMeshAsync
-  const petPromise = BABYLON.SceneLoader.ImportMeshAsync("", "./img/", "sala_de_aula.glb", scene);
+    // Importe o modelo do professor usando ImportMeshAsync
+    const sala_de_aula = BABYLON.SceneLoader.ImportMeshAsync("", "./img/", "sala_de_aula.glb", scene);
 
-  // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
-  petPromise.then((result) => {
+    // Quando o modelo for carregado (a promessa for resolvida), você pode acessar os meshes carregados
+    sala_de_aula.then((result) => {
     // O resultado é um objeto que contém informações sobre os meshes carregados, como 'meshes', 'particleSystems', etc.
-    const meshes = result.meshes;
+      const meshes = result.meshes;
 
     // Certifique-se de que o modelo foi carregado corretamente e contenha meshes
-    if (meshes.length > 0) {
+      if (meshes.length > 0) {
         // Neste exemplo, iremos posicionar o professor no ponto (0, 0, 0) da cena
-        meshes[0].position = new BABYLON.Vector3(-0.55,0, 0);
+        meshes[0].position = new BABYLON.Vector3(-0.45,0, 0);
 
         // Você também pode rotacionar o mesh, se necessário
-        meshes[0].rotation = new BABYLON.Vector3(0, Math.PI /2, 0);
+        meshes[0].rotation = new BABYLON.Vector3(.03, Math.PI /2.3, 0);
         
         // Você pode escalar o mesh se necessário
         meshes[0].scaling = new BABYLON.Vector3(.05, .05, .05);
-    } else {
-        console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
-    }
-  }).catch((error) => {
-    console.error("Ocorreu um erro ao carregar o modelo: ", error);
-  });     
+      } else {
+          console.error("Nenhum mesh foi carregado. Verifique o caminho do arquivo .glb ou o conteúdo do modelo.");
+      }
+    }).catch((error) => {
+      console.error("Ocorreu um erro ao carregar o modelo: ", error);
+    });     
 
     return scene;
 };

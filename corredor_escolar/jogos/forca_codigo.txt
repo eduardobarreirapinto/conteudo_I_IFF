@@ -1,0 +1,14 @@
+{
+  "lambda": "soma = lambda x, y: x + y\nprint(soma(3, 5))",
+  "global": "global x\nx = 10\n\ndef funcao():\n\tglobal x\n\tx += 5\n\nfuncao()\nprint(x)",
+  "finally": "try:\n\tx = 10 / 0\nexcept ZeroDivisionError:\n\tpass\nfinally:\n\tprint('Finalmente!')",
+  "for": "for i in range(5):\n\tprint('Número:', i)",
+  "as": "import math as m\n\nprint(m.sqrt(25))",
+  "input": "nome = input('Digite seu nome: ')\nprint('Olá,', nome)",
+  "if": "x = 10\nif x > 5:\n\tprint('x é maior que 5')\nelse:\n\tprint('x não é maior que 5')",
+  "elif": "x = 10\nif x > 15:\n\tprint('x é maior que 15')\nelif x > 5:\n\tprint('x é maior que 5, mas não maior que 15')\nelse:\n\tprint('x não é maior que 5')",
+  "while": "contador = 0\nwhile contador < 5:\n\tprint('Contador:', contador)\n\tcontador += 1",
+  "try": "try:\n\tx = 10 / 0\nexcept ZeroDivisionError:\n\tprint('Erro de divisão por zero')",
+  "except": "try:\n\tx = 10 / 0\nexcept ZeroDivisionError:\n\tprint('Erro de divisão por zero')\nexcept:\n\tprint('Outro erro')",
+  "pass": "for i in range(3):\n\tpass\nprint('Loop finalizado')"
+}
