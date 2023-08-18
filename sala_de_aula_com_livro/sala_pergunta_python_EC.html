@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sala de Pergunta - CB</title>
+  <title>Sala de Pergunta - EC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
@@ -193,7 +193,7 @@
 
       async function lerArquivo() {
         try {
-          const response = await fetch('./quiz/quiz.txt');
+          const response = await fetch('./quiz/quiz_ec.txt');
           const conteudo = await response.text();
           return conteudo;
         } catch (error) {
