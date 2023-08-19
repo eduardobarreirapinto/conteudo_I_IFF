@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/built_in.css">
+    <script src="./js/built_in.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Funções - Built in</h3>
+                <p>
+                    - Funções built-in são funções internas e nativas;                    
+                </p>
+                <p>
+                    - Já vem junto quando instalamos o interpretador Python. Estão disponíveis para utilização.
+                </p>
+                <p>
+                    - Não é necessário a importação. 
+                </p>
+                <p>
+                    - Basta utilizá-las diretamente no seu código quando desejar.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span>(<span class="string">'Curso Técnico em Metrologia'</span>)</div>
+                    <div class="linha-codigo resposta">Curso Técnico em Metrologia</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">type</span>(<span class="string">'Acho que sou uma String'</span>)</div>
+                    <div class="linha-codigo resposta"> class str </div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">list</span>(<span class="funcao">range</span>(<span class="string">3 , 33 , 3</span>))</div>
+                    <div class="linha-codigo resposta">[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">sorted</span>(<span class="string">[5,1,4,2,3]</span>)</div>
+                    <div class="linha-codigo resposta">[1, 2, 3, 4, 5]</div>
+                    
+                </div>
+                <p>
+                    - Molezinha, né?
+                </p>
+                <p>
+                    - O Python possui diversas funções built-in. 
+                </p>
+                <p>
+                    - Segue abaixo a listagem de todas elas: 
+                </p>
+                <img src="img/built_in.jfif" alt="Aprender a programar">
+                
+                <div class="obs">
+                    - Por favor, não tente decorar. Mas vale a pena sempre consultar a documentação para ver se o Python já tem uma função pronta que corresponda ao seu interesse.
+                </div>
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>help ( )</h3>
+                
+                <p>
+                    - Esta função destina-se ao uso interativo. 
+                </p>
+                <p>
+                    - Se nenhum argumento for fornecido, o sistema de ajuda interativo será iniciado no console do interpretador.
+                </p>
+                <div class="codigo">
+                    
+                    <div class="linha-codigo"><span class="seta">>>></span><span class="funcao">help</span>( )</div>
+                
+                <div class="linha-codigo resposta">Welcome to Python 3.7's help utility!</div>
+
+                <div class="linha-codigo resposta">If this is your first time using Python, you should definitely check out
+                    the tutorial on the Internet at https://docs.python.org/3.7/tutorial/.</div>
+                    
+                <div class="linha-codigo resposta">Enter the name of any module, keyword, or topic to get help on writing
+                    Python programs and using Python modules.  To quit this help utility and
+                    return to the interpreter, just type "quit".</div>
+                    
+                <div class="linha-codigo resposta">To get a list of available modules, keywords, symbols, or topics, type
+                    "modules", "keywords", "symbols", or "topics".  Each module also comes
+                    with a one-line summary of what it does; to list the modules whose name
+                    or summary contain a given string such as "spam", type "modules spam".</div>
+                    
+                <div class="linha-codigo resposta">help> </div>
+
+                </div>
+                <p>
+                    - Se o argumento for uma cadeia de caracteres, 
+                    a cadeia será consultada como o nome de um módulo, função,
+                     classe, método, palavra-chave ou tópico de documentação, e uma página
+                      de ajuda será impressa no console. 
+                </p>
+                <p>
+                    - Experimente colocar a palavra reservada 'str' dentro da função Built-in help() e veja a documentação da Classe String.  
+                </p>
+                <p>
+                    - Mais para frente veremos o conceito de 'Classe'. Não se preocupe.
+                </p>
+                                
+                <div class="codigo">
+                    
+                    <div class="linha-codigo"><span class="seta">>>></span><span class="funcao">help</span>(<span class="funcao">str</span>)</div>
+                </div>
+                
+                <div class="obs">
+                    Perceba que a função Built-in help( ) pode ser bastante útil para uma consulta rápida no próprio console, sem a necessidade de dar um google ou um chatgpt.
+                </div>                
+                
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>
+                    Qual função built-in do Python é usada para encontrar o valor absoluto de um número? 
+                </h3>
+                
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                </ul>                            
+                    
+            </div>
+            
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>
