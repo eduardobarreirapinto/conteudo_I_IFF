@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/criando_funcoes.css">
+    <script src="./js/criando_funcoes.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+                <div id= "botao5" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Criando Funções próprias</h3>
+                <p>
+                   - Até agora utilizamos as funções nativas do Python. E isso realmente é muito bom. 
+                </p>
+                <p>
+                    - Mas também podemos criar nossas próprias funções!!!
+                </p>
+                <p>
+                    - Veja o exemplo abaixo:
+                </p>
+                                  
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> exemplo_Func (  ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Curso"</span> )</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Python"</span> )</div>
+                    <div class="linha-codigo">exemplo_Func (  )</div>
+                    <div class="linha-codigo resposta">'Curso'</div>
+                    <div class="linha-codigo resposta">'Python'</div>
+                    
+                </div>
+                <p>
+                    - Perceba que  <span class="sublinhado">é necessário definir uma função antes de chamá-la.</span> 
+                </p>
+                <p>
+                    - Caso contrário, tomaremos um <span class="negrito">erro.</span>
+                </p>                
+                <p>
+                    - Veja o exemplo abaixo.                    
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo">imprime (  )</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> imprime ( ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Curso Python"</span> )</div>                                      
+                    <div class="linha-codigo resposta"><span class="seta">NameError: name 'imprime' is not defined
+                    </div>
+                    
+                </div>
+                              
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Criando Funções próprias - Argumentos</h3>
+                <p>
+                    - Agora iremos inserir argumentos em uma função.
+                </p>
+                <p>
+                    - Argumenros são os dados inseridos dentro do parênteses da função.
+                </p>
+                <p>
+                    - Podemos inserir um ou mais argumentos de acordo com a necessidade.
+                </p>
+                <p>
+                    - O exemplo abaixo tem apenas um argumento que será concatenado com uma string (!!!).
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> exemplo_Func ( arg ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( arg + <span class="string">"!!!"</span> )</div>
+                    <div class="linha-codigo">exemplo_Func ( <span class="string">"Curso Python na Metrologia"</span> )</div>
+                    <div class="linha-codigo resposta">'Curso Python na Metrologia!!!'</div>
+                    
+                </div>
+                <p>
+                    - Vamos criar uma função que some dois números.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( a , b ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( a + b )</div>
+                    <div class="linha-codigo">soma ( 2 , 4 )</div>
+                    <div class="linha-codigo resposta">6</div>
+                    
+                </div>
+                <p>
+                    - Um erro muito comum que acontece quando criamos uma função é defenirmos uma variável dentro da função e tentar chamar essa variável fora dela.
+                </p>
+                <p>
+                    - Observem esse tipo de erro abaixo para vocês já ficarem espertos quando criarem suas funções.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> exemplo ( a ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbspx = a</div>
+                    <div class="linha-codigo">exemplo ( 2 )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( 2 )</div>
+                    <div class="linha-codigo resposta"><span class="seta">NameError: name 'x' is not defined</div>
+                    
+                </div>
+                <div class="obs">
+                    Variável definida dentro da função não pode ser chamada fora !!!
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Concatenação de Strings</h3>
+                <p>
+                    - Assim como números, os textos (Strings) também podem adicionar outros textos - Concatenação; 
+                </p>
+                <p>
+                    - Não importa se os textos utilizam aspas simples ou duplas;
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">“Eduardo” + ‘Pinto’</span> </div>
+                    <div class="linha-codigo resposta">'Eduardo Pinto'</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( <span class="string">'2'</span> + <span class="string">" + "</span> + <span class="string">'2'</span>) </div>
+                    <div class="linha-codigo resposta">2 + 2</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"1"</span> +  1 </div>
+                    <div class="linha-codigo resposta"><span class="seta">TypeError: can only concatenate str (not "int") to str</span></div>
+                </div>
+                <div class="obs">
+                    Não é possível somar uma String com um número ( Inteiro ou Float ). Será que podemos multiplicar
+                     uma String com um número inteiro??? Vamos em frente para ver.
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Operação com Strings</h3>
+                <p>
+                    - Multiplicação : Repete-se a String pela quantidade multiplicada
+                </p>
+                <p>
+                    - A ordem não importa.
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( <span class="string">'2'</span> * 4 ) </div>
+                    <div class="linha-codigo resposta">2222</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"22"</span> *  <span class="string">"44"</span> </div>
+                    <div class="linha-codigo resposta"><span class="seta">TypeError: can't multiply sequence by non-int of type 'str'</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"Metrologia"</span> *  4.0</span> </div>
+                    <div class="linha-codigo resposta"><span class="seta">TypeError: can't multiply sequence by non-int of type 'float'</span></div>
+                
+                </div>
+                
+            </div>
+            <div id="conteudo5" class="esconder">
+                <h3>
+                    Qual a saída do código :
+                </h3>
+                <p>
+                    >>> print ( 'Vasco campeão em ' + 2023 )
+                </p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                </ul>                            
+                    
+            </div>
+            
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>
