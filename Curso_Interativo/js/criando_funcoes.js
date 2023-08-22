@@ -27,7 +27,7 @@ botao5.addEventListener('click',fica_5,false);
 var gabarito;
 var lista = [];
 var ul_lista = document.getElementById('ul_lista');
-var respostas = ['\'Vasco campeão em \' + 2023', '\'Vasco campeão em 2023\'','"Vasco campeão em 2023"','Vasco campeão em + 2023','Nenhuma das respostas anteriores'];
+var respostas = ['vezes(soma(vezes(a,potencia2(x)),vezes(b,x)),c)', 'soma(soma(vezes(a,potencia2(x)),vezes(b,x)),c)','soma(soma(potencia2(a,vezes(x)),vezes(b,x)),c)','soma(vezes(vezes(a,potencia2(x)),vezes(b,x)),c)','Nenhuma das respostas anteriores'];
 
 window.onload = initPage;
 
@@ -201,7 +201,7 @@ function inserir_li(gabarito){
 }
 
 function verificar_resposta(){
-  if(this.innerHTML=='Nenhuma das respostas anteriores'){
+  if(this.innerHTML=='soma(soma(vezes(a,potencia2(x)),vezes(b,x)),c)'){
     this.classList.add("resposta_certa");
   }else{
     this.classList.add("resposta_errada");

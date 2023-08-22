@@ -90,7 +90,7 @@
                     - Agora iremos inserir argumentos em uma função.
                 </p>
                 <p>
-                    - Argumenros são os dados inseridos dentro do parênteses da função.
+                    - Argumentos são os dados inseridos dentro do parênteses da função.
                 </p>
                 <p>
                     - Podemos inserir um ou mais argumentos de acordo com a necessidade.
@@ -134,54 +134,95 @@
                 </div>
             </div>
             <div id="conteudo3" class="esconder">
-                <h3>Concatenação de Strings</h3>
+                <h3>Retorno</h3>
                 <p>
-                    - Assim como números, os textos (Strings) também podem adicionar outros textos - Concatenação; 
+                    - Funções podem retornar informação; 
                 </p>
                 <p>
-                    - Não importa se os textos utilizam aspas simples ou duplas;
+                    - Geralmente as funções recebem os dados de entrada (argumentos), processam esses dados( fazem cáculo, comparam e etc)
+e depois retornam o resultado                
                 </p>
 
                 <div class="codigo">
-                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">“Eduardo” + ‘Pinto’</span> </div>
-                    <div class="linha-codigo resposta">'Eduardo Pinto'</div>
-                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( <span class="string">'2'</span> + <span class="string">" + "</span> + <span class="string">'2'</span>) </div>
-                    <div class="linha-codigo resposta">2 + 2</div>
-                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"1"</span> +  1 </div>
-                    <div class="linha-codigo resposta"><span class="seta">TypeError: can only concatenate str (not "int") to str</span></div>
+                    <div class="linha-codigo"><span class="laranja">def</span> maior ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">if</span> x > y :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="laranja">return </span> x </div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">else</span> :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="laranja">return </span> y </div>
+                    <div class="linha-codigo">z = maior ( 2 , 3 )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( z )</div>
+                    <div class="linha-codigo resposta">3</div>                    
+                    
+                </div>
+                <p>
+                    - Uma vez que o return foi acionado, a função se encerra. Observe o exemplo abaixo: 
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> x + y :</div>
+                     <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( x + y )</div>
                 </div>
                 <div class="obs">
-                    Não é possível somar uma String com um número ( Inteiro ou Float ). Será que podemos multiplicar
-                     uma String com um número inteiro??? Vamos em frente para ver.
+                    A função print não será chamada. O código (dentro de uma função) após o return ter sido acionado não será mais lido pelo interpretador Python. Mas não fique triste por isso. Você vai superar! Vida que segue!
                 </div>
             </div>
             <div id="conteudo4" class="esconder">
-                <h3>Operação com Strings</h3>
+                <h3>Função dentro de função</h3>
                 <p>
-                    - Multiplicação : Repete-se a String pela quantidade multiplicada
+                    - <span  class="sublinhado">Função dentro de função ???? </span><span  class="negrito"> Que loucura!!!</span>
                 </p>
                 <p>
-                    - A ordem não importa.
+                    - Mas não é loucura não. Muito pelo contrário. Muito útil! Reparem:
                 </p>
 
                 <div class="codigo">
-                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( <span class="string">'2'</span> * 4 ) </div>
-                    <div class="linha-codigo resposta">2222</div>
-                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"22"</span> *  <span class="string">"44"</span> </div>
-                    <div class="linha-codigo resposta"><span class="seta">TypeError: can't multiply sequence by non-int of type 'str'</span></div>
-                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"Metrologia"</span> *  4.0</span> </div>
-                    <div class="linha-codigo resposta"><span class="seta">TypeError: can't multiply sequence by non-int of type 'float'</span></div>
-                
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> x + y :</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> soma2vezes ( soma, x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> ( soma (x + y) ,soma (x + y)  ):</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>(soma2vezes( soma , 1 + 2 ))</div>
+                    <div class="linha-codigo resposta">6</div>
+                </div>
+
+                <p>
+                    - Passar a função como parâmetro é uma boa prática. Mas não é necessário. O código abaixo também funcionan:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> x + y :</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> soma2vezes ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> ( soma (x + y) ,soma (x + y)  ):</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>(soma2vezes( 1 + 2 ))</div>
+                    <div class="linha-codigo resposta">6</div>
+                </div>
+                <div class="obs">
+                    Posso criar uma função e utilizá-la dentro de uma outra função. Passando uma função como parâmetro de outra - ex: soma2vezes(soma,1,2) - podemos saber de cara saber quais são os requisitos necessários para essa outra função funcionar. Daí ser uma boa prática de organizar e dar manutenção ao seu código.
                 </div>
                 
             </div>
             <div id="conteudo5" class="esconder">
                 <h3>
-                    Qual a saída do código :
+                    Marque a alternativa certa: 
                 </h3>
+                <p> Como seria o return de uma função que calcula a*x**2 + b*x + c utilizando as funções definidas abaixo: </br></br>
+                    a = 2</br>
+                    b = 3</br>
+                    c = 4</br>
+                    x = 5</br></br>
+                    def calcula_segundo_grau (a, b, c , x) :</br>
+                    &nbsp&nbsp&nbsp&nbsp return ??? </br></p>
+                <p> Funções já definidas:</p>
                 <p>
-                    >>> print ( 'Vasco campeão em ' + 2023 )
+                    def soma ( x , y ):</br>
+                    &nbsp&nbsp&nbsp&nbspreturn x + y </br>
+                    def vezes ( x , y ):</br>
+                    &nbsp&nbsp&nbsp&nbspreturn x * y </br>
+                    def potencia2 ( x  ):</br>
+                    &nbsp&nbsp&nbsp&nbspreturn x ** 2 </br>                 
+
                 </p>
+                <p>y = calcula_segundo_grau (a, b, c , x)</p>
+                <p>print(y)</p>
                 <ul id="ul_lista">
                     <!--<li id="n1">No</li>-->
                 </ul>                            
