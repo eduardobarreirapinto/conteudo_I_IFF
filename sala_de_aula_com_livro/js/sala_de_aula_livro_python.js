@@ -16,7 +16,7 @@ const paper7 = document.querySelector('#p7');
 const paper8 = document.querySelector('#p8');
 
 const cont_pag = document.querySelector('#cont_pag');
-const select_pag = document.querySelector('.searchbar');
+//const select_pag = document.querySelector('.searchbar');
 
 const LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40;
 
@@ -61,7 +61,7 @@ let numOfPapers = 8;
 let maxState = numOfPapers + 1;
 
 cont_pag.innerHTML = currentState;
-select_pag.placeholder = '1/' + maxState;
+//select_pag.placeholder = '1/' + maxState;
 
 
 function openBook() {
