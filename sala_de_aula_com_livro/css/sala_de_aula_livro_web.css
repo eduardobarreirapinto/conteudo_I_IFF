@@ -1,0 +1,434 @@
+/* General */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{    
+    height: 100vh;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-family: sans-serif;
+    background-color: beige;
+    /*background-image: url('../img/fundo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    /*background-position: center center;  ou center center, center bottom, etc. */  
+}
+
+.anterior a{
+    position: absolute;
+    top:10%;
+    left:5%;
+    display: flex;
+    align-items: center;
+    color:  rgb(180, 180, 194);
+   
+}
+
+.anterior i {
+    
+    padding-right: 15px;
+    color:  rgb(180, 180, 194);
+}
+
+i {
+    color: rgb(180, 180, 194);
+    font-size: 4em;
+}
+
+#iff_logo
+{
+  /* border: 1px solid; */
+  width: 200px;
+  height: 100px;
+  object-fit:contain;
+   
+}
+#logos_I, #logos_FF{
+    transition: transform 0.5s;
+    
+}
+
+/* Button */
+button {
+    border: none;
+    background-color: transparent;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover i {
+    color: rgb(63, 204, 223);
+}
+
+
+
+/* Book */
+.book {
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transition: transform 0.5s;
+}
+#cont_pag
+{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    z-index: 10;
+}
+
+.paper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    perspective: 1500px;
+}
+
+.front {
+    backface-visibility: hidden;
+    /*border-left: 1px solid black;*/
+}
+
+.front, 
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transform-origin: left;
+    transition: transform 0.5s;
+    border: 1px solid gray;
+}
+
+.front {
+    z-index: 1;
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content,
+.back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-content {
+    transform: rotateY(180deg)
+}
+
+/* Paper Flipped */
+.flipped .front,
+.flipped .back {
+    transform: rotateY(-180deg)
+}
+
+/* Paper Z-index */
+#p1 {
+    z-index: 3;
+}
+
+#p2 {
+    z-index: 2;
+}
+
+#p3 {
+    z-index: 1;
+}
+
+/* Customization */
+
+.book-title {
+    font-size: 2.1em;
+    margin-bottom: 40px;
+    text-align: center;
+    background-image: linear-gradient(180deg, #4b9c6d,#3e3be7);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.cover-img {
+    width: 200px;
+    height: 270px;
+    object-fit: contain;
+    border-radius: 30px;
+}
+
+#b1 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
+}
+#b2 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
+}
+#b3 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
+}
+
+#b1 h2 {
+    font-size: 1.2em;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    line-height: 1.8; 
+    background-image: linear-gradient(180deg, #333333, #0b73c9);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+#b2 h2 {
+    font-size: 1.2em;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    line-height: 1.8; 
+    background-image: linear-gradient(180deg, #333333, #0b73c9);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+#b3 h2 {
+    font-size: 1.2em;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    line-height: 1.8; 
+    background-image: linear-gradient(180deg, #333333, #0b73c9);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#b1 p {
+    margin-bottom: 20px;
+}
+#b2 p {
+    margin-bottom: 20px;
+}
+#b3 p {
+    margin-bottom: 20px;
+}
+
+/* .searchbar {
+    text-align: center;
+    border : 1px solid;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 5%;
+    width: 10%;
+    outline: none;
+    outline:0;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 20px;
+  
+} */
+
+/* .searchbar:focus {
+  width: 5%;
+  border-radius: 20px;
+  text-align: center;
+  text-indent: 10px;
+  cursor: auto;
+} */
+
+/* conceitos básicos */
+.flex{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 90%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FFF;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 15px;
+
+}
+a{
+text-decoration: none;
+color: #FFF;
+}
+.itens{
+  text-align: center;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  border: 2px solid  black;
+  border-radius: 12px;
+  background-color: gray;
+  color: #FFF;
+  text-shadow: 1px 1px #2b0c47;
+  transition: 0.2s ease-in-out;
+
+}
+.itens h3{
+    font-size: 1em;
+}
+
+.itens:hover{
+  background-color: aqua;
+  color: black;
+  cursor: pointer;
+  text-shadow: none;
+  font-weight: 600;
+}
+
+.itens:hover a{
+  color: black;
+}
+.itens{
+  text-align: center;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  border: 2px solid  black;
+  border-radius: 12px;
+  background-color: gray;
+  color: #FFF;
+  text-shadow: 1px 1px #2b0c47;
+  transition: 0.2s ease-in-out;
+
+}
+.itens h3{
+    font-size: 1em;
+}
+.back h2 a{
+    font-size: 1em;
+    color:#098d05;
+    transition: 0.2s ease-in-out;
+}
+.back h2 a:hover{
+    font-size: 1.2em;
+    color:#b0ec24;
+}
+
+.itens:hover{
+  background-color: aqua;
+  color: black;
+  cursor: pointer;
+  text-shadow: none;
+  font-weight: 600;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+    }
+    body {
+        /* Ajuste para centralizar o conteúdo na vertical e horizontal */
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        flex-direction: column;
+        height: 100vh;
+    }
+    
+    /* Centralizar e espaçar verticalmente os elementos */
+    .anterior,
+    #prev-btn,
+    #book .front,
+    #next-btn {
+        margin: 0;
+        padding: 0;
+    }
+    .back {
+        display: none;
+    }  
+    .front {
+        /*display: none;*/
+    }  
+
+    .anterior {
+        position: absolute;
+        top:2%;
+        left:2%;  
+        height: 2em;   
+               
+    }  
+    i {
+        color: rgb(180, 180, 194);
+        font-size: 4em;
+        margin: .3em;
+        
+    }
+    .anterior i{   
+        font-size: 2em;
+        color:rgb(204, 105, 125);
+    } 
+    .anterior h3{   
+        display: none;
+    } 
+    
+    
+    .front {
+        overflow: hidden;
+    }
+    .front-content h2 {
+        font-size: 2em; /* Defina o tamanho desejado em 'em', 'px' ou outras unidades */
+    }
+
+    /* Ajuste o tamanho da fonte do título do livro */
+    .book-title {
+        font-size: 2em;
+    }
+    /* Redimensione a imagem da capa do livro */
+    .cover-img {
+        max-width: 100% !important; /* Utilize !important para garantir que essa regra prevaleça */
+        height: auto;
+        width: 150px;
+    }
+      
+
+    #iff_logo
+    {
+       display: none;
+    
+    }
+    button {        
+        transition: transform 0.5s;
+    }
+   
+}

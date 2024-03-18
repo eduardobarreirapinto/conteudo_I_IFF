@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/condicional.css">
+    <script src="./js/condicional.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>IF</h3>
+                <p>
+                    - Se uma expressão for avaliada como <span class="laranja-1">True</span>, algumas instruções serão executadas. 
+                    Caso contrário, eles não são realizados.
+                </p>
+                <p>
+                    - No IDLE, abra um novo arquivo ( New File ou Ctrl N ) e digite o código abaixo.
+                </p>
+                
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">if </span> 2 > 1 :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>(<span class="string">' 2 é maior que 1 '</span> )</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp</span><span class="funcao">print </span>( <span class="string">' Fim do programa! '</span>)</div>
+                   
+                </div>  
+                <p>
+                    - Para executar o código pressione F5.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> 2 é maior que 1</div>
+                    <div class="linha-codigo resposta"> Fim do programa!</div>
+                                        
+                </div>
+                <p>
+                    - Outro exemplo com <span class="negrito">IF aninhado</span>. Copie e cole o código abaixo.
+                </p>
+                <div class="codigo"> 
+                    <div class="linha-codigo">valor = 103</div>
+                    <div class="linha-codigo"><span class="laranja">if </span> valor > 100 :</div>    
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp</span><span class="funcao">print </span>( <span class="string">' Maior que 100 '</span> )</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp</span><span class="laranja">if </span> valor <= 105 :</div>        
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">' Entre 100 e 105 '</span> )</div>
+                    
+                </div>
+                <p>
+                    - Pressione F5.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> Maior que 100</div>
+                    <div class="linha-codigo resposta"> Entre 100 e 105</div>
+                    
+                </div>
+                
+                <div class="obs">
+                    Python não utiliza  { } para  separar blocos de códigos como em outras linguagens de progração. No Python, é obrigatório
+                     o uso de INDENTAÇÃO ( convencionalmente usa-se 4 espaços ou TAB ).
+                </div>
+                <div class="obs">
+                    Não se esqueça do : após a expressão.
+                </div> 
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>ELSE</h3>
+                <p>
+                    - Executa quando a expressão do <span class="laranja-1">If</span> for <span class="laranja-1">False</span>
+                    . 
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo">x = 341</div>
+                    <div class="linha-codigo"><span class="laranja">if </span> x == 300 :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">' Sim '</span> )</div>
+                    <div class="linha-codigo"><span class="laranja">else </span>:</div>   
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">' Não '</span> )</div>
+                        
+                </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> Não</div>
+                    
+                </div>
+                
+                <div class="obs">
+                    IF e ELSE possuem a mesma indentação.
+                </div>              
+                
+            </div>
+            
+            <div id="conteudo3" class="esconder">
+                <h3>ELIF</h3>
+                <p>
+                    - Observe o código abaixo:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">x = 341</div>
+                    <div class="linha-codigo"><span class="laranja">if </span> x == 300 :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">' X vale 300 '</span> )</div>
+                    <div class="linha-codigo"><span class="laranja">else </span>:</div>   
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">if </span> x == 350 :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">' X vale 350 '</span> )</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">else </span>:</div> 
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="laranja">if </span> x == 341 :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="tab">----</span><span class="funcao">print </span>( <span class="string">' X vale 341 '</span> )</div>
+                </div>
+
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> X vale 341</div>
+                                        
+                </div>
+                <p>
+                    - A sequência <span class="negrito">Else IF</span> é comum e permitida. Mas o código, devido a indentação,
+                     pode ficar confuso e 'inclinado' demais. Não acham?
+                </p>
+                <p>
+                    - No Python, existe a expressão <span class="negrito">ELIF</span> que substitui o <span class="negrito">ELSE IF</span>. 
+                    Assim, o código fica mais limpo e facilita a manutenção.
+                </p>
+                p>
+                    - A lógica do código abaixo é a mesma. Observe.
+
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">x = 341</div>
+                    <div class="linha-codigo"><span class="laranja">if </span> x == 300 :</div>
+                    <div class="linha-codigo"><span class="tab">----</span><span class="funcao">print </span>( <span class="string">' X vale 300 '</span> )</div>
+                    <div class="linha-codigo"><span class="laranja">elif </span>x == 350 :</div>   
+                    <div class="linha-codigo"><span class="tab">----</span><span class="funcao">print </span>( <span class="string">' X vale 350 '</span> )</div>
+                    <div class="linha-codigo"><span class="laranja">elif </span>x == 341 :</div>
+                    <div class="linha-codigo"><span class="tab">----</span><span class="funcao">print </span>( <span class="string">' X vale 341 '</span> )</div>
+                </div>
+                
+                
+                <div class="codigo">
+                    <div class="linha-codigo resposta"> X vale 341</div>
+                                        
+                </div>
+               
+                    
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>
+                    Qual o resultado do programa?
+                </h3>
+                <p>nome = 'Eduardo'</p>
+                <p>idade = 43</p>
+                <p>convidado = False</p>
+                <p>penetra = True</p>
+                <p>if nome == 'Eduardo':</p>
+                <p>&nbsp&nbsp&nbsp&nbsp if idade > 18 :</p>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp if convidado == True :</p>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp print ( ' Pode entrar na festa !!! ' )</p>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp elif penetra == True :</p>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp print ( ' Entrei de penetra !!! ' )</p>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp else:</p>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp print ( ' Barrado no baile !!!' )</p> 
+                <p>&nbsp&nbsp&nbsp&nbsp else :</p>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspprint ( 'Não pode entrar menor de 18 !!!' )</p> 
+               
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>
+                    <li id="n2">Yes</li>
+                    <li id="n3">Opção 3</li>
+                    <li id="n4">Opção 4</li>
+                    <li id="n5">Opção 5</li>-->
+                </ul>
+            </div>
+
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/boolean.css">
+    <script src="./js/boolean.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+                <div id= "botao5" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Booleans</h3>
+                <p>
+                   - Outro tipo : <span class="laranja-1">True</span> e <span class="laranja-1">False</span>
+                </p>
+                <p>
+                    - Pode ser criado comparando valores ( == )
+                </p>
+                                                  
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> verdadeiro = <span class="laranja">True</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> verdadeiro</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 47 == 47.0</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 47 == '47'</div>
+                    <div class="linha-codigo resposta">False</div>
+                    
+                </div>
+                <div class="obs">
+                    Não confundir == ( comparação ) com = ( atribuição)
+                </div>                
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Booleans</h3>
+                <p>
+                    Não igual <i class="fas fa-long-arrow-alt-right"></i> != 
+                </p>
+                <p>
+                    - Terá uma saída <span class="laranja-1">True</span> se valores ou tipos forem diferentes.
+                </p>
+                
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 5 != 5</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 47 != 47.0</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 47 != '47.0'</div>
+                    <div class="linha-codigo resposta">True</div>
+                </div>
+                <p>
+                    Comparação 
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 25 >= 25</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 25 > 25</div>
+                    <div class="linha-codigo resposta">False</div>
+                    
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Lógica Booleana <span class="laranja-1">and</span> / <span class="laranja-1">or</span> / <span class="laranja-1">not</span>: 
+                </h3>
+                <p>
+                    <span class="laranja-1">and</span> <i class="fas fa-long-arrow-alt-right"></i> Para a saída ser positiva, todos os termos precisam ser positivos
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 10 == 10 <span class="laranja">and</span> 22 == 22</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 10 == 10 <span class="laranja">and</span> 22 == 23</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 1 != 1 <span class="laranja">and</span> 2 == 2</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 4 < 2 <span class="laranja">and</span> 5 > 9</div>
+                    <div class="linha-codigo resposta">False</div>
+                </div>
+                <p>
+                    <span class="laranja-1">or</span> <i class="fas fa-long-arrow-alt-right"></i> Para a saída ser positiva, pelo menos um dos termos precisa ser positivo
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 10 == 10 <span class="laranja">or</span> 22 == 22</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 10 == 10 <span class="laranja">or</span> 22 == 23</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 1 != 1 <span class="laranja">or</span> 2 == 2</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 4 < 2 <span class="laranja">or</span> 5 > 9</div>
+                    <div class="linha-codigo resposta">False</div>
+                </div>
+                <p>
+                    <span class="laranja-1">not</span> <i class="fas fa-long-arrow-alt-right"></i> Inverte o valor booleano do termo
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="laranja">not </span> 22 == 22</div>
+                    <div class="linha-codigo resposta">False</div>
+                    <div class="linha-codigo"><span class="seta">>>></span><span class="laranja">not </span>( ( 22 == 22 ) <span class="laranja">or </span>( 22 == 23 ) )</div>
+                    <div class="linha-codigo resposta">False</div>
+                    
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Algebra Booleana</h3>
+                
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="laranja">False </span> == <span class="laranja">False or True</span></div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="laranja">True </span> == (<span class="laranja">False or True </span>)</div>
+                    <div class="linha-codigo resposta">True</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> ( <span class="laranja">True </span> == <span class="laranja">True </span>) <span class="laranja">or False </span></div>
+                    <div class="linha-codigo resposta">True</div>
+                    
+                </div>
+                
+            </div>
+            <div id="conteudo5" class="esconder">
+                <h3>
+                    Qual a saída da expressão :
+                </h3>
+                <p>
+                    >>> ( False == False or True ) or ( 44  == 44 and 'b' > 'a')
+                </p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                </ul>                            
+                    
+            </div>
+            
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

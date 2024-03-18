@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/criando_funcoes.css">
+    <script src="./js/criando_funcoes.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+                <div id= "botao5" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Criando Funções próprias</h3>
+                <p>
+                   - Até agora utilizamos as funções nativas do Python. E isso realmente é muito bom. 
+                </p>
+                <p>
+                    - Mas também podemos criar nossas próprias funções!!!
+                </p>
+                <p>
+                    - Veja o exemplo abaixo:
+                </p>
+                                  
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> exemplo_Func (  ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Curso"</span> )</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Python"</span> )</div>
+                    <div class="linha-codigo">exemplo_Func (  )</div>
+                    <div class="linha-codigo resposta">'Curso'</div>
+                    <div class="linha-codigo resposta">'Python'</div>
+                    
+                </div>
+                <p>
+                    - Perceba que  <span class="sublinhado">é necessário definir uma função antes de chamá-la.</span> 
+                </p>
+                <p>
+                    - Caso contrário, tomaremos um <span class="negrito">erro.</span>
+                </p>                
+                <p>
+                    - Veja o exemplo abaixo.                    
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo">imprime (  )</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> imprime ( ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Curso Python"</span> )</div>                                      
+                    <div class="linha-codigo resposta"><span class="seta">NameError: name 'imprime' is not defined
+                    </div>
+                    
+                </div>
+                              
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Criando Funções próprias - Argumentos</h3>
+                <p>
+                    - Agora iremos inserir argumentos em uma função.
+                </p>
+                <p>
+                    - Argumentos são os dados inseridos dentro do parênteses da função.
+                </p>
+                <p>
+                    - Podemos inserir um ou mais argumentos de acordo com a necessidade.
+                </p>
+                <p>
+                    - O exemplo abaixo tem apenas um argumento que será concatenado com uma string (!!!).
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> exemplo_Func ( arg ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( arg + <span class="string">"!!!"</span> )</div>
+                    <div class="linha-codigo">exemplo_Func ( <span class="string">"Curso Python na Metrologia"</span> )</div>
+                    <div class="linha-codigo resposta">'Curso Python na Metrologia!!!'</div>
+                    
+                </div>
+                <p>
+                    - Vamos criar uma função que some dois números.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( a , b ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( a + b )</div>
+                    <div class="linha-codigo">soma ( 2 , 4 )</div>
+                    <div class="linha-codigo resposta">6</div>
+                    
+                </div>
+                <p>
+                    - Um erro muito comum que acontece quando criamos uma função é defenirmos uma variável dentro da função e tentar chamar essa variável fora dela.
+                </p>
+                <p>
+                    - Observem esse tipo de erro abaixo para vocês já ficarem espertos quando criarem suas funções.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> exemplo ( a ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbspx = a</div>
+                    <div class="linha-codigo">exemplo ( 2 )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( 2 )</div>
+                    <div class="linha-codigo resposta"><span class="seta">NameError: name 'x' is not defined</div>
+                    
+                </div>
+                <div class="obs">
+                    Variável definida dentro da função não pode ser chamada fora !!!
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Retorno</h3>
+                <p>
+                    - Funções podem retornar informação; 
+                </p>
+                <p>
+                    - Geralmente as funções recebem os dados de entrada (argumentos), processam esses dados( fazem cáculo, comparam e etc)
+e depois retornam o resultado                
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> maior ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">if</span> x > y :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="laranja">return </span> x </div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">else</span> :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="laranja">return </span> y </div>
+                    <div class="linha-codigo">z = maior ( 2 , 3 )</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>( z )</div>
+                    <div class="linha-codigo resposta">3</div>                    
+                    
+                </div>
+                <p>
+                    - Uma vez que o return foi acionado, a função se encerra. Observe o exemplo abaixo: 
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> x + y :</div>
+                     <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( x + y )</div>
+                </div>
+                <div class="obs">
+                    A função print não será chamada. O código (dentro de uma função) após o return ter sido acionado não será mais lido pelo interpretador Python. Mas não fique triste por isso. Você vai superar! Vida que segue!
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Função dentro de função</h3>
+                <p>
+                    - <span  class="sublinhado">Função dentro de função ???? </span><span  class="negrito"> Que loucura!!!</span>
+                </p>
+                <p>
+                    - Mas não é loucura não. Muito pelo contrário. Muito útil! Reparem:
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> x + y :</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> soma2vezes ( soma, x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> ( soma (x + y) ,soma (x + y)  ):</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>(soma2vezes( soma , 1 + 2 ))</div>
+                    <div class="linha-codigo resposta">6</div>
+                </div>
+
+                <p>
+                    - Passar a função como parâmetro é uma boa prática. Mas não é necessário. O código abaixo também funcionan:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> x + y :</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> soma2vezes ( x , y ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> ( soma (x + y) ,soma (x + y)  ):</div>
+                    <div class="linha-codigo"><span class="funcao">print </span>(soma2vezes( 1 + 2 ))</div>
+                    <div class="linha-codigo resposta">6</div>
+                </div>
+                <div class="obs">
+                    Posso criar uma função e utilizá-la dentro de uma outra função. Passando uma função como parâmetro de outra - ex: soma2vezes(soma,1,2) - podemos saber de cara saber quais são os requisitos necessários para essa outra função funcionar. Daí ser uma boa prática de organizar e dar manutenção ao seu código.
+                </div>
+                
+            </div>
+            <div id="conteudo5" class="esconder">
+                <h3>
+                    Marque a alternativa certa: 
+                </h3>
+                <p> Como seria o return de uma função que calcula a*x**2 + b*x + c utilizando as funções definidas abaixo: </br></br>
+                    a = 2</br>
+                    b = 3</br>
+                    c = 4</br>
+                    x = 5</br></br>
+                    def calcula_segundo_grau (a, b, c , x) :</br>
+                    &nbsp&nbsp&nbsp&nbsp return ??? </br></p>
+                <p> Funções já definidas:</p>
+                <p>
+                    def soma ( x , y ):</br>
+                    &nbsp&nbsp&nbsp&nbspreturn x + y </br>
+                    def vezes ( x , y ):</br>
+                    &nbsp&nbsp&nbsp&nbspreturn x * y </br>
+                    def potencia2 ( x  ):</br>
+                    &nbsp&nbsp&nbsp&nbspreturn x ** 2 </br>                 
+
+                </p>
+                <p>y = calcula_segundo_grau (a, b, c , x)</p>
+                <p>print(y)</p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                </ul>                            
+                    
+            </div>
+            
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

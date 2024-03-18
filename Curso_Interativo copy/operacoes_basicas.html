@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/operacoes_basicas.css">
+    <script src="./js/operacoes_basicas.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Operações Básicas</h3>
+                <p>
+                   - Cálculos são feitos de forma direta no console do Python ( Idle ):
+                 </p>
+                  
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 2 + 2</div>
+                    <div class="linha-codigo resposta">4</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 2 + 2 - 1</div>
+                    <div class="linha-codigo resposta">3</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 2 * ( 2 + 3 )</div>
+                    <div class="linha-codigo resposta">10</div>
+                    <div class="linha-codigo"><span class="seta">>>></span>( - 7 + 2 ) * ( - 4 )</div>
+                    <div class="linha-codigo resposta">20</div>
+                </div>
+                <p>
+                    - Tente dividir um número por zero.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 5 / 0</div>
+                    <div class="linha-codigo resposta"><span class="seta">ZeroDivisionError</span></div>
+                    
+                </div>
+                <div class="obs">
+                    Leia a indicação de erro com cuidado! Assim poderá reparar rapidamente seu código.
+                     Nesse caso, percebemos que existe uma divisão por zero.
+                </div>
+                <p>
+                    - Divisão entre dois <span class="negrito">inteiros</span> ( utilizando / e // . Perceba a diferença no resultado. 
+                    Na próxima página verá o porquê)
+                </p>
+                <p>
+                    - Cálculo com dois <span class="negrito">floats</span>( número com casas decimais )
+                </p>
+                <p>
+                    - Cálculo entre um float e um inteiro produz float.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 10 / 2</div>
+                    <div class="linha-codigo resposta">5.0</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 10 // 2</div>
+                    <div class="linha-codigo resposta">5</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 6.0 * 7.0</div>
+                    <div class="linha-codigo resposta">42.0</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 4 + 3.62</div>
+                    <div class="linha-codigo resposta">7.62</div>
+                    
+                </div>
+                <div class="obs">
+                    Um float pode ser adicionado a um inteiro, porque o Python converte o inteiro em float. No entanto, essa conversão implícita é uma exceção.
+                    Normalmente, teremos que converter os valores manualmente se quiser operá-los.
+                    
+                </div>
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Exponenciação</h3>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 2 ** 3 </div>
+                    <div class="linha-codigo resposta">8</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 9 ** (1 / 2)</div>
+                    <div class="linha-codigo resposta">3.0</div>
+                </div>
+
+                <h3>Quociente e Resto</h3>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> 15 // 6 </div>
+                    <div class="linha-codigo resposta">5</div>
+                    <div class="linha-codigo"><span class="seta">>>></span>2.5 % 2</div>
+                    <div class="linha-codigo resposta">0.5</div>
+                </div>            
+                
+                
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>
+                    Qual o resultado da expressão:
+                </h3>
+                <p>
+                   >>> 5*2+4 /(1+1) 
+                </p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                </ul>                            
+                    
+            </div>
+            
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

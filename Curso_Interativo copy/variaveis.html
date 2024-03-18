@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/variaveis.css">
+    <script src="./js/variaveis.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Variáveis</h3>
+                <p>
+                    - Permite gravar um valor a um nome por atribuição ( = ).
+
+                </p>
+                <p>
+                    - A variável pode ser chamada posteriormente no programa. 
+                </p>
+                <p>
+                    - A atribuição não provoca nenhuma saída.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> x = 39</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( x )</div>
+                    <div class="linha-codigo resposta">39</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span>( x + 10 )</div>
+                    <div class="linha-codigo resposta"> 49</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( x )</div>
+                    <div class="linha-codigo resposta"> 39</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> x = x + 39</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( x )</div>
+                    <div class="linha-codigo resposta">49</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span>(<span class="string"> ' Isso agora é um texto -> ' </span> + <span class="funcao">str </span>( x ) )</div>
+                    <div class="linha-codigo resposta"> Isso agora é um texto -> 49</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> num_Serie_Gerador = 12345</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> num_Serie_Gerador = 54321</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span>( num_Serie_Gerador )</div>
+                    <div class="linha-codigo resposta"> 54321</div>
+                </div>
+                
+                
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Mais Variáveis</h3>
+                                
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> num_Serie_Gerador = 12345</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> num_Serie_Gerador = 54321</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span>( num_Serie_Gerador )</div>
+                    <div class="linha-codigo resposta"> 54321</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> 1Multimetro =<span class="string"> 'Agilent'</span></div>
+                    <div class="linha-codigo resposta"><span class="seta"> SyntaxError: invalid syntax</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> contador universal =<span class="string"></span>  '53132A'</span></div>
+                    <div class="linha-codigo resposta"><span class="seta"> SyntaxError: invalid syntax</span></div>
+                    
+                </div>
+                <div class="obs">
+                    Cuidado ao declarar uma variável !!! Não pode começar com números nem ter espaços.
+                </div>
+                <div class="obs">
+                    Cuidado!!!  'Laeta' é diferente( != ) de 'laeta'  (Case Sensitive)
+
+                </div>             
+                
+            </div>
+            
+            <div id="conteudo3" class="esconder">
+                <h3>Continuação</h3>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> nome = <span class="string">'Eduardo'</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> nome</div>
+                    <div class="linha-codigo resposta">'Eduardo' </div> 
+                    <div class="linha-codigo"><span class="seta">>>></span> Eduardo</div>
+                    <div class="linha-codigo resposta"><span class="seta">NameError: name 'Eduardo' is not defined</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="laranja">del</span> nome</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> nome</div>
+                    <div class="linha-codigo resposta"><span class="seta">NameError: name 'nome' is not defined</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> valor = <span class="funcao">input </span>( <span class="string"> ' Entre com o valor: ' </span>)</div>
+                    <div class="linha-codigo resposta">Entre com o valor: <span class="resposta-1">998.98</span> </div> 
+                    <div class="linha-codigo"><span class="seta">>>></span> valor</div>
+                    <div class="linha-codigo resposta">'998.98' </div>
+                </div> 
+                    
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>
+                    Qual o resultado do print ( media ) segundo a sequência abaixo ?
+                </h3>
+                <p>
+                    >>> valor_1 = 100
+                </p>
+                <p>
+                    >>> valor_2 = 100
+                </p>
+                <p>
+                    >>> media = ( valor_1 + valor_2 ) / 2
+                </p>
+                <p>
+                    >>> del valor_1
+                </p>
+                <p>
+                    >>> print ( media )
+                </p>
+                
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>
+                    <li id="n2">Yes</li>
+                    <li id="n3">Opção 3</li>
+                    <li id="n4">Opção 4</li>
+                    <li id="n5">Opção 5</li>-->
+                </ul>
+            </div>
+
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

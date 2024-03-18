@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livro Digital - Python</title>
+    <link rel="stylesheet" href="./css/sala_de_aula_livro_web.css">
+    <!--<script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>-->
+    <script src="https://kit.fontawesome.com/112d97f960.js" crossorigin="anonymous"></script>
+    <script defer src="./js/sala_de_aula_livro_web.js"></script>
+</head>
+<body>
+    <div class="anterior">
+        <a href="../index.html">
+            <i class="fas fa-arrow-left"></i>
+            <h3>Voltar</h3>
+        </a>
+    </div>
+    <div id = "logos_I">
+        <img id="iff_logo" src="./img/I.png" alt="Logo I"></a>
+    </div>
+
+    <!--<input type="text" class="searchbar"></input>-->
+
+    <button id="prev-btn">
+        <!--<i class="fas fa-arrow-circle-left"></i>-->
+        <i class="fa-solid fa-circle-arrow-left"></i>
+    </button>
+    <!-- The Book -->
+    <div id="book" class="book">
+
+        <div id="cont_pag" >0</div>
+
+        <!-- Paper 1 -->
+        <div id="p1" class="paper">
+            <div class="front">
+                <div id="f1" class="front-content">
+                    <h2 class="book-title">Programação de Aplicações Web</h2>
+                    <img class="cover-img" src="./img/web.png" alt="Programação de Aplicações Web">
+                </div>
+            </div>
+            <div class="back">
+                <div id="b1" class="back-content">
+                    <h2>"A criatividade é a arte de conectar ideias." </h2>
+                    <div class="content">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Paper 2 -->
+        <div id="p2" class="paper">
+            <div class="front">
+                <div id="f2" class="front-content">
+                    <div class="flex">
+                        <h2>Conceitos Básicos</h2>
+                        <div class="itens"><a href="../Curso_Interativo_Web/"><h3>Bem Vindo</h3></a></div>
+                        <div class="itens"><a href="../Curso_Interativo_Web/bem_vindo_ao_python.html"><h3>Introdução</h3></a></div>
+                        <div class="itens"><a href="../Curso_Interativo_Web/primeiro_programa.html"><h3>Primeira Aplicação Web</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b2" class="back-content">
+                    <h2>"A criatividade é a inteligência se divertindo." </h2>
+                </div>
+            </div>
+        </div>
+        <!-- Paper 3 -->
+        <div id="p3" class="paper">
+            <div class="front">
+                <div id="f3" class="front-content">
+                    <div class="flex">
+                        <h2>Estrutura de Controle</h2>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                                       
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2>"Educação não transforma o mundo. Educação muda pessoas. Pessoas transformam o mundo."</2>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Paper 4 -->
+        <div id="p4" class="paper">
+            <div class="front">
+                <div id="f4" class="front-content">
+                    <div class="flex">
+                        <h2>Funções e Módulos</h2>
+                        <!--<div class="itens"><a href="../Curso_Interativo/#.html"><h3>Comentários</h3></a></div>
+                        <div class="itens"><a href="../Curso_Interativo/#.html"><h3>Módulos</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Verifique seu Conhecimento!</h3></a></div> -->
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2>"A imaginação é mais importante que o conhecimento."</2>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Paper 5 -->
+        <div id="p5" class="paper">
+            <div class="front">
+                <div id="f5" class="front-content">
+                    <div class="flex">
+                        <h2>Exceções e Arquivos (.txt)</h2>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>               
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2> "Não é o mais forte da espécie que sobrevive, nem o mais inteligente, mas o que melhor se adapta às mudanças."</2>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Paper 6 -->
+        <div id="p6" class="paper">
+            <div class="front">
+                <div id="f6" class="front-content">
+                    <div class="flex">
+                        <h2>Mais Tipos de Dados</h2>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando...</h3></a></div>               
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2>"Nada na vida deve ser temido, somente compreendido."</2>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Paper 7 -->
+        <div id="p7" class="paper">
+            <div class="front">
+                <div id="f7" class="front-content">
+                    <div class="flex">
+                        <h2>Programação Funcional</h2>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>               
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2> "A inteligência artificial e a inteligência humana são complementares e não devem ser separadas."</2>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Paper 8 -->
+        <div id="p8" class="paper">
+            <div class="front">
+                <div id="f8" class="front-content">
+                    <div class="flex">
+                        <h2>Programação Orientada a Objeto</h2>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>
+                        <div class="itens"><a href="#"><h3>Elaborando</h3></a></div>               
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h2>Continue firme!</2>
+                    <h2>Nunca pare de estudar!</h2>
+                    <h2><a href="./download/Material_do_Curso.zip" download >Baixar Material PDF</a></h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="next-btn">
+        <!--<i class="fas fa-arrow-circle-right"></i>-->
+        <i class="fa-solid fa-circle-arrow-right"></i>
+    </button>
+    <div id = "logos_FF">
+        <img id="iff_logo" src="./img/FF.png" alt="Logo FF"></a>
+    </div>
+
+</body>
+</html>

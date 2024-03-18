@@ -1,0 +1,251 @@
+/* geral */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    text-decoration: none;
+    list-style: none;   
+    
+}
+header a{
+  text-decoration: none;
+  list-style: none;
+  font-style: none;
+  color: rgb(57, 55, 165);
+}
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  /* navbar */
+  #navbar {
+    background-color:#FFF;
+    color: rgb(57, 55, 165);
+    padding: 0 15px;
+    height: 60px;
+  }
+  
+  #navbar h2, #navbar ul, #navbar-list li,#navbar nav {
+    display: inline-block;
+  }
+  
+  #navbar h2 {
+    margin: 0;
+    line-height: 60px;
+    margin-left: 10%;
+  }
+  
+  #navbar img {
+    height: 50px;
+    position: absolute;
+    top: 5px;
+    margin-left: 5%;
+  }
+  
+  #navbar nav {
+    position: absolute;
+    right: 10%;
+  }
+  
+  #navbar ul {
+    line-height: 60px;
+  }
+  
+  #navbar li {
+    margin: 0 20px;
+  }
+  
+  #navbar-list li a {
+    text-decoration: none;
+    color:rgb(57, 55, 165);
+    transition: 0.2s ease-in-out;
+  }
+  
+  #navbar-list li a:hover {
+    color:aqua;
+    font-size: 20px;
+    font-weight: 400;
+  }
+ 
+
+  /* banner */
+#main-banner {
+    height: 70vh;
+    background-image: url('../img/inmetro_banner.png');
+    background-size: cover;
+    padding-top: 5vh;
+  }
+  
+  #banner-info {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    color: #FFF;
+    padding: 50px;
+  }
+  #banner-info h1 {
+  text-shadow: 2px 2px #2b0c47;
+  }
+    
+  #banner-info p {
+    font-weight: bold;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 38vh;
+  }
+
+  #banner-info p:hover {
+    animation: tremer .2s;
+    animation-iteration-count: 4;
+  }
+  /* keyframe para ajustar até onde treme */
+@keyframes tremer {
+    0% {margin-left: 0;}
+    25% {margin-left: 7px;}
+    50% {margin-left: 0;}
+    75% {margin-left: -7px;}
+    100% {margin-left: 0;}
+}
+  
+  /* about */
+
+#about-section {
+  text-align: center;
+  background-color:  #FFF;
+  color:rgb(57, 55, 165);
+  padding-top: 50px;
+  height: 350px;
+}
+
+#about-section h2 {
+  margin-bottom: 20px;
+  transition: 0.2s ease-in-out;
+    
+}
+#about-section h2 span:hover {
+    animation: neon 3s alternate infinite ease-in-out;
+   cursor:grab;
+      
+  }
+
+@keyframes neon{
+    from{
+        filter: drop-shadow(0 0 0 var(--cor-neon));
+    }
+    to{
+        filter: drop-shadow(0 0 30px var(--cor-neon));
+    }
+}
+.cor_neon{
+    --cor-neon: aqua;
+}
+  
+
+#about-section p {
+  max-width: 650px;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 30px;
+}
+
+/* cursos */
+
+#skills-section {
+  margin-top: 0vh;
+  background-color: #FFF;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;  
+}
+
+#skills-section .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.skills-container {
+  flex: 1 1 200px;
+  height: 400px;
+  margin-left: 25px;
+  margin-right: 25px;
+
+  border: 1px solid #DDD;
+  border-radius: 15px;
+  text-align: center;
+  }
+
+  
+#html5 a {
+  color: orangered;
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+#css3 a {
+    color:rgb(93, 95, 199);
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+  }
+
+#python a {
+    color: #111163;
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+  }
+
+#html5 a:hover, #css3 a:hover , #python a:hover {
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+  
+
+.skills-container img {
+    border-radius: 15px 15px 0px 0px;
+    width: 100%;
+    height: 200px;
+  
+}
+
+.skills-container .subtitle {
+  
+  font-weight: bold;
+  color: rgb(43, 43, 44);
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 25px 25px;
+}
+
+.skills-container p {
+  line-height: 25px
+}
+
+#skills-section #todos_cursos {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+#todos_cursos h1 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;       
+}
+#todos_cursos a {
+    color: #111163;
+    transition: 0.2s ease-in-out;
+}
+#todos_cursos a:hover {
+    color:rgb(55, 165, 101);
+    text-shadow: 2px 2px #2b0c47;
+    
+}

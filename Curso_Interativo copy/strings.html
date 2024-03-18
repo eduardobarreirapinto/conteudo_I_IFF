@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/strings.css">
+    <script src="./js/strings.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Já tenho conta no fontawesome. Entrar no kit e copiar essa linha que está abaixo-->
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+    <!--Baixei e utilizei o plugin Live Server. Ele carrega as páginas sem precisar atualizar - control shift P-->
+    <!--A vida é uma excelente escola quue muito pouco ensina para quem não sabe programar
+    transfoormando informação em conhecimento-->
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id= "botao1" class="botao"></div>
+                <div id= "botao2" class="botao"></div>
+                <div id= "botao3" class="botao"></div>
+                <div id= "botao4" class="botao"></div>
+                <div id= "botao5" class="botao"></div>
+            </div>
+            
+        </section>
+
+    </header>
+    <main>
+        <section id="conteudo-container"class="conteudo-container">
+
+            <div id="conteudo1">
+                <h3>Strings</h3>
+                <p>
+                   - Texto (sequência de caracteres) em Python.
+                </p>
+                <p>
+                    - Uma sequência é criada inserindo o texto entre <span class="sublinhado">duas aspas simples ou duplas</span>.
+                </p>
+                                  
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">'Curso de Python com aspas simples'</span></div>
+                    <div class="linha-codigo resposta">'Curso de Python com aspas simples'</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"Curso de Python com aspas duplas"</span></div>
+                    <div class="linha-codigo resposta">'Curso de Python com aspas simples'</div>
+                    
+                </div>
+                <p>
+                    - Alguns caracteres <span class="sublinhado">não podem ser incluídos diretamente em uma String</span>. 
+                </p>
+                <p>
+                    - Por exemplo, <span class="sublinhado">as aspas duplas não podem ser incluídas diretamente em uma cadeia de aspas duplas</span>.
+                    <span class="negrito">Isso faria com que terminasse prematuramente</span>.
+                </p>
+
+                <p>
+                    - Nem <span class="sublinhado">as aspas simples podem ser incluídas diretamente em uma cadeia de aspas simples</span>.
+                    
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span>  <span class="string">'He'</span>s not the doctor'</span></div>
+                    <div class="linha-codigo resposta"><span class="seta">SyntaxError: invalid syntax</span></div>
+                
+                </div>
+                <p>
+                    - Caracteres como esses devem ser evitados colocando uma barra invertida diante deles.
+                </p>
+                <p>
+                    - Outros caracteres comuns que devem ser escapados são novas linhas e barras invertidas.
+                </p>
+                <p>
+                    - Aspas duplas só precisam ser <span class="negrito">escapadas</span> em strings de aspas duplas, e o mesmo é verdadeiro para strings de aspas simples.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span>  <span class="string">'He\'s not the doctor. He\'s an excellent software developer !'</span></div>
+                    <div class="linha-codigo resposta">'He's not the doctor. He's an excellent software developer!'</div>
+                
+                </div>               
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Nova Linha</h3>
+                <p>
+                    - \n representa pular linha(nova linha).
+                </p>
+                <p>
+                    - Para evitar escrever manualmente "\ n" para pular linhas em uma string, utiliza-se uma string
+                     com <span class="negrito">três conjuntos de aspas</span> e as novas linhas que são criadas pressionando Enter.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">' ' ' Estou escrevendo e apertei o enter</span> </div>
+                     <div class="linha-codigo"><span class="string">e voltei a escrever aqui. ' ' ' </span> </div>
+                     <div class="linha-codigo resposta">‘Estou escrevendo e apertei o enter\n e voltei a escrever aqui.'</div>
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Concatenação de Strings</h3>
+                <p>
+                    - Assim como números, os textos (Strings) também podem adicionar outros textos - Concatenação; 
+                </p>
+                <p>
+                    - Não importa se os textos utilizam aspas simples ou duplas;
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">“Eduardo” + ‘Pinto’</span> </div>
+                    <div class="linha-codigo resposta">'Eduardo Pinto'</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( <span class="string">'2'</span> + <span class="string">" + "</span> + <span class="string">'2'</span>) </div>
+                    <div class="linha-codigo resposta">2 + 2</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"1"</span> +  1 </div>
+                    <div class="linha-codigo resposta"><span class="seta">TypeError: can only concatenate str (not "int") to str</span></div>
+                </div>
+                <div class="obs">
+                    Não é possível somar uma String com um número ( Inteiro ou Float ). Será que podemos multiplicar
+                     uma String com um número inteiro??? Vamos em frente para ver.
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Operação com Strings</h3>
+                <p>
+                    - Multiplicação : Repete-se a String pela quantidade multiplicada
+                </p>
+                <p>
+                    - A ordem não importa.
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="funcao">print</span> ( <span class="string">'2'</span> * 4 ) </div>
+                    <div class="linha-codigo resposta">2222</div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"22"</span> *  <span class="string">"44"</span> </div>
+                    <div class="linha-codigo resposta"><span class="seta">TypeError: can't multiply sequence by non-int of type 'str'</span></div>
+                    <div class="linha-codigo"><span class="seta">>>></span> <span class="string">"Metrologia"</span> *  4.0</span> </div>
+                    <div class="linha-codigo resposta"><span class="seta">TypeError: can't multiply sequence by non-int of type 'float'</span></div>
+                
+                </div>
+                
+            </div>
+            <div id="conteudo5" class="esconder">
+                <h3>
+                    Qual a saída do código :
+                </h3>
+                <p>
+                    >>> print ( 'Vasco campeão em ' + 2023 )
+                </p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                </ul>                            
+                    
+            </div>
+            
+        </section>
+
+    </main>
+    
+    <footer>
+        <hr>
+        <section class="footer-container">
+         <div id = "item-footer-voltar" class="item-footer-voltar">Voltar</div>
+         <div id = "item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>
