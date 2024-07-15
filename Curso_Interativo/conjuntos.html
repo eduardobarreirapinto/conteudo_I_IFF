@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Conjuntos em Python</title>
+    <link rel="stylesheet" href="./css/conjuntos.css">
+    <script src="./js/conjuntos.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id="botao1" class="botao"></div>
+                <div id="botao2" class="botao"></div>
+                <div id="botao3" class="botao"></div>
+                <div id="botao4" class="botao"></div>
+                <div id="botao5" class="botao"></div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section id="conteudo-container" class="conteudo-container">
+            <div id="conteudo1">
+                <h3>O que são Conjuntos em Python?</h3>
+                <p>
+                    - Conjuntos são estruturas de dados em Python que armazenam coleções não ordenadas de itens únicos.
+                </p>
+                <p>
+                    - Eles são mutáveis, ou seja, seus valores podem ser alterados após a criação.
+                </p>
+                <p>
+                    - Veja um exemplo simples de um conjunto em Python:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">conjunto</span> = {1, 2, 3, 'a', 'b', 'c'}</div>
+                </div>
+                <p>
+                    - Conjuntos são definidos usando chaves `{}` e itens separados por vírgula.
+                </p>
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Operações com Conjuntos</h3>
+                <p>
+                    - Conjuntos suportam operações matemáticas como união, interseção e diferença.
+                </p>
+                <p>
+                    - Exemplo de união de conjuntos:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">conjunto1 = {1, 2, 3}</div>
+                    <div class="linha-codigo">conjunto2 = {3, 4, 5}</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(conjunto1 | conjunto2) <span class="resposta">// Saída: {1, 2, 3, 4, 5}</span></div>
+                </div>
+                <p>
+                    - Exemplo de interseção de conjuntos:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">conjunto1 = {1, 2, 3}</div>
+                    <div class="linha-codigo">conjunto2 = {3, 4, 5}</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(conjunto1 & conjunto2) <span class="resposta">// Saída: {3}</span></div>
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Uso de Conjuntos</h3>
+                <p>
+                    - Conjuntos são frequentemente usados para remover duplicatas de uma sequência.
+                </p>
+                <p>
+                    - Exemplo de uso de conjunto para remover duplicatas:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">lista = [1, 2, 2, 3, 4, 4, 5]</div>
+                    <div class="linha-codigo">conjunto = <span class="funcao">set</span>(lista)</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(conjunto) <span class="resposta">// Saída: {1, 2, 3, 4, 5}</span></div>
+                </div>
+                <h3>Aplicações dos Conjuntos</h3>
+                <p>
+                    - Conjuntos são úteis para operações de pertença e eliminação de duplicatas.
+                </p>
+                <p>
+                    - Exemplo de uso de conjuntos em Python:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">alunos = {'João', 'Maria', 'José'}</div>
+                    <div class="linha-codigo">alunos_presentes = {'Maria', 'José'}</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(alunos - alunos_presentes)</div>
+                    <div class="linha-codigo"><span class="resposta">// Saída: {'João'}</span></div>
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Iterando em Conjuntos</h3>
+                <p>
+                    - É possível iterar sobre os elementos de um conjunto usando um loop `for`.
+                </p>
+                <p>
+                    - Exemplo de iteração em um conjunto:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">conjunto = {1, 2, 3, 'a', 'b', 'c'}</div>
+                    <div class="linha-codigo"><span class="laranja">for</span> item <span class="laranja">in</span> conjunto:</div>
+                    <div class="linha-codigo">&nbsp;&nbsp;&nbsp;&nbsp;<span class="funcao">print</span>(item)</div>
+                </div>
+                <p>
+                    - Isso imprimirá cada elemento do conjunto em uma nova linha.
+                </p>
+            </div>
+            <div id="conteudo5" class="esconder">
+                <div id="conteudo1" class="conteudo">
+                    <h3>Marque a alternativa certa:</h3>
+                    <p>Qual será a saída do seguinte código:</p>
+                    <p>conjunto1 = {'maçã', 'banana', 'laranja'}<p>
+                    <p>conjunto2 = {'laranja', 'abacaxi', 'uva'}<p>
+                    <p>print(conjunto1 & conjunto2)<p>
+                    </div>
+                    <ul id="ul_lista">
+                        <!--<li id="n1">No</li>-->
+                        
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <section class="footer-container">
+            <div id="item-footer-voltar" class="item-footer-voltar">Voltar</div>
+            <div id="item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

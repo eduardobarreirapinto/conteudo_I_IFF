@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Cursos</title>
+    <link rel="stylesheet" href="./css/modulos.css">
+    <script src="./js/modulos.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id="botao1" class="botao"></div>
+                <div id="botao2" class="botao"></div>
+                <div id="botao3" class="botao"></div>
+                <div id="botao4" class="botao"></div>
+                <div id="botao5" class="botao"></div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section id="conteudo-container" class="conteudo-container">
+            <div id="conteudo1">
+                <h3>Módulos em Python</h3>
+                <p>
+                   - Um módulo é uma maneira de organizar a sua função e outros programas para utilizar reutiliza.
+                </p>
+                <p>
+                    - E isso realmente é muito bom. 
+                </p>
+                <p>
+                    - Mas também podemos criar nossos próprios módulos!!!
+                </p>
+                <p>
+                    - Veja o exemplo abaixo:
+                </p>
+                                  
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> exemplo_Func (  ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Curso"</span> )</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Python"</span> )</div>
+                    <div class="linha-codigo">exemplo_Func (  )</div>
+                    <div class="linha-codigo resposta">'Curso'</div>
+                    <div class="linha-codigo resposta">'Python'</div>
+                    
+                </div>
+                <p>
+                    - Perceba que  <span class="sublinhado">é necessário definir uma função antes de chamá-la.</span> 
+                </p>
+                <p>
+                    - Caso contrário, tomaremos um <span class="negrito">erro.</span>
+                </p>                
+                <p>
+                    - Veja o exemplo abaixo.                    
+                </p>
+
+                <div class="codigo">
+                    <div class="linha-codigo">imprime (  )</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> imprime ( ) :</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print </span>( <span class="string">"Curso Python"</span> )</div>                                      
+                    <div class="linha-codigo resposta"><span class="seta">NameError: name 'imprime' is not defined
+                    </div>
+                    
+                </div>
+                              
+
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Módulos em Python - Importando e Reutilizando Código</h3>
+                <p>
+                    - Agora iremos inserir importando e reutilizando código.
+                </p>
+                <p>
+                    - Uma das maneiras mais poderosas de usar módulos em Python é através do comando import.
+                </p>
+                <p>
+                    - Podemos importar módulos padrão do Python ou módulos que criamos.
+                </p>
+                <p>
+                    - O exemplo abaixo demonstra como importar um módulo próprio chamado meu_modulo.py:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">import</span> meu_modulo</div>
+                    <div class="linha-codigo">meu_modulo.minha_funcao()</div>
+                </div>
+                <p>
+                    - Isso executará a função minha_funcao() definida no arquivo meu_modulo.py.
+                </p>
+                <p>
+                    - Com módulos, podemos organizar melhor nosso código, reutilizar funcionalidades em diferentes partes do projeto e facilitar a manutenção.
+                </p>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Exercício: Criando e Utilizando Módulos</h3>
+                <p>
+                    - Agora é sua vez de praticar! Crie um arquivo chamado calculos.py com as seguintes funções:
+                </p>
+                <ul>
+                    <li>funcao_soma(a, b) - Retorna a soma de a e b.</li>
+                    <li>funcao_subtracao(a, b) - Retorna a subtração de a por b.</li>
+                    <li>funcao_multiplicacao(a, b) - Retorna o resultado da multiplicação de a por b.</li>
+                    <li>funcao_divisao(a, b) - Retorna o resultado da divisão de a por b.</li>
+                </ul>
+                <p>
+                    - Depois, crie um arquivo chamado main.py que importa o módulo calculos.py e utiliza todas as funções definidas.
+                </p>
+                <p>
+                    - Execute o main.py para verificar se as funções estão funcionando corretamente.
+                </p>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Documentando Módulos em Python</h3>
+                <p>
+                    - Documentar módulos em Python é uma boa prática para facilitar o entendimento e o uso do código por outros desenvolvedores (ou por você mesmo no futuro).
+                </p>
+                <p>
+                    - Utilize docstrings para descrever o que cada função faz, quais são os parâmetros esperados e qual é o valor de retorno.
+                </p>
+                <p>
+                    - Veja um exemplo de como documentar uma função:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> soma(a, b):</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="comentario">"""Retorna a soma de dois números."""</span></div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> a + b</div>
+                </div>
+                <p>
+                    - Ao documentar suas funções, você ajuda a si mesmo e aos outros a entenderem melhor o propósito e o uso de cada função no seu código.
+                </p>
+            </div>
+            <div id="conteudo5" class="esconder">
+                <h3>Conclusão</h3>
+                <p>
+                    - Módulos em Python são poderosos para organizar, reutilizar e documentar seu código.
+                </p>
+                <p>
+                    - Com eles, você pode criar bibliotecas de funções que podem ser compartilhadas e utilizadas em diferentes projetos.
+                </p>
+                <p>
+                    - Lembre-se de importar os módulos que você precisa e documentar suas funções para facilitar a manutenção e o trabalho em equipe.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <section class="footer-container">
+            <div id="item-footer-voltar" class="item-footer-voltar">Voltar</div>
+            <div id="item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

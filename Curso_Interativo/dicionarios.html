@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Dicionários em Python</title>
+    <link rel="stylesheet" href="./css/dicionarios.css">
+    <script src="./js/dicionarios.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id="botao1" class="botao"></div>
+                <div id="botao2" class="botao"></div>
+                <div id="botao3" class="botao"></div>
+                <div id="botao4" class="botao"></div>
+                <div id="botao5" class="botao"></div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section id="conteudo-container" class="conteudo-container">
+            <div id="conteudo1">
+                <h3>O que são Dicionários em Python?</h3>
+                <p>
+                    - Dicionários são estruturas de dados em Python que armazenam pares de chave-valor.
+                </p>
+                <p>
+                    - Eles são mutáveis, ou seja, seus valores podem ser alterados após a criação.
+                </p>
+                <p>
+                    - Veja um exemplo simples de um dicionário em Python:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">dicionario</span> = {'nome': 'João', 'idade': 25, 'cidade': 'São Paulo'}</div>
+                </div>
+                <p>
+                    - Dicionários são definidos usando chaves `{}` e pares de chave-valor separados por dois pontos `:`.
+                </p>
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Operações com Dicionários</h3>
+                <p>
+                    - Você pode acessar os valores em um dicionário usando suas chaves.
+                </p>
+                <p>
+                    - Exemplo de acesso a valores em um dicionário:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">dicionario = {'nome': 'João', 'idade': 25, 'cidade': 'São Paulo'}</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(dicionario['nome']) <span class="resposta">// Saída: João</span></div>
+                </div>
+                <p>
+                    - Exemplo de modificação de valores em um dicionário:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">dicionario['idade'] = 26</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(dicionario['idade']) <span class="resposta">// Saída: 26</span></div>
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Uso de Dicionários</h3>
+                <p>
+                    - Dicionários são frequentemente usados para armazenar dados relacionados.
+                </p>
+                <p>
+                    - Exemplo de uso de dicionário em uma função:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> cria_dicionario(nome, idade, cidade):</div>
+                    <div class="linha-codigo">&nbsp;&nbsp;&nbsp;&nbsp;<span class="laranja">return</span> {'nome': nome, 'idade': idade, 'cidade': cidade}</div>
+                    <div class="linha-codigo">dados = cria_dicionario('João', 25, 'São Paulo')</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(dados) <span class="resposta">// Saída: {'nome': 'João', 'idade': 25, 'cidade': 'São Paulo'}</span></div>
+                </div>
+                <h3>Aplicações dos Dicionários</h3>
+                <p>
+                    - Dicionários são úteis para organizar dados de forma clara e acessível.
+                </p>
+                <p>
+                    - Exemplo de uso de dicionários em Python:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">aluno = {'nome': 'Maria', 'idade': 22, 'curso': 'Engenharia'}</div>
+                    <div class="linha-codigo">professor = {'nome': 'Carlos', 'idade': 40, 'disciplina': 'Matemática'}</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(aluno)</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(professor)</div>
+                    <div class="linha-codigo"><span class="resposta">// Saída: {'nome': 'Maria', 'idade': 22, 'curso': 'Engenharia'}</span></div>
+                    <div class="linha-codigo"><span class="resposta">// Saída: {'nome': 'Carlos', 'idade': 40, 'disciplina': 'Matemática'}</span></div>
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Iterando em Dicionários</h3>
+                <p>
+                    - É possível iterar sobre os pares de chave-valor de um dicionário usando um loop `for`.
+                </p>
+                <p>
+                    - Exemplo de iteração em um dicionário:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">dicionario = {'nome': 'João', 'idade': 25, 'cidade': 'São Paulo'}</div>
+                    <div class="linha-codigo"><span class="laranja">for</span> chave, valor <span class="laranja">in</span> dicionario.items():</div>
+                    <div class="linha-codigo">&nbsp;&nbsp;&nbsp;&nbsp;<span class="funcao">print</span>(f'{chave}: {valor}')</div>
+                </div>
+                <p>
+                    - Isso imprimirá cada par de chave-valor em uma nova linha.
+                </p>
+            </div>
+            <div id="conteudo5" class="esconder">
+                <div id="conteudo1" class="conteudo">
+                    <h3>Marque a alternativa certa:</h3>
+                    <p>Qual será a saída do seguinte código:</p>
+                    <p>dimensoes = {'largura': 800, 'altura': 600}<p>
+                    <p>cores = {'cor1': 'vermelho', 'cor2': 'verde', 'cor3': 'azul'}<p>
+                    <p>print(f"Tamanho da imagem: {dimensoes['largura']}x{dimensoes['altura']} pixels")<p>
+                    <p>print(f"Cores disponíveis: {', '.join(cores.values())}")<p>                    
+                    <ul id="ul_lista">
+                        <ul id="ul_lista">
+                            <!--<li id="n1">No</li>-->
+                        </ul>  
+                        
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <section class="footer-container">
+            <div id="item-footer-voltar" class="item-footer-voltar">Voltar</div>
+            <div id="item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

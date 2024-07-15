@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Tuplas em Python</title>
+    <link rel="stylesheet" href="./css/tuplas.css">
+    <script src="./js/tuplas.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id="botao1" class="botao"></div>
+                <div id="botao2" class="botao"></div>
+                <div id="botao3" class="botao"></div>
+                <div id="botao4" class="botao"></div>
+                <div id="botao5" class="botao"></div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section id="conteudo-container" class="conteudo-container">
+            <div id="conteudo1">
+                <h3>O que são Tuplas em Python?</h3>
+                <p>
+                    - Tuplas são estruturas de dados em Python semelhantes a listas.
+                </p>
+                <p>
+                    - Elas são imutáveis, ou seja, uma vez criadas, não podem ser modificadas.
+                </p>
+                <p>
+                    - Veja um exemplo simples de uma tupla em Python:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">tupla</span> = (1, 2, 3, 'a', 'b', 'c')</div>
+                </div>
+                <p>
+                    - Tuplas são definidas usando parênteses `()` e itens separados por vírgula.
+                </p>
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Operações com Tuplas</h3>
+                <p>
+                    - Assim como listas, tuplas suportam indexação e fatiamento.
+                </p>
+                <p>
+                    - Exemplo de indexação em uma tupla:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">tupla = (1, 2, 3, 'a', 'b', 'c')</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(tupla[0]) <span class="resposta">// Saída: 1</span></div>
+                </div>
+                <p>
+                    - Exemplo de fatiamento em uma tupla:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">tupla = (1, 2, 3, 'a', 'b', 'c')</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(tupla[1:4]) <span class="resposta">// Saída: (2, 3, 'a')</span></div>
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Uso de Tuplas</h3>
+                <p>
+                    - Tuplas são frequentemente usadas para retornar múltiplos valores de funções.
+                </p>
+                <p>
+                    - Exemplo de retorno de tupla em uma função:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> retorna_coordenadas():</div>
+                    <div class="linha-codigo">&nbsp;&nbsp;&nbsp;&nbsp;<span class="laranja">return</span> (10, 20)</div>
+                    <div class="linha-codigo">x, y = retorna_coordenadas()</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(x, y) <span class="resposta">// Saída: 10 20</span></div>
+                </div>
+                <h3>Aplicações das Tuplas</h3>
+                <p>
+                    - Tuplas são úteis em situações onde os dados não devem ser modificados após a criação.
+                </p>
+                <p>
+                    - Exemplo de uso de tuplas em Python:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">dimensoes = (800, 600)</div>
+                    <div class="linha-codigo">cores = ('vermelho', 'verde', 'azul')</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(f"Tamanho da imagem: {dimensoes[0]}x{dimensoes[1]} pixels")</div>
+                    <div class="linha-codigo"><span class="funcao">print</span>(f"Cores disponíveis: {', '.join(cores)}")</div>
+                    <div class="linha-codigo"><span class="resposta">// Tamanho da imagem: 800x600 pixels</span></div>
+                    <div class="linha-codigo"><span class="resposta">// Cores disponíveis: vermelho, verde, azul</span></div>
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Iterando em Tuplas</h3>
+                <p>
+                    - É possível iterar sobre os elementos de uma tupla usando um loop `for`.
+                </p>
+                <p>
+                    - Exemplo de iteração em uma tupla:
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">tupla = (1, 2, 3, 'a', 'b', 'c')</div>
+                    <div class="linha-codigo"><span class="laranja">for</span> item <span class="laranja">in</span> tupla:</div>
+                    <div class="linha-codigo">&nbsp;&nbsp;&nbsp;&nbsp;<span class="funcao">print</span>(item)</div>
+                </div>
+                <p>
+                    - Isso imprimirá cada elemento da tupla em uma nova linha.
+                </p>
+            </div>
+            <div id="conteudo5" class="esconder">
+                <div id="conteudo1" class="conteudo">
+                    <h3>Marque a alternativa certa:</h3>
+                    <p>Como seria o return de uma função que calcula a*x**2 + b*x + c utilizando as funções definidas abaixo:</p>
+                    <p>
+                        a = 2<br>
+                        b = 3<br>
+                        c = 4<br>
+                        x = 5<br><br>
+                        <code>def calcula_segundo_grau(a, b, c, x):</code><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return ???<br>
+                    </p>
+                    <p>Funções já definidas:</p>
+                    <p>
+                        <code>def soma(x, y):</code><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return x + y<br>
+                        <code>def vezes(x, y):</code><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return x * y<br>
+                        <code>def potencia2(x):</code><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return x ** 2<br>
+                    </p>
+                    <p>y = calcula_segundo_grau(a, b, c, x)</p>
+                    <p>print(y)</p>
+                    <ul id="ul_lista">
+                        <!--<li id="n1">No</li>-->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <section class="footer-container">
+            <div id="item-footer-voltar" class="item-footer-voltar">Voltar</div>
+            <div id="item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>

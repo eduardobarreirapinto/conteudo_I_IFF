@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Digital - Comentários</title>
+    <link rel="stylesheet" href="./css/comentarios.css">
+    <script src="./js/comentarios.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+    <header>
+        <section class="section-header">
+            <div class="anterior">
+                <a href="../sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <h3>Voltar ao Livro Digital</h3>
+                </a>
+            </div>
+            <div class="botoes">
+                <div id="botao1" class="botao"></div>
+                <div id="botao2" class="botao"></div>
+                <div id="botao3" class="botao"></div>
+                <div id="botao4" class="botao"></div>
+                <div id="botao5" class="botao"></div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section id="conteudo-container" class="conteudo-container">
+            <div id="conteudo1">
+                <h3>Comentários em Python</h3>
+                <p>
+                    - Comentários são importantes para tornar seu código mais legível e compreensível.
+                </p>
+                <p>
+                    - Em Python, comentários são criados usando o símbolo <span class="sublinhado">#</span>.
+                </p>
+                <p>
+                    - Tudo o que estiver após o <span class="sublinhado">#</span> será ignorado pelo interpretador Python.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja"># Este é um comentário em Python</span></div>
+                    <div class="linha-codigo">print(<span class="string">"Olá, Mundo!"</span>) <span class="comentario"># Esta linha imprime uma mensagem</span></div>
+                </div>
+                <p>
+                    - Comentários podem ser usados para explicar variáveis e operações.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo">x = 10 <span class="laranja"># Define a variável x com valor 10</span></div>
+                    <div class="linha-codigo">y = 20 <span class="laranja"># Define a variável y com valor 20</span></div>
+                    <div class="linha-codigo">z = x + y <span class="laranja"># Soma x e y e armazena o resultado em z</span></div>
+                </div>
+            </div>
+            <div id="conteudo2" class="esconder">
+                <h3>Comentários de Múltiplas Linhas</h3>
+                <p>
+                    - Para comentários mais longos, você pode usar comentários de múltiplas linhas.
+                </p>
+                <p>
+                    - Embora Python não tenha um símbolo específico para isso, você pode usar múltiplos <span class="sublinhado">#</span>.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja"># Este é um comentário</span></div>
+                    <div class="linha-codigo"><span class="laranja"># de múltiplas linhas</span></div>
+                    <div class="linha-codigo"><span class="laranja"># explicando o próximo bloco de código</span></div>
+                </div>
+                <p>
+                    - Alternativamente, você pode usar strings de múltiplas linhas (docstrings) como comentários.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">"""</span></div>
+                    <div class="linha-codigo">Este é um comentário de</div>
+                    <div class="linha-codigo">múltiplas linhas usando</div>
+                    <div class="linha-codigo">uma string de múltiplas linhas.</div>
+                    <div class="linha-codigo"><span class="laranja">"""</span></div>
+                </div>
+            </div>
+            <div id="conteudo3" class="esconder">
+                <h3>Boas Práticas de Comentários</h3>
+                <p>
+                    - Mantenha seus comentários claros e concisos.
+                </p>
+                <p>
+                    - Comente o "porquê" e não o "como". 
+                </p>
+                <p>
+                    - Use comentários para explicar partes complicadas do código.
+                </p>
+                <p>
+                    - Evite comentários óbvios que não agregam valor.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"># Calcula a área do círculo</div>
+                    <div class="linha-codigo"><span class="laranja">def</span> calcula_area(raio):</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">return</span> 3.14 * raio ** 2</div>
+                </div>
+                <div class="obs">
+                    Comentários ajudam a documentar seu código, mas devem ser usados com moderação e sabedoria.
+                </div>
+            </div>
+            <div id="conteudo4" class="esconder">
+                <h3>Comentários e Docstrings</h3>
+                <p>
+                    - Docstrings são strings de documentação usadas para explicar o propósito de uma função, classe ou módulo.
+                </p>
+                <p>
+                    - Elas são colocadas logo abaixo da definição da função, classe ou módulo.
+                </p>
+                <div class="codigo">
+                    <div class="linha-codigo"><span class="laranja">def</span> minha_funcao():</div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="laranja">"""Esta função faz algo muito importante."""</span></div>
+                    <div class="linha-codigo">&nbsp&nbsp&nbsp&nbsp<span class="funcao">print</span>(<span class="string">"Executando a função"</span>)</div>
+                </div>
+                <div class="obs">
+                    Docstrings são acessíveis via a função help() e são uma excelente prática para documentar seu código.
+                </div>
+            </div>
+            <div id="conteudo5" class="esconder">
+                <h3>Marque a alternativa certa:</h3>
+                <p> Qual é a forma correta de adicionar um comentário de uma linha em Python? </p>
+                <ul id="ul_lista">
+                    <!--<li id="n1">No</li>-->
+                    
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <section class="footer-container">
+            <div id="item-footer-voltar" class="item-footer-voltar">Voltar</div>
+            <div id="item-footer-continuar" class="item-footer-continuar">Continuar</div>
+        </section>
+    </footer>
+</body>
+</html>
