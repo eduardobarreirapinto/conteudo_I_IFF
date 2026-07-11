@@ -19,10 +19,11 @@ const DOORS = [
   {
     name: 'rightDoor',
     position: new BABYLON.Vector3(4.6, 1, 0),
-    size: { width: 0.3, height: 2, depth: 1.4 },
-    label: 'Automação',
+    size: { width: 0.5, height: 3.1, depth: 1.1 },
+    label: 'Prog. Web',
     labelSide: 'right',
-    href: '#', // em desenvolvimento
+    fontSize: 70,
+    href: '../sala_de_aula_com_livro/sala_de_aula_livro_web.html',
   },
 ];
 
@@ -159,7 +160,7 @@ function buildDoors(scene) {
   const signMat = new BABYLON.StandardMaterial('signMat', scene);
   signMat.diffuseTexture = new BABYLON.Texture(`${ASSET_BASE}letreiro.jpg`, scene);
 
-  DOORS.forEach(({ name, position, size, label, labelSide, href }) => {
+  DOORS.forEach(({ name, position, size, label, labelSide, fontSize, href }) => {
     // Letreiro visual
     const letreiro = BABYLON.MeshBuilder.CreateBox(`${name}_letreiro`, { width: 0.1, height: 0.3, depth: 1.1 }, scene);
     letreiro.position.set(position.x, 2.35, position.z);
@@ -179,13 +180,13 @@ function buildDoors(scene) {
     }
 
     // Placa 3D com o nome da sala
-    createRoomSign(scene, label, labelSide);
+    createRoomSign(scene, label, labelSide, fontSize);
   });
 }
 
-function createRoomSign(scene, text, side) {
+function createRoomSign(scene, text, side, fontSize = 85) {
   const xPos = side === 'left' ? -4.85 : 4.85;
-  const rotY  = side === 'left' ? -Math.PI / 2 : Math.PI / 2;
+  const rotY = side === 'left' ? -Math.PI / 2 : Math.PI / 2;
 
   const sign = BABYLON.MeshBuilder.CreatePlane(`sign_${side}`, { width: 2, height: 1.8 }, scene);
   sign.position.set(xPos, 2.35, 0);
@@ -195,7 +196,7 @@ function createRoomSign(scene, text, side) {
   const textBlock = new BABYLON.GUI.TextBlock();
   textBlock.text = text;
   textBlock.color = 'white';
-  textBlock.fontSize = 85;
+  textBlock.fontSize = fontSize;
   textBlock.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
   textBlock.textVerticalAlignment   = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
   texture.addControl(textBlock);
