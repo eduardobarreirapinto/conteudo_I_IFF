@@ -1,0 +1,40 @@
+#about-section {
+  max-width: 800px;
+  margin: 5% auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+#about-section h2 {
+  font-size: 1.6rem;
+  color: teal;
+  margin-bottom: 24px;
+}
+
+#about-section p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+/* Área para listar artigos futuramente */
+.artigos-lista {
+  max-width: 900px;
+  margin: 32px auto;
+  display: grid;
+  gap: 20px;
+}
+
+.artigo-card {
+  border: 2px solid teal;
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: box-shadow 0.2s;
+}
+
+.artigo-card:hover {
+  box-shadow: 0 4px 16px rgba(0,128,128,0.2);
+}
+
+.artigo-card h3 { font-size: 1.1rem; color: #111; margin-bottom: 8px; }
+.artigo-card p  { font-size: 0.9rem; color: #555; line-height: 1.6; }

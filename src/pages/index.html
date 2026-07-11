@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Educação Interativa — ambiente virtual de aprendizagem do IFF">
+  <title>Educação Interativa</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+
+  <!-- Babylon.js — carregado apenas nas páginas que usam 3D -->
+  <script src="https://cdn.babylonjs.com/cannon.js" defer></script>
+  <script src="https://cdn.babylonjs.com/earcut.min.js" defer></script>
+  <script src="https://cdn.babylonjs.com/babylon.js" defer></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js" defer></script>
+
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <link rel="stylesheet" href="/src/styles/home.css">
+</head>
+<body>
+
+  <!-- Navbar injetada via JS -->
+
+  <div class="logos">
+    <img id="iff_logo" src="/img_escola/iff.jpg" alt="Logo IFF">
+  </div>
+
+  <div class="house">
+    <div class="main">
+      <div class="btn letreiro">
+        <span>Ambiente Virtual</span>
+      </div>
+      <div class="roof"></div>
+      <div class="wrapper">
+        <a href="/corredor_escolar/corredor.html" aria-label="Entrar no ambiente virtual 3D">
+          <canvas id="renderCanvas"></canvas>
+        </a>
+        <div id="left-door" class="door" aria-hidden="true">
+          <div class="shape"></div>
+          <div class="shape"></div>
+          <div id="left-knob" class="knob"></div>
+        </div>
+        <div id="right-door" class="door" aria-hidden="true">
+          <div class="shape"></div>
+          <div class="shape"></div>
+          <div id="right-knob" class="knob"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="skills-section" aria-label="Cursos disponíveis">
+    <div class="container">
+      <div class="skills-container">
+        <img src="/img_escola/python-icon2.jpg" alt="Ícone Python">
+        <h2 id="python">
+          <a href="/sala_de_aula_com_livro/sala_de_aula_livro_python.html">
+            Introdução à Programação com Python
+          </a>
+        </h2>
+        <p class="subtitle">Aprenda uma das linguagens de programação mais usadas da atualidade.</p>
+      </div>
+
+      <div class="skills-container">
+        <img src="/img_escola/web.png" alt="Ícone Web">
+        <h2 id="python">
+          <a href="/sala_de_aula_com_livro/sala_de_aula_livro_web.html">
+            Programação de Aplicações Web
+          </a>
+        </h2>
+        <p class="subtitle">Aprenda a desenvolver aplicações web com HTML, CSS e Javascript.</p>
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    import { renderNavbar } from '/src/components/navbar.js';
+    import { initHomeScene } from '/src/scenes/HomeScene.js';
+
+    renderNavbar('home', '/');
+
+    // Aguarda Babylon.js estar disponível antes de iniciar a cena
+    window.addEventListener('load', () => {
+      if (typeof BABYLON !== 'undefined') {
+        initHomeScene('renderCanvas');
+      }
+    });
+  </script>
+</body>
+</html>

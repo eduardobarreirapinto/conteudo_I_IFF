@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sobre o projeto Educação Interativa do IFF">
+  <title>Sobre — Educação Interativa</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <link rel="stylesheet" href="/src/styles/sobre.css">
+</head>
+<body>
+
+  <!-- Navbar injetada via JS -->
+
+  <section id="about-section" aria-labelledby="sobre-titulo">
+    <h2 id="sobre-titulo">
+      O Ambiente Digital Interativo tem o objetivo de impactar positivamente a educação.
+    </h2>
+    <p>
+      Procuramos otimizar o ensino de Programação e Automação, inserindo o aluno
+      em um Ambiente Digital e Interativo.
+    </p>
+    <p>
+      Capacitamos nossos alunos em novas tecnologias digitais,
+      contribuindo para que possam implementá-las em suas atividades.
+    </p>
+  </section>
+
+  <div class="logos">
+    <img id="iff_logo" src="/img_escola/iff.jpg" alt="Logo IFF">
+  </div>
+
+  <script type="module">
+    import { renderNavbar } from '/src/components/navbar.js';
+    renderNavbar('sobre', '/');
+  </script>
+</body>
+</html>

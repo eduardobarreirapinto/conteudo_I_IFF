@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Artigos acadêmicos de tecnologia — Educação Interativa IFF">
+  <title>Artigos — Educação Interativa</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e73c7eb409.js" crossorigin="anonymous" defer></script>
+
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <link rel="stylesheet" href="/src/styles/artigos.css">
+</head>
+<body>
+
+  <!-- Navbar injetada via JS -->
+
+  <section id="about-section" aria-labelledby="artigos-titulo">
+    <h2 id="artigos-titulo">Dê destaque aos seus esforços acadêmicos.</h2>
+    <p>
+      Aguardando o primeiro aluno(s) a compartilhar um artigo sobre Tecnologia.
+    </p>
+  </section>
+
+  <div class="logos">
+    <img id="iff_logo" src="/img_escola/iff.jpg" alt="Logo IFF">
+  </div>
+
+  <script type="module">
+    import { renderNavbar } from '/src/components/navbar.js';
+    renderNavbar('artigos', '/');
+  </script>
+</body>
+</html>

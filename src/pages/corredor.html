@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+  <title>Corredor Escolar — Educação Interativa</title>
+
+  <!-- Babylon.js -->
+  <script src="https://cdn.babylonjs.com/cannon.js"></script>
+  <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+  <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+
+  <link rel="stylesheet" href="/src/styles/corredor.css">
+</head>
+<body>
+
+  <canvas id="renderCanvas" aria-label="Ambiente 3D do corredor escolar"></canvas>
+
+  <!-- Loading overlay -->
+  <div id="loading-overlay" role="status" aria-live="polite">
+    <div class="spinner"></div>
+    <p>Carregando ambiente...</p>
+  </div>
+
+  <!-- Dica de controles -->
+  <div id="controls-hint" aria-label="Dica de controles">
+    W / S / ← → para mover &nbsp;|&nbsp; arraste o mouse para rotacionar
+  </div>
+
+  <script type="module">
+    import { initCorredorScene } from '/src/scenes/CorredorScene.js';
+
+    const overlay = document.getElementById('loading-overlay');
+    const hint    = document.getElementById('controls-hint');
+
+    initCorredorScene('renderCanvas', {
+      onSceneReady: () => {
+        overlay.classList.add('hidden');
+
+        // Esconde a dica após 5 segundos
+        setTimeout(() => hint.classList.add('hidden'), 5000);
+      },
+    });
+  </script>
+</body>
+</html>

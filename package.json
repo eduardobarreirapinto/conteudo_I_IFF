@@ -1,0 +1,13 @@
+{
+  "name": "educacao-interativa",
+  "version": "1.0.0",
+  "description": "Ambiente virtual interativo de aprendizagem — IFF",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
