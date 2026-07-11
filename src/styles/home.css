@@ -151,8 +151,9 @@ canvas {
 .wrapper:hover #left-door  { transform: rotateY(-140deg); }
 .wrapper:hover #right-door { transform: rotateY(140deg); }
 
-/* Seção de cursos */
+/* Seção de cursos — visível só no mobile */
 #skills-section {
+  display: none;
   margin-top: 2%;
   background-color: #fff;
   width: 90%;
@@ -210,6 +211,8 @@ canvas {
 
 @media only screen and (max-width: 767px) {
   .house { display: none; }
+
+  #skills-section { display: block; }
 
   #skills-section .container {
     flex-direction: column;
