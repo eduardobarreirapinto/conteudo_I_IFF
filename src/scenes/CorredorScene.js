@@ -254,18 +254,6 @@ function loadModels(scene) {
       rotation: new BABYLON.Vector3(0, -Math.PI / 2, 0),
       scale: new BABYLON.Vector3(1.3, 1, 1),
     },
-    {
-      file: 'porta.glb',
-      position: new BABYLON.Vector3(4.90, 0, -0.8),
-      rotation: new BABYLON.Vector3(0, -Math.PI / 2, 0),
-      scale: new BABYLON.Vector3(1.3, 1, 1),
-    },
-    {
-      file: 'porta.glb',
-      position: new BABYLON.Vector3(4.90, 0, 0.8),
-      rotation: new BABYLON.Vector3(0, -Math.PI / 2, 0),
-      scale: new BABYLON.Vector3(1.3, 1, 1),
-    },
   ];
 
   models.forEach(({ file, position, rotation, scale, onClick }) => {
@@ -285,6 +273,33 @@ function loadModels(scene) {
       })
       .catch(err => console.warn(`Erro ao carregar ${file}:`, err));
   });
+
+  // Portas direitas: carrega uma vez e clona para a segunda posição
+  const rightDoorPositions = [
+    new BABYLON.Vector3(4.90, 0, -0.8),
+    new BABYLON.Vector3(4.90, 0,  0.8),
+  ];
+
+  BABYLON.SceneLoader.ImportMeshAsync('', ASSET_BASE, 'porta.glb', scene)
+    .then(({ meshes }) => {
+      if (!meshes.length) return;
+
+      // Primeira porta direita — usa os meshes originais
+      meshes[0].position = rightDoorPositions[0];
+      meshes[0].rotation = new BABYLON.Vector3(0, -Math.PI / 2, 0);
+      meshes[0].scaling  = new BABYLON.Vector3(1.3, 1, 1);
+
+      // Segunda porta direita — clona cada mesh
+      meshes.forEach(mesh => {
+        const clone = mesh.clone(`${mesh.name}_clone`);
+        if (clone) {
+          clone.position = rightDoorPositions[1].clone();
+          clone.rotation = new BABYLON.Vector3(0, -Math.PI / 2, 0);
+          clone.scaling  = new BABYLON.Vector3(1.3, 1, 1);
+        }
+      });
+    })
+    .catch(err => console.warn('Erro ao carregar porta.glb:', err));
 }
 
 function setupCameraControls(scene, camera) {
