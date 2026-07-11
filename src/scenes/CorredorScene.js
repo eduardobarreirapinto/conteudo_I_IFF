@@ -4,7 +4,7 @@
  * Controles: W/A/S/D ou setas para mover, mouse drag para rotacionar.
  */
 
-const ASSET_BASE = './img/';
+const ASSET_BASE = '/corredor_escolar/img/';
 
 // Configuração das portas — facilita adicionar/remover salas
 const DOORS = [
@@ -15,7 +15,7 @@ const DOORS = [
     label: 'Programação',
     labelSide: 'left',
     labelZ: 0,
-    href: '../sala_de_aula_com_livro/sala_de_aula_livro_python.html',
+    href: '/sala_de_aula_com_livro/sala_de_aula_livro_python.html',
   },
   {
     name: 'rightDoor1',
@@ -34,7 +34,7 @@ const DOORS = [
     labelSide: 'right',
     labelZ: 0.8,
     fontSize: 70,
-    href: '../sala_de_aula_com_livro/sala_de_aula_livro_web.html',
+    href: '/sala_de_aula_com_livro/sala_de_aula_livro_web.html',
   },
 ];
 
@@ -132,7 +132,7 @@ function buildRoom(scene) {
   frontDoor.physicsImpostor = new BABYLON.PhysicsImpostor(
     frontDoor, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, friction: 0.5, restitution: 0.7 }, scene
   );
-  registerClickAction(frontDoor, scene, '../index.html');
+  registerClickAction(frontDoor, scene, '/src/pages/index.html');
 
   // Janelas
   const windowDefs = [
@@ -246,7 +246,7 @@ function loadModels(scene) {
       file: 'gaming_pc.glb',
       position: new BABYLON.Vector3(-3, -0.2, 3),
       scale: new BABYLON.Vector3(0.3, 0.55, 0.3),
-      onClick: './jogos/jogos.html',
+      onClick: '/corredor_escolar/jogos/jogos.html',
     },
     {
       file: 'porta.glb',
