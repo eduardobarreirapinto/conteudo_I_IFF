@@ -14,14 +14,25 @@ const DOORS = [
     size: { width: 0.5, height: 3.1, depth: 1.1 },
     label: 'Programação',
     labelSide: 'left',
+    labelZ: 0,
     href: '../sala_de_aula_com_livro/sala_de_aula_livro_python.html',
   },
   {
-    name: 'rightDoor',
-    position: new BABYLON.Vector3(4.6, 1, 0),
+    name: 'rightDoor1',
+    position: new BABYLON.Vector3(5.1, 0.4, -1.2),
+    size: { width: 0.5, height: 3.1, depth: 1.1 },
+    label: 'Automação',
+    labelSide: 'right',
+    labelZ: -1.2,
+    href: '#',
+  },
+  {
+    name: 'rightDoor2',
+    position: new BABYLON.Vector3(5.1, 0.4, 1.2),
     size: { width: 0.5, height: 3.1, depth: 1.1 },
     label: 'Prog. Web',
     labelSide: 'right',
+    labelZ: 1.2,
     fontSize: 70,
     href: '../sala_de_aula_com_livro/sala_de_aula_livro_web.html',
   },
@@ -160,10 +171,10 @@ function buildDoors(scene) {
   const signMat = new BABYLON.StandardMaterial('signMat', scene);
   signMat.diffuseTexture = new BABYLON.Texture(`${ASSET_BASE}letreiro.jpg`, scene);
 
-  DOORS.forEach(({ name, position, size, label, labelSide, fontSize, href }) => {
+  DOORS.forEach(({ name, position, size, label, labelSide, labelZ, fontSize, href }) => {
     // Letreiro visual
     const letreiro = BABYLON.MeshBuilder.CreateBox(`${name}_letreiro`, { width: 0.1, height: 0.3, depth: 1.1 }, scene);
-    letreiro.position.set(position.x, 2.35, position.z);
+    letreiro.position.set(position.x, 2.35, labelZ);
     letreiro.material = signMat;
 
     // Caixa de colisão invisível (área clicável)
@@ -180,16 +191,16 @@ function buildDoors(scene) {
     }
 
     // Placa 3D com o nome da sala
-    createRoomSign(scene, label, labelSide, fontSize);
+    createRoomSign(scene, label, labelSide, labelZ, fontSize);
   });
 }
 
-function createRoomSign(scene, text, side, fontSize = 85) {
+function createRoomSign(scene, text, side, z = 0, fontSize = 85) {
   const xPos = side === 'left' ? -4.85 : 4.85;
   const rotY = side === 'left' ? -Math.PI / 2 : Math.PI / 2;
 
-  const sign = BABYLON.MeshBuilder.CreatePlane(`sign_${side}`, { width: 2, height: 1.8 }, scene);
-  sign.position.set(xPos, 2.35, 0);
+  const sign = BABYLON.MeshBuilder.CreatePlane(`sign_${text}`, { width: 2, height: 1.8 }, scene);
+  sign.position.set(xPos, 2.35, z);
   sign.rotation.y = rotY;
 
   const texture = BABYLON.GUI.AdvancedDynamicTexture.CreateForMesh(sign);
@@ -245,9 +256,15 @@ function loadModels(scene) {
     },
     {
       file: 'porta.glb',
-      position: new BABYLON.Vector3(4.90, 0, 0),
+      position: new BABYLON.Vector3(4.90, 0, -1.2),
       rotation: new BABYLON.Vector3(0, -Math.PI / 2, 0),
-      scale: new BABYLON.Vector3(1.2, 1, 1),
+      scale: new BABYLON.Vector3(1.3, 1, 1),
+    },
+    {
+      file: 'porta.glb',
+      position: new BABYLON.Vector3(4.90, 0, 1.2),
+      rotation: new BABYLON.Vector3(0, -Math.PI / 2, 0),
+      scale: new BABYLON.Vector3(1.3, 1, 1),
     },
   ];
 
